@@ -1,9 +1,7 @@
-import { EnvelopeIcon } from '@heroicons/react/24/outline';
-import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
-import AvatarImage from '../../public/assets/blog/authors/bartosz.jpeg';
+import AvatarImage from '../../public/assets/blog/authors/bernardo.jpg';
 import { Container } from '../components/Container';
 import { ExternalLink } from '../components/ExternalLink';
 import { PageTitle } from '../components/PageTitle';
@@ -12,18 +10,13 @@ import { Section } from '../components/Section';
 import { SocialLink } from '../components/SocialLink';
 import {
   AboutExtended,
-  Blogs,
   Books,
   PeopleWorthFollowingOnTwitter,
   Podcasts,
   Quotes,
   SocialMedia,
-  VideosWorthWatching,
+  VideosWorthWatching
 } from '../data/lifeApi';
-import { testUtil } from '../lib/testUtil';
-
-const seoTitle = `About`;
-const seoDescription = `A few words about me.`;
 
 export default function AboutMe() {
   const [randomQuote, setRandomQuote] = useState<{ author: string; content: string }>();
@@ -34,18 +27,6 @@ export default function AboutMe() {
 
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={`${process.env.NEXT_PUBLIC_URL}/about`}
-        openGraph={{
-          images: [
-            {
-              url: `${process.env.NEXT_PUBLIC_URL}/api/og?title=${seoTitle}&description=${seoDescription}`,
-            },
-          ],
-        }}
-      />
       <Container className="mt-16 sm:mt-32">
         <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
           <div className="lg:pl-20">
@@ -59,7 +40,7 @@ export default function AboutMe() {
             </div>
           </div>
           <div className="lg:order-first lg:row-span-2">
-            <PageTitle>Hi, I&apos;m Bartosz Jarocki.</PageTitle>
+            <PageTitle>Hi, I&apos;m Bernardo Rocha.</PageTitle>
             <div className="mt-6 text-base">{AboutExtended}</div>
             <div className="mt-6 flex gap-6">
               {SocialMedia.map((socialProfile) => (
@@ -72,7 +53,7 @@ export default function AboutMe() {
               ))}
             </div>
 
-            <Section>
+            {/* <Section>
               <Section.Title as="h2">Work</Section.Title>
               <Section.Content>
                 I&apos;m a software developer with over 13 years of experience. I started as a C/C++
@@ -80,41 +61,12 @@ export default function AboutMe() {
                 developing great user experiences using React.
                 <br />
                 <br />I created multiple Android applications from scratch for companies around the
-                world like{' '}
-                <ExternalLink href={'https://www.visionmedia.com/'}>VisionMedia</ExternalLink>,{' '}
-                <ExternalLink href={'https://www.dkms.org/en'}>DKMS</ExternalLink>,{' '}
-                <ExternalLink href={'https://www.aaa.com/'}>AAA</ExternalLink>,{' '}
-                <ExternalLink href={'https://polskapress.pl/pl'}>PolskaPress</ExternalLink> or{' '}
-                <ExternalLink href={'https://www.canaldigital.no/'}>Canal Digital</ExternalLink>. I
-                helped to create/review/design mobile applications for startups like{' '}
-                <ExternalLink href={'https://play.google.com/store/apps/details?id=io.bimapp'}>
-                  Bim
-                </ExternalLink>
-                , <ExternalLink href={'https://www.tastycloud.fr'}>Tastycloud</ExternalLink>,{' '}
-                <ExternalLink
-                  href={'https://play.google.com/store/apps/details?id=com.howdyhub.howdy'}
-                >
-                  Howdy
-                </ExternalLink>{' '}
-                and{' '}
-                <ExternalLink
-                  href={
-                    'https://play.google.com/store/apps/details?id=com.vikingco.vikingapp.poland'
-                  }
-                >
-                  Mobile Vikings
-                </ExternalLink>
-                . I developed a WebRTC powered video conferencing frontend application using
-                React.js/GraphQL/Typescript for{' '}
-                <ExternalLink href={'https://www.evercast.us'}>Evercast</ExternalLink>. I also had
-                led development teams many times. If you&apos;d like to work with me{' '}
-                <ExternalLink href="https://twitter.com/messages/compose?recipient_id=512460212">
-                  DM me on Twitter
-                </ExternalLink>{' '}
-                or just{' '}
-                <ExternalLink href="mailto:bartosz.jarocki@icloud.com">email me.</ExternalLink>
+                world like
+                <ExternalLink href={''}></ExternalLink>,{' '}
+                <ExternalLink href="">DM me on Twitter</ExternalLink> or just{' '}
+                <ExternalLink href="mailto:b.vieira.rocha@gmail.com">email me.</ExternalLink>
               </Section.Content>
-            </Section>
+            </Section> */}
             <Section>
               <Section.Title as="h2">Books worth re-reading</Section.Title>
               <Section.Content>
@@ -134,18 +86,6 @@ export default function AboutMe() {
                   {Podcasts.map((podcast) => (
                     <li key={podcast.name}>
                       <ExternalLink href={podcast.link}>{podcast.name}</ExternalLink>
-                    </li>
-                  ))}
-                </ul>
-              </Section.Content>
-            </Section>
-            <Section>
-              <Section.Title as="h2">Blogs I read</Section.Title>
-              <Section.Content>
-                <ul className="mt-1 list-disc list-inside">
-                  {Blogs.map((blog) => (
-                    <li key={blog.name}>
-                      <ExternalLink href={blog.link}>{blog.name}</ExternalLink>
                     </li>
                   ))}
                 </ul>

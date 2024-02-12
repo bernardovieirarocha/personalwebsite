@@ -1,4 +1,3 @@
-import React from 'react';
 
 import { Container } from './Container';
 import { NavLink, NavigationItems } from './Navigation';
@@ -18,7 +17,7 @@ export const Footer = () => {
                 ))}
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                &copy; {new Date().getFullYear()} Bartosz Jarocki. All rights reserved.
+                &copy; {new Date().getFullYear()} Bernardo Vieira Rocha. All rights reserved.
               </p>
             </div>
           </Container.Inner>

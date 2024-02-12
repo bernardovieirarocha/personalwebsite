@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { Avatar } from './Avatar';
 import { AvatarContainer } from './AvatarContainer';
 import { Container } from './Container';
-import { MobileNavigation, DesktopNavigation } from './Navigation';
+import { DesktopNavigation, MobileNavigation } from './Navigation';
 import { ThemeToggle } from './ThemeToggle';
 
 const clamp = (number: number, a: number, b: number) => {
@@ -20,7 +20,7 @@ export const Header = () => {
   let avatarRef = useRef<HTMLDivElement | null>(null);
   let isInitial = useRef(true);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let downDelay = avatarRef.current?.offsetTop ?? 0;
     let upDelay = 64;
 

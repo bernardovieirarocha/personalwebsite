@@ -14,11 +14,6 @@ export const NavigationItems = [
     type: 'internal',
   },
   {
-    name: 'Notes',
-    href: '/notes',
-    type: 'internal',
-  },
-  {
     name: 'Creating',
     href: '/creating',
     type: 'internal',
@@ -30,7 +25,7 @@ export const NavigationItems = [
   },
   {
     name: 'Resume',
-    href: 'https://cv.jarocki.me',
+    href: 'https://bernardorocha.me',
     type: 'external',
   },
   {
