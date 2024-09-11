@@ -5,7 +5,9 @@ const config = {
     scrollRestoration: true,
   },
   transpilePackages: ["geist"],
+
   images: {
+    domains: ['avatars.githubusercontent.com'],
     remotePatterns: [
       {
         protocol: 'https',

@@ -2,6 +2,7 @@
 import { Container } from '../components/Container';
 import { PageTitle } from '../components/PageTitle';
 import { Photos } from '../components/Photos';
+import { Resume } from '../components/Resume';
 import { SocialLink } from '../components/SocialLink';
 import { About, Name, SocialMedia } from '../data/lifeApi';
 
@@ -32,7 +33,7 @@ export default function Home() {
              Used to be notion connection
           </div> */}
           <div className="lg:ml-auto space-y-10 lg:pl-16 xl:pl-24">
-            {/* <Resume /> */}
+            <Resume />
           </div>
         </div>
       </Container>

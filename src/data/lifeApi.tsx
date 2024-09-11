@@ -6,13 +6,13 @@ import bernardologo from "../images/logos/bernardologo.png";
 import ledgerlogo from "../images/logos/ledgerlogo.png";
 import mundoinformacaologo from "../images/logos/mundoinformacaologo.png";
 import phaseslogo from "../images/logos/phaseslogo.png";
+import pucminaslogo from "../images/logos/pucminas.png";
 import redjangologo from "../images/logos/redjangologo.png";
 import respectaboveviolencelogo from "../images/logos/respectaboveviolencelogo.png";
 import schoolsyslogo from "../images/logos/schoolsyslogo.png";
 import sparelogo from "../images/logos/sparelogo.png";
 import studlylogo from "../images/logos/studlylogo.png";
 import datetimelogo from "../images/logos/widgetlogo.png";
-
 
 export const Name = 'Bernardo Rocha';
 
@@ -163,26 +163,26 @@ export const MyPastProjects: Project[] = [
 
 export const SocialMedia = [
   { name: 'Twitter', link: 'https://twitter.com/rocha_bbernardo', icon: XIcon },
-  { name: 'Github', link: 'https://github.com/upwardweb', icon: GitHubIcon },
+  { name: 'Github', link: 'https://github.com/bernardovieirarocha', icon: GitHubIcon },
   { name: 'LinkedIn', link: 'https://www.linkedin.com/in/bernardovrocha/', icon: LinkedInIcon },
 ] as const;
 
-// export const Work = [
-//   {
-//     company: '',
-//     title: 'Full Stack Developer',
-//     logo: "",
-//     start: '',
-//     end: '',
-//   },
-// ] as const;
+export const Work = [
+  {
+    company: 'PUC MINAS',
+    title: 'Computer Science Tutor (AEDs I)',
+    logo: pucminaslogo,
+    start: '2024',
+    end: '',
+  },
+] as const;
 
-// export const CompaniesLinks = [
-//   {
-//     name: '',
-//     link: '',
-//   },
-// ] as const;
+export const CompaniesLinks = [
+  {
+    name: 'PUC MINAS',
+    link: 'https://pucminas.br',
+  },
+] as const;
 
 export const Books = [
   {

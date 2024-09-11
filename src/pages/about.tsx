@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
-import AvatarImage from '../../public/assets/blog/authors/bernardo.jpg';
 import { Container } from '../components/Container';
 import { ExternalLink } from '../components/ExternalLink';
 import { PageTitle } from '../components/PageTitle';
@@ -32,7 +31,9 @@ export default function AboutMe() {
           <div className="lg:pl-20">
             <div className="max-w-xs px-2.5 lg:max-w-none">
               <Image
-                src={AvatarImage}
+                src={`https://avatars.githubusercontent.com/bernardovieirarocha`}
+                width={320}
+                height={320}
                 alt=""
                 sizes="(min-width: 1024px) 32rem, 20rem"
                 className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
