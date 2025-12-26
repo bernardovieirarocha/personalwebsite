@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
+import { DefaultSeo } from 'next-seo';
 import 'focus-visible';
 import { ThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
@@ -27,6 +28,11 @@ export default function App({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <ThemeProvider attribute="class">
+        <DefaultSeo
+          titleTemplate="%s | Bernardo Rocha"
+          defaultTitle="Bernardo Rocha"
+          description="Personal website of Bernardo Rocha, a Computer Science and Engineering student."
+        />
         <div className={`${GeistSans.className}`}>
           <div className="fixed inset-0 flex justify-center sm:px-8">
             <div className="flex w-full max-w-7xl lg:px-8">

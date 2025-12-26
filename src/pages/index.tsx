@@ -9,12 +9,12 @@ import { About, Name, SocialMedia } from '../data/lifeApi';
 export default function Home() {
   return (
     <>
-      
+
       <Container className="mt-9">
         <div className="max-w-2xl">
           <PageTitle>{Name}</PageTitle>
           <p className="mt-6 max-w-2xl text-base text-balance">{About}</p>
-          <div className="mt-6 flex gap-6">
+          <ul className="mt-6 flex gap-6">
             {SocialMedia.map((socialProfile) => (
               <SocialLink
                 key={socialProfile.name}
@@ -23,7 +23,7 @@ export default function Home() {
                 icon={socialProfile.icon}
               />
             ))}
-          </div>
+          </ul>
         </div>
       </Container>
       <Photos />

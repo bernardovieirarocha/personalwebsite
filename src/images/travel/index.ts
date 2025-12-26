@@ -7,11 +7,29 @@ import curitiba from './curitiba-parquesãolourenço.jpg';
 import floripa from './floripa.jpg';
 import itaipu from './itaipu.jpg';
 import marco from './marcodastresfronteiras.jpeg';
+import capitoloio from './capitolio.png';
+import michigan from './michigan.jpeg';
 import ouropreto from './ouropreto.jpg';
 import petropolis from './petropolis.jpg';
+import piracicaba from './piracicaba.jpeg';
 import saopaulo from './saopaulo.jpg';
 
 export const travelImages = [
+  {
+    img: capitoloio,
+    title: 'Capitólio, Brazil',
+    alt: 'Picture taken in Capitólio, Minas Gerais',
+  },
+  {
+    img: michigan,
+    title: 'Michigan, USA',
+    alt: 'Picture taken in Michigan, USA',
+  },
+  {
+    img: piracicaba,
+    title: 'Piracicaba, Brazil',
+    alt: 'Picture taken in Piracicaba, São Paulo',
+  },
   {
     img: saopaulo,
     title: 'São Paulo, Brazil',

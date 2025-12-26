@@ -43,7 +43,7 @@ export default function AboutMe() {
           <div className="lg:order-first lg:row-span-2">
             <PageTitle>Hi, I&apos;m Bernardo Rocha.</PageTitle>
             <div className="mt-6 text-base">{AboutExtended}</div>
-            <div className="mt-6 flex gap-6">
+            <ul className="mt-6 flex gap-6">
               {SocialMedia.map((socialProfile) => (
                 <SocialLink
                   key={socialProfile.name}
@@ -52,7 +52,7 @@ export default function AboutMe() {
                   icon={socialProfile.icon}
                 />
               ))}
-            </div>
+            </ul>
 
             {/* <Section>
               <Section.Title as="h2">Work</Section.Title>

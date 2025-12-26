@@ -1,5 +1,4 @@
 const config = {
-  swcMinify: true,
   reactStrictMode: true,
   experimental: {
     scrollRestoration: true,
@@ -7,8 +6,11 @@ const config = {
   transpilePackages: ["geist"],
 
   images: {
-    domains: ['avatars.githubusercontent.com'],
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
       {
         protocol: 'https',
         hostname: 's3.**.amazonaws.com',
@@ -18,6 +20,14 @@ const config = {
         hostname: 'images.unsplash.com',
       },
     ],
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/rss.xml',
+        destination: '/api/rss.xml',
+      },
+    ];
   },
   async redirects() {
     return [
