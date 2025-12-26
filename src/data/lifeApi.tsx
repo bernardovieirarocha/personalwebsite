@@ -4,7 +4,7 @@ import { LinkedInIcon } from '../components/icons/LinkedInIcon';
 import { XIcon } from '../components/icons/XIcon';
 import { AcademicCapIcon, CalendarIcon, ClockIcon, CodeBracketIcon, CommandLineIcon, CpuChipIcon, FilmIcon, GlobeAltIcon, HandRaisedIcon, TruckIcon } from '@heroicons/react/24/outline';
 import bernardologo from "../images/logos/bernardologo.png";
-import cefetmglogo from "../images/logos/cefetmg.png";
+import cefastlogo from "../images/logos/cefast.svg";
 import phaseslogo from "../images/logos/phaseslogo.png";
 import pucminaslogo from "../images/logos/pucminas.png";
 import sparelogo from "../images/logos/sparelogo.png";
@@ -183,11 +183,11 @@ export const Work = [
       "Monitor de Algoritmos e Estrutura de Dados I na PUC Minas, auxilio alunos na compreensão de conceitos e resolução de exercícios, desenvolvendo habilidades em comunicação e liderança.",
   },
   {
-    company: "CEFET-MG",
+    company: "Fórmula CEFAST",
     link: "",
     badges: ["Presencial"],
     title: "Projetista Eletrônico",
-    logo: cefetmglogo,
+    logo: cefastlogo,
     start: "2024",
     end: "presente",
     description:
@@ -533,11 +533,11 @@ export const RESUME_DATA_PT = {
         "Monitor de Algoritmos e Estrutura de Dados I na PUC Minas, auxilio alunos na compreensão de conceitos e resolução de exercícios, desenvolvendo habilidades em comunicação e liderança.",
     },
     {
-      company: "CEFET-MG",
+      company: "Fórmula CEFAST",
       link: "",
       badges: ["Presencial"],
       title: "Projetista Eletrônico",
-      logo: cefetmglogo,
+      logo: cefastlogo,
       start: "2024",
       end: "presente",
       description:
@@ -545,6 +545,7 @@ export const RESUME_DATA_PT = {
     },
 
   ],
+
   skills: [
     "Python",
     "Altium",
