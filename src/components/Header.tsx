@@ -52,9 +52,11 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "bg-background/80 backdrop-blur-lg border-b border-border"
-        : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 ${isMobileMenuOpen ? "" : "transition-all duration-300"} ${isMobileMenuOpen
+        ? "bg-[#080A0D] border-b border-border"
+        : isScrolled
+          ? "bg-background/80 backdrop-blur-lg border-b border-border"
+          : "bg-transparent"
         }`}
     >
       <nav className="container px-6 h-20 flex items-center justify-between">

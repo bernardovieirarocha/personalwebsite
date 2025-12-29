@@ -24,7 +24,7 @@ const Hero = () => {
       <div className="container relative z-10 px-6">
         <div className="max-w-4xl mx-auto text-center">
           {/* Terminal-style greeting */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-border bg-secondary/50 backdrop-blur-sm opacity-0 animate-fade-up">
+          <div className="hidden md:inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-border bg-secondary/50 backdrop-blur-sm opacity-0 animate-fade-up">
             <span className="w-2 h-2 rounded-full bg-primary animate-glow-pulse" />
             <span className="font-mono text-sm text-muted-foreground">
               <span className="text-primary">$</span> {t.hero.greeting}
