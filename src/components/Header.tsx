@@ -1,188 +1,131 @@
-import { useRouter } from 'next/router';
-import React, { useEffect, useRef } from 'react';
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { useTranslation, Language } from "@/i18n";
 
-import { Avatar } from './Avatar';
-import { AvatarContainer } from './AvatarContainer';
-import { Container } from './Container';
-import { DesktopNavigation, MobileNavigation } from './Navigation';
-import { ThemeToggle } from './ThemeToggle';
-
-const clamp = (number: number, a: number, b: number) => {
-  let min = Math.min(a, b);
-  let max = Math.max(a, b);
-  return Math.min(Math.max(number, min), max);
-};
-
-export const Header = () => {
-  let isHomePage = useRouter().pathname === '/';
-
-  let headerRef = useRef<HTMLDivElement | null>(null);
-  let avatarRef = useRef<HTMLDivElement | null>(null);
-  let isInitial = useRef(true);
-
-  useEffect(() => {
-    let downDelay = avatarRef.current?.offsetTop ?? 0;
-    let upDelay = 64;
-
-    function setProperty(property: any, value: any) {
-      document.documentElement.style.setProperty(property, value);
-    }
-
-    function removeProperty(property: any) {
-      document.documentElement.style.removeProperty(property);
-    }
-
-    function updateHeaderStyles() {
-      let { top, height } = headerRef.current!.getBoundingClientRect();
-      let scrollY = clamp(window.scrollY, 0, document.body.scrollHeight - window.innerHeight);
-
-      if (isInitial.current) {
-        setProperty('--header-position', 'sticky');
-      }
-
-      setProperty('--content-offset', `${downDelay}px`);
-
-      if (isInitial.current || scrollY < downDelay) {
-        setProperty('--header-height', `${downDelay + height}px`);
-        setProperty('--header-mb', `${-downDelay}px`);
-      } else if (top + height < -upDelay) {
-        let offset = Math.max(height, scrollY - upDelay);
-        setProperty('--header-height', `${offset}px`);
-        setProperty('--header-mb', `${height - offset}px`);
-      } else if (top === 0) {
-        setProperty('--header-height', `${scrollY + height}px`);
-        setProperty('--header-mb', `${-scrollY}px`);
-      }
-
-      if (top === 0 && scrollY > 0 && scrollY >= downDelay) {
-        setProperty('--header-inner-position', 'fixed');
-        removeProperty('--header-top');
-        removeProperty('--avatar-top');
-      } else {
-        removeProperty('--header-inner-position');
-        setProperty('--header-top', '0px');
-        setProperty('--avatar-top', '0px');
-      }
-    }
-
-    function updateAvatarStyles() {
-      if (!isHomePage) {
-        return;
-      }
-
-      let fromScale = 1;
-      let toScale = 36 / 64;
-      let fromX = 0;
-      let toX = 2 / 16;
-
-      let scrollY = downDelay - window.scrollY;
-
-      let scale = (scrollY * (fromScale - toScale)) / downDelay + toScale;
-      scale = clamp(scale, fromScale, toScale);
-
-      let x = (scrollY * (fromX - toX)) / downDelay + toX;
-      x = clamp(x, fromX, toX);
-
-      setProperty('--avatar-image-transform', `translate3d(${x}rem, 0, 0) scale(${scale})`);
-
-      let borderScale = 1 / (toScale / scale);
-      let borderX = (-toX + x) * borderScale;
-      let borderTransform = `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`;
-
-      setProperty('--avatar-border-transform', borderTransform);
-      setProperty('--avatar-border-opacity', scale === toScale ? 1 : 0);
-    }
-
-    function updateStyles() {
-      updateHeaderStyles();
-      updateAvatarStyles();
-      isInitial.current = false;
-    }
-
-    updateStyles();
-    window.addEventListener('scroll', updateStyles, { passive: true });
-    window.addEventListener('resize', updateStyles);
-
-    return () => {
-      window.removeEventListener('scroll', updateStyles, { passive: true } as any); // TODO: why is TS complaining here?
-      window.removeEventListener('resize', updateStyles);
-    };
-  }, [isHomePage]);
+const LanguageToggle = () => {
+  const { language, setLanguage } = useTranslation();
 
   return (
-    <>
-      <header
-        className="pointer-events-none relative z-50 flex flex-col"
-        style={{
-          height: 'var(--header-height)',
-          marginBottom: 'var(--header-mb)',
-        }}
+    <div className="flex items-center border border-border rounded-md overflow-hidden font-mono text-xs">
+      <button
+        onClick={() => setLanguage("pt")}
+        className={`px-2 py-1.5 transition-colors ${language === "pt"
+          ? "bg-primary text-primary-foreground"
+          : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+          }`}
       >
-        {isHomePage && (
-          <>
-            <div
-              ref={avatarRef}
-              className="order-last mt-[calc(theme(spacing.16)-theme(spacing.3))]"
-            />
-            <Container
-              className="top-0 order-last -mb-3 pt-3"
-              style={{ position: 'var(--header-position)' } as unknown as React.CSSProperties}
-            >
-              <div
-                className="top-[var(--avatar-top,theme(spacing.3))] w-full"
-                style={
-                  { position: 'var(--header-inner-position)' } as unknown as React.CSSProperties
-                }
-              >
-                <div className="relative">
-                  <AvatarContainer
-                    className="absolute left-0 top-3 origin-left transition-opacity"
-                    style={{
-                      opacity: 'var(--avatar-border-opacity, 0)',
-                      transform: 'var(--avatar-border-transform)',
-                    }}
-                  />
-                  <Avatar
-                    large
-                    className="block h-16 w-16 origin-left"
-                    style={{ transform: 'var(--avatar-image-transform)' }}
-                  />
-                </div>
-              </div>
-            </Container>
-          </>
-        )}
-        <div
-          ref={headerRef}
-          className="top-0 z-10 h-16 pt-6"
-          style={{ position: 'var(--header-position)' } as unknown as React.CSSProperties}
-        >
-          <Container
-            className="top-[var(--header-top,theme(spacing.6))] w-full"
-            style={{ position: 'var(--header-inner-position)' } as unknown as React.CSSProperties}
-          >
-            <div className="relative flex gap-4">
-              <div className="flex flex-1">
-                {!isHomePage && (
-                  <AvatarContainer>
-                    <Avatar />
-                  </AvatarContainer>
-                )}
-              </div>
-              <div className="flex flex-1 justify-end md:justify-center">
-                <MobileNavigation className="pointer-events-auto md:hidden" />
-                <DesktopNavigation className="pointer-events-auto hidden md:block" />
-              </div>
-              <div className="flex justify-end md:flex-1">
-                <div className="pointer-events-auto">
-                  <ThemeToggle />
-                </div>
-              </div>
-            </div>
-          </Container>
-        </div>
-      </header>
-      {isHomePage && <div style={{ height: 'var(--content-offset)' }} />}
-    </>
+        PT
+      </button>
+      <button
+        onClick={() => setLanguage("en")}
+        className={`px-2 py-1.5 transition-colors ${language === "en"
+          ? "bg-primary text-primary-foreground"
+          : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+          }`}
+      >
+        EN
+      </button>
+    </div>
   );
 };
+
+const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { href: "#about", label: t.nav.about, number: "01" },
+    { href: "#skills", label: t.nav.skills, number: "02" },
+    { href: "#projects", label: t.nav.projects, number: "03" },
+    { href: "#travel", label: t.nav.travel, number: "04" },
+    { href: "#contact", label: t.nav.contact, number: "05" },
+  ];
+
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-background/80 backdrop-blur-lg border-b border-border"
+        : "bg-transparent"
+        }`}
+    >
+      <nav className="container px-6 h-20 flex items-center justify-between">
+        {/* Logo */}
+        <a href="#" className="group">
+          <img
+            src="/bernardologo.png"
+            alt="BR Logo"
+            className="h-10 w-10 rounded-full group-hover:scale-110 transition-transform duration-300"
+          />
+        </a>
+
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="font-mono text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              <span className="text-primary">{link.number}.</span> {link.label}
+            </a>
+          ))}
+          <a
+            href="https://bernardorocha.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-1.5 rounded-md border border-primary/50 text-primary font-mono text-xs hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            {t.nav.resumeSite}
+          </a>
+          <LanguageToggle />
+        </div>
+
+        {/* Mobile menu button */}
+        <button
+          className="md:hidden p-2 text-foreground"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </nav>
+
+      {/* Mobile menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 top-20 bg-background/95 backdrop-blur-lg z-40">
+          <div className="flex flex-col items-center justify-center h-full gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="font-mono text-lg text-muted-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="text-primary">{link.number}.</span> {link.label}
+              </a>
+            ))}
+            <a
+              href="https://bernardorocha.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-md border border-primary text-primary font-mono text-lg hover:bg-primary hover:text-primary-foreground transition-colors"
+            >
+              {t.nav.resumeSite}
+            </a>
+            <LanguageToggle />
+          </div>
+        </div>
+      )}
+    </header>
+  );
+};
+
+export default Header;

@@ -1,31 +1,80 @@
-# Bernardo Rocha's Personal Website
+# 🌟 Personal Website
 
-This repository contains the source code for my personal website, bernardorocha.com. It's designed to showcase my skills, experience, and interests.
+Um site pessoal moderno e responsivo construído com React, TypeScript e Vite. Apresenta animações suaves, design limpo e suporte para múltiplos idiomas.
 
-## Project Structure
+## ✨ Características
 
-The project structure is organized as follows:
+- 🎨 Design moderno e responsivo
+- 🌐 Suporte para internacionalização (i18n) - Português e Inglês
+- ⚡ Performance otimizada com Vite
+- 🎯 Componentes reutilizáveis com shadcn/ui
+- 🎭 Animações suaves e interativas
+- 📱 Mobile-first design
+- 🚀 Deploy automático no Netlify
 
-* `public`: Static assets like images, fonts, and CSS files.
-* `src`: Source code for the website, including components, pages, and styles.
-* `package.json`: Contains project dependencies and scripts.
+## 🛠️ Tecnologias
 
-## Development
+- **Framework:** React 18
+- **Linguagem:** TypeScript
+- **Build Tool:** Vite
+- **Estilização:** Tailwind CSS
+- **Componentes UI:** shadcn/ui
+- **Roteamento:** React Router
+- **Deploy:** Netlify
 
-Feel free to fork the repo and modify the code in the `src` directory to customize the website to your liking.
+## 📦 Instalação
 
-## Deployment
+```bash
+# Clone o repositório
+git clone <URL_DO_REPOSITORIO>
 
-To deploy the website to a production server, you'll need to follow the specific instructions for your hosting provider. This might involve building the project for production and transferring the generated files to your server.
+# Entre no diretório
+cd personalwebsite
 
-## Inspiration
+# Instale as dependências
+npm install
 
-This website is inspired by the work of [Jarocki](https://github.com/BartoszJarocki) and TailWindCSS Spotlight Theme.
+# Inicie o servidor de desenvolvimento
+npm run dev
+```
 
-## License
+## 🚀 Scripts Disponíveis
 
-This project is licensed under the MIT License
+```bash
+# Desenvolvimento
+npm run dev
 
-## Contact
+# Build para produção
+npm run build
 
-Feel free to [reach out to me](mailto:b.vieira.rocha@gmail.com) if you have any questions or suggestions.
+# Preview da build de produção
+npm run preview
+
+# Lint
+npm run lint
+```
+
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── components/      # Componentes React
+│   ├── ui/         # Componentes base (shadcn/ui)
+│   ├── About.tsx   # Seção sobre
+│   ├── Projects.tsx # Projetos
+│   └── ...
+├── data/           # Dados estáticos
+├── hooks/          # Custom hooks
+├── i18n/           # Internacionalização
+│   └── locales/    # Traduções
+├── lib/            # Utilitários
+└── pages/          # Páginas principais
+```
+
+## 🌐 Deploy
+
+O projeto está configurado para deploy automático no Netlify. Qualquer push para a branch principal irá disparar um novo deploy.
+
+## 📝 Licença
+
+Este projeto é de código aberto e está disponível sob a licença MIT.

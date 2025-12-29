@@ -1,9 +1,14 @@
-# *
-User-agent: *
+User-agent: Googlebot
 Allow: /
 
-# Host
-Host: https://jarocki.me
+User-agent: Bingbot
+Allow: /
 
-# Sitemaps
-Sitemap: https://jarocki.me/sitemap.xml
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: *
+Allow: /

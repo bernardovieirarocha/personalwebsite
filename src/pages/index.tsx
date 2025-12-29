@@ -1,42 +1,38 @@
+import { useState } from "react";
+import LoadingScreen from "@/components/LoadingScreen";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
+import Travel from "@/components/Travel";
+import QuotesSection from "@/components/QuotesSection";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
-import { Container } from '../components/Container';
-import { PageTitle } from '../components/PageTitle';
-import { Photos } from '../components/Photos';
-import { Resume } from '../components/Resume';
-import { SocialLink } from '../components/SocialLink';
-import { About, Name, SocialMedia } from '../data/lifeApi';
+const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
 
-export default function Home() {
   return (
     <>
+      {isLoading && <LoadingScreen onFinish={() => setIsLoading(false)} />}
 
-      <Container className="mt-9">
-        <div className="max-w-2xl">
-          <PageTitle>{Name}</PageTitle>
-          <p className="mt-6 max-w-2xl text-base text-balance">{About}</p>
-          <ul className="mt-6 flex gap-6">
-            {SocialMedia.map((socialProfile) => (
-              <SocialLink
-                key={socialProfile.name}
-                aria-label={`Follow on ${socialProfile.name}`}
-                href={socialProfile.link}
-                icon={socialProfile.icon}
-              />
-            ))}
-          </ul>
-        </div>
-      </Container>
-      <Photos />
-      <Container className="mt-12">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          {/* <div className="flex flex-col gap-16">
-             Used to be notion connection
-          </div> */}
-          <div className="lg:ml-auto space-y-10 lg:pl-16 xl:pl-24">
-            <Resume />
-          </div>
-        </div>
-      </Container>
+      <div className={`min-h-screen bg-background transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Travel />
+          <QuotesSection />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   );
-}
+};
+
+export default Index;
+
