@@ -10,13 +10,7 @@ import SectionHeading from "./SectionHeading";
  * borda arredondada era o que mais entregava "template" na página.
  */
 const FeaturedProject = ({ project, language }: { project: Project; language: "pt" | "en" }) => (
-  // A coluna da imagem só existe quando há imagem. Reservá-la sempre deixava
-  // um vão morto de 18rem à direita da maioria dos projetos.
-  <article
-    className={`grid gap-5 border-t border-border pt-8 ${
-      project.image ? "md:grid-cols-[minmax(0,1fr)_18rem] md:gap-10" : ""
-    }`}
-  >
+  <article className="border-t border-border pt-8">
     <div className="max-w-[68ch]">
       <div className="flex items-start justify-between gap-4">
         <h3 className="text-lead font-bold text-foreground">{project.title}</h3>
@@ -35,14 +29,19 @@ const FeaturedProject = ({ project, language }: { project: Project; language: "p
     </div>
 
     {project.image && (
+      // Largura cheia e proporção nativa. A versão anterior espremia tudo numa
+      // coluna de 18rem e forçava aspect-[16/9] com object-cover — as capturas
+      // vão de 1.47:1 a 2.27:1, então qualquer proporção fixa cortava alguma.
+      // Aqui `width`/`height` são os do arquivo: o browser reserva a altura
+      // exata antes de baixar, e nada é recortado.
       <img
-        src={project.image}
+        src={project.image.src}
         alt={project.title}
-        width={576}
-        height={324}
+        width={project.image.width}
+        height={project.image.height}
         loading="lazy"
         decoding="async"
-        className="order-first aspect-[16/9] w-full rounded-md border border-border object-cover md:order-none"
+        className="mt-7 h-auto w-full rounded-md border border-border bg-surface"
       />
     )}
   </article>
@@ -87,7 +86,7 @@ const Projects = () => {
         <Reveal className="mx-auto max-w-5xl">
           <SectionHeading title={t.projects.title} />
 
-          <div className="space-y-8">
+          <div className="space-y-14">
             {featured.map((project) => (
               <FeaturedProject key={project.title} project={project} language={language} />
             ))}

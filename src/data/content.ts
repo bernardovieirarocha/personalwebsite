@@ -261,7 +261,12 @@ export type Project = {
     techStack: string[];
     githubUrl?: string;
     liveUrl?: string;
-    image?: string;
+    /**
+     * Dimensões são as do arquivo, não as de exibição: elas reservam o espaço
+     * antes da imagem carregar (sem isso o texto abaixo pula) e definem a
+     * proporção de render. Cada screenshot tem a sua — nenhuma é cortada.
+     */
+    image?: { src: string; width: number; height: number };
     featured?: boolean;
 };
 
@@ -275,6 +280,7 @@ export const projects: Project[] = [
         },
         techStack: ["Docker", "Nginx", "PostgreSQL", "Node.js", "React", "VPS"],
         githubUrl: "https://github.com/bernardovieirarocha/SociosFormula",
+        image: { src: "/projects/socios-fcefast.webp", width: 1800, height: 1016 },
         featured: true,
     },
     {
@@ -286,6 +292,7 @@ export const projects: Project[] = [
             en: "Embedded electronics for the Formula SAE prototype, from the boards to remote access: an in-house datalogger (MAQ), a power distribution module controlled over CAN, an LTE Cat-M1 modem (BG95-M3), and an ESP32 serial-to-TCP bridge that exposes the MegaSquirt ECU for remote tuning through an mTLS relay, instead of a laptop wired up in the pit. Boards designed in Altium Designer.",
         },
         techStack: ["Altium Designer", "PCB Design", "CAN", "ESP32", "C++", "mTLS"],
+        image: { src: "/projects/telemetria-dashboard.webp", width: 1800, height: 881 },
         featured: true,
     },
     {
@@ -296,7 +303,7 @@ export const projects: Project[] = [
         },
         techStack: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
         githubUrl: "https://github.com/rubensbkl/Flixmate",
-        image: "/flixmate.webp",
+        image: { src: "/projects/flixmate.webp", width: 1600, height: 1000 },
         featured: true,
     },
     {
@@ -306,6 +313,7 @@ export const projects: Project[] = [
             en: "The team's public website, built with Next.js and shadcn/ui.",
         },
         techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+        image: { src: "/projects/site-fcefast.webp", width: 1600, height: 1092 },
         // TODO(bernardo): link do site no ar e do repo, se for público.
         featured: true,
     },
@@ -316,6 +324,7 @@ export const projects: Project[] = [
             en: "Home infrastructure on Proxmox VE with ZFS storage: service containers, a reverse proxy with TLS, local DNS, zero-trust remote access and monitoring. Documented in MkDocs as it is built.",
         },
         techStack: ["Proxmox", "ZFS", "Docker", "Nginx", "Linux", "MkDocs"],
+        image: { src: "/projects/homelab-proxmox.webp", width: 1800, height: 794 },
         // TODO(bernardo): publicar o homelabdocs num repo e linkar aqui.
         featured: true,
     },

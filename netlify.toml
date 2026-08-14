@@ -51,3 +51,10 @@
   for = "/bernardologo.webp"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+# Capturas dos projetos. Mesma regra de nome dos arquivos acima: trocou a
+# imagem, troca o nome (ou aceite até uma semana de cache antigo).
+[[headers]]
+  for = "/projects/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
