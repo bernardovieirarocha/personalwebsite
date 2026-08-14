@@ -71,7 +71,13 @@ const Header = () => {
     >
       <nav className="container flex h-20 items-center justify-between px-6">
         <a href="#" aria-label={t.nav.about}>
-          <img src="/bernardologo.webp" alt="" width={36} height={36} className="h-9 w-9 rounded-full" />
+          <img
+            src="/bernardologo.webp"
+            alt=""
+            width={36}
+            height={36}
+            className="h-9 w-9 rounded-full"
+          />
         </a>
 
         <div className="hidden items-center gap-6 md:flex">
@@ -79,9 +85,12 @@ const Header = () => {
             <a
               key={link.href}
               href={link.href}
-              className="-mx-1 inline-flex items-center px-1 py-2 font-mono text-xs text-muted-foreground transition-colors duration-fast hover:text-foreground"
+              className="-mx-1 inline-flex items-center gap-1.5 px-1 py-2 font-mono text-xs text-muted-foreground transition-colors duration-fast hover:text-foreground"
             >
-              <span className="text-primary">{link.number}</span> {link.label}
+              <span className="text-primary" aria-hidden="true">
+                {link.number}
+              </span>
+              {link.label}
             </a>
           ))}
           <Link
@@ -101,21 +110,31 @@ const Header = () => {
           aria-controls="mobile-menu"
           aria-label={isMobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
         >
-          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {isMobileMenuOpen ? (
+            <X className="h-5 w-5" />
+          ) : (
+            <Menu className="h-5 w-5" />
+          )}
         </button>
       </nav>
 
       {isMobileMenuOpen && (
-        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-20 bg-background md:hidden">
+        <div
+          id="mobile-menu"
+          className="fixed inset-x-0 bottom-0 top-20 bg-background md:hidden"
+        >
           <div className="container flex flex-col items-start gap-6 px-6 pt-10">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="inline-flex min-h-[44px] items-center font-mono text-base text-muted-foreground transition-colors duration-fast hover:text-foreground"
+                className="inline-flex min-h-[44px] items-center gap-2 font-mono text-base text-muted-foreground transition-colors duration-fast hover:text-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span className="text-primary">{link.number}</span> {link.label}
+                <span className="text-primary" aria-hidden="true">
+                  {link.number}
+                </span>
+                {link.label}
               </a>
             ))}
             <Link
