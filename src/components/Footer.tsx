@@ -55,7 +55,7 @@ const Footer = () => {
               </a>
             </div>
             <p className="font-mono text-xs text-muted-foreground text-center">
-              {t.footer.designedWith}
+              {t.footer.builtWith}
             </p>
           </div>
         </div>

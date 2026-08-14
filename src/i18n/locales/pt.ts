@@ -2,124 +2,136 @@ export const pt = {
     // Navigation
     nav: {
         about: "Sobre",
+        experience: "Experiência",
         skills: "Skills",
         projects: "Projetos",
-        travel: "Viagens",
         contact: "Contato",
         resumeSite: "Currículo",
     },
 
     // Hero Section
     hero: {
-        greeting: "./init --portfolio",
-        role: "Engenheiro de Computação & Cientista da Computação",
-        tagline: "<Construindo o que importa./>",
-        viewProjects: "Ver Projetos",
+        role: "Engenharia de Computação no CEFET-MG e Ciência da Computação na PUC Minas",
+        summary:
+            "Projetei a eletrônica embarcada da equipe Fórmula CEFAST e hoje lidero a área de TI dela.",
+        viewProjects: "Ver projetos",
         contactMe: "Contato",
-        scroll: "scroll",
     },
 
     // About Section
     about: {
         sectionNumber: "01.",
-        title: "Sobre Mim",
-        paragraph1: {
-            start: "Sou um entusiasta da tecnologia que acredita no poder da",
-            highlight1: "engenharia bem feita",
-            middle: ". Como estudante de Engenharia de Computação e Ciência da Computação, transito entre o hardware e o software com naturalidade.",
+        title: "Sobre",
+        // TODO(bernardo): estes três parágrafos são o seu texto. Reescreva com
+        // fatos que só você sabe: que módulo você projetou, o que quebrou,
+        // o que você aprendeu consertando. Ver as regras 3 e 4 do CLAUDE.md.
+        paragraphs: {
+            p1: "Curso Engenharia de Computação no CEFET-MG e Ciência da Computação na PUC Minas ao mesmo tempo. Na prática isso significa passar o dia entre o esquemático de uma placa e o deploy de um serviço, e é essa combinação que eu venho construindo de propósito.",
+            p2: "Entrei na Fórmula CEFAST, equipe de Fórmula SAE do CEFET-MG, projetando módulos eletrônicos em Altium Designer. Hoje sou Head de TI da equipe: decido a stack, opero a infraestrutura que a gente usa (a plataforma de sócios, o fórum, os servidores) e coordeno as outras pessoas da área.",
+            p3: "Fora da equipe, mantenho um homelab em Proxmox com ZFS que uso para aprender infraestrutura da forma mais direta possível: quebrando e consertando. E tenho um interesse específico por criptografia, e foi de onde saiu o CriptoEscape.",
         },
-        paragraph2: {
-            start: "Minha paixão está em criar soluções que fazem a diferença — desde",
-            highlight1: "sistemas embarcados",
-            middle: "que operam no limite do metal até",
-            highlight2: "arquiteturas de backend",
-            end: "escaláveis e resilientes.",
-        },
-        paragraph3: {
-            start: "Acredito que a melhor tecnologia é aquela que",
-            highlight: "simplesmente funciona",
-            end: "— elegante por baixo dos panos, invisível para quem usa.",
-        },
-        terminalUser: "bernardo@portfolio",
-        terminalCommand: "echo $FILOSOFIA",
-        terminalOutput: '"Código limpo, sistemas robustos, impacto mensurável."',
         highlights: {
             softwareEngineering: "Engenharia de Software",
             embeddedSystems: "Sistemas Embarcados",
             electronics: "Eletrônica",
             backend: "Backend",
-            devops: "DevOps",
-            systemsDesign: "Design de Sistemas",
+            devops: "Infraestrutura",
+            systemsDesign: "Projeto de Sistemas",
         },
+    },
+
+    // Experience Section
+    experience: {
+        sectionNumber: "02.",
+        title: "Experiência",
+        educationTitle: "Formação",
+        since: "desde",
     },
 
     // Skills Section
     skills: {
-        sectionNumber: "02.",
+        sectionNumber: "03.",
         title: "Tecnologias",
         categories: {
             languages: "Linguagens",
             backend: "Backend & APIs",
             embedded: "Embedded & Hardware",
-            devops: "DevOps & Cloud",
-        },
-        stats: {
-            projects: "Projetos Concluídos",
-            experience: "Anos de Experiência",
-            certifications: "Certificações",
-            coffee: "Café Consumido",
+            devops: "DevOps & Infra",
+            frontend: "Frontend & Web",
         },
     },
 
     // Projects Section
     projects: {
-        sectionNumber: "03.",
+        sectionNumber: "04.",
         title: "Projetos",
-        featured: "Projeto em Destaque",
         otherProjects: "Outros Projetos",
     },
 
-    // Travel Section
-    travel: {
-        sectionNumber: "04.",
-        title: "Viagens",
-    },
 
     // Contact Section
     contact: {
         sectionNumber: "05.",
         title: "Contato",
         description:
-            "Estou sempre aberto a novas oportunidades, colaborações e conversas sobre tecnologia. Se você tem um projeto interessante ou apenas quer trocar uma ideia, ficarei feliz em conversar.",
-        emailLabel: "Email",
-        locationLabel: "Localização",
-        location: "Belo Horizonte, Brasil",
-        sendMessage: "Enviar Mensagem",
-        thankYou: 'echo "Obrigado por visitar!"',
+            "Aberto a conversas sobre sistemas embarcados, infraestrutura e criptografia, e a oportunidades de estágio e pesquisa. O e-mail é o caminho mais direto.",
+        emailLabel: "E-mail",
+        githubLabel: "GitHub",
+        linkedinLabel: "LinkedIn",
+        location: "Belo Horizonte, MG, Brasil",
+        sendMessage: "Mandar um e-mail",
     },
 
     // Footer
     footer: {
-        designedWith: "May the Force be with you",
+        builtWith: "Feito com React, TypeScript e Tailwind CSS.",
+    },
+
+    // SEO por rota
+    seo: {
+        home: {
+            title: "Bernardo Rocha | Engenharia de Computação, sistemas embarcados e infraestrutura",
+            description:
+                "Estudante de Engenharia de Computação (CEFET-MG) e Ciência da Computação (PUC Minas). Projeto eletrônica embarcada, telemetria e infraestrutura para a equipe Fórmula CEFAST.",
+        },
+        resume: {
+            title: "Currículo | Bernardo Rocha",
+            description:
+                "Formação, experiência, certificações e projetos de Bernardo Vieira Rocha, estudante de Engenharia de Computação no CEFET-MG e Ciência da Computação na PUC Minas.",
+        },
+        notFound: {
+            title: "Página não encontrada | Bernardo Rocha",
+            description: "Esta página não existe.",
+        },
+    },
+
+    // 404
+    notFound: {
+        title: "Página não encontrada",
+        description: "O endereço que você abriu não existe ou foi movido.",
+        backHome: "Voltar para a home",
     },
 
     // Resume Page
     resume: {
-        downloadPdf: "Download PDF",
-        role: "Engenheiro de Computação & Cientista da Computação",
+        downloadPdf: "Imprimir / salvar em PDF",
+        backHome: "Voltar",
+        role: "Engenharia de Computação (CEFET-MG) e Ciência da Computação (PUC Minas)",
         summary:
-            "Estudante de Engenharia de Computação e Ciência da Computação com forte atuação em engenharia de software, sistemas embarcados, eletrônica, backend e DevOps. Apaixonado por criar soluções que fazem a diferença — desde sistemas que operam no limite do hardware até arquiteturas de backend escaláveis e resilientes.",
+            "Curso Engenharia de Computação no CEFET-MG e Ciência da Computação na PUC Minas, simultaneamente. Na equipe Fórmula CEFAST SAE, projetei módulos eletrônicos em Altium Designer e hoje sou Head de TI, respondendo pela stack, pela infraestrutura e pelas pessoas da área.",
         sections: {
             experience: "Experiência",
-            education: "Educação",
+            education: "Formação",
             skills: "Habilidades Técnicas",
+            projects: "Projetos",
             certifications: "Certificações",
         },
         skillCategories: {
             languages: "Linguagens",
             backend: "Backend & APIs",
             embedded: "Embedded & Hardware",
-            devops: "DevOps & Cloud",
+            devops: "DevOps & Infra",
+            frontend: "Frontend & Web",
         },
         updatedIn: "Atualizado em",
     },

@@ -23,14 +23,6 @@ const Hero = () => {
 
       <div className="container relative z-10 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Terminal-style greeting */}
-          <div className="hidden md:inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-border bg-secondary/50 backdrop-blur-sm opacity-0 animate-fade-up">
-            <span className="w-2 h-2 rounded-full bg-primary animate-glow-pulse" />
-            <span className="font-mono text-sm text-muted-foreground">
-              <span className="text-primary">$</span> {t.hero.greeting}
-            </span>
-          </div>
-
           {/* Avatar + Name Section */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-6 opacity-0 animate-fade-up stagger-1">
             {/* Large Circular Avatar */}
@@ -38,8 +30,10 @@ const Hero = () => {
               <div className="absolute inset-0 bg-primary/30 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500 animate-glow-pulse" />
               <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-2 border-primary/50 group-hover:border-primary transition-all duration-300">
                 <img
-                  src="https://avatars.githubusercontent.com/bernardovieirarocha"
-                  alt={personalInfo.name}
+                  src={personalInfo.avatarUrl}
+                  alt={`Foto de ${personalInfo.name}`}
+                  width={192}
+                  height={192}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
@@ -56,13 +50,13 @@ const Hero = () => {
           </div>
 
           {/* Tagline */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-4 opacity-0 animate-fade-up stagger-2">
+          <p className="font-mono text-sm md:text-base text-muted-foreground mb-6 opacity-0 animate-fade-up stagger-2">
             {t.hero.role}
           </p>
 
-          {/* Innovative statement */}
-          <p className="font-mono text-lg md:text-xl text-primary mb-12 opacity-0 animate-fade-up stagger-3">
-            {t.hero.tagline}
+          {/* Uma frase concreta, sem slogan */}
+          <p className="text-base md:text-lg text-foreground/90 max-w-2xl mx-auto mb-12 opacity-0 animate-fade-up stagger-3">
+            {t.hero.summary}
           </p>
 
           {/* CTA Buttons */}

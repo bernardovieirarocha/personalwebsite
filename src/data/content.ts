@@ -1,14 +1,14 @@
 import {
-    Film,
-    Terminal,
+    Boxes,
     Calendar,
-    Cpu,
-    Truck,
-    GraduationCap,
-    Hand,
-    Clock,
-    Code2,
+    CircuitBoard,
+    Factory,
+    Film,
     Globe,
+    KeyRound,
+    MessagesSquare,
+    Server,
+    Users,
     type LucideIcon,
 } from "lucide-react";
 
@@ -21,7 +21,8 @@ export const personalInfo = {
     fullName: "Bernardo Vieira Rocha",
     initials: "BVR",
     email: "b.vieira.rocha@gmail.com",
-    phone: "+55 31 993679089",
+    // Telefone removido de propósito: este objeto vai inteiro para o bundle público.
+    // Contato pessoal fica só no PDF do currículo, enviado sob demanda.
     location: {
         city: "Belo Horizonte",
         state: "MG",
@@ -47,12 +48,14 @@ export const socialLinks = {
 // SKILLS
 // ============================================
 
+// REGRA: toda tecnologia listada aqui precisa aparecer em pelo menos um projeto
+// do array `projects` abaixo. Sem exceção. Ver CLAUDE.md.
 export const skills = {
-    languages: ["Python", "CC++", "Java", "JavaScript", "TypeScript"],
+    languages: ["C", "C++", "Python", "Java", "JavaScript", "TypeScript"],
     backend: ["Node.js", "Django", "PostgreSQL", "MongoDB", "REST"],
-    embedded: ["Arduino", "ESP32", "Altium", "PCB Design", "RTOS"],
-    devops: ["Docker", "Linux", "Git", "CI/CD", "AWS"],
-    other: ["React", "HTML", "CSS", "Tailwind CSS", "Figma"],
+    embedded: ["ESP32", "Arduino", "Altium Designer", "PCB Design", "CAN"],
+    devops: ["Docker", "Linux", "Nginx", "Git", "Proxmox", "ZFS"],
+    frontend: ["React", "Next.js", "Tailwind CSS", "HTML", "CSS"],
 } as const;
 
 // ============================================
@@ -78,36 +81,56 @@ export type WorkExperience = {
 
 export const workExperience: WorkExperience[] = [
     {
-        company: "PUC Minas",
+        company: "Fórmula CEFAST, CEFET-MG",
         title: {
-            pt: "Monitor de Computação (AEDs I)",
-            en: "Computer Science Teaching Assistant (Data Structures I)",
+            pt: "Head de TI",
+            en: "Head of IT",
         },
         description: {
-            pt: "Monitor de Algoritmos e Estrutura de Dados I na PUC Minas, auxílio alunos na compreensão de conceitos e resolução de exercícios, desenvolvendo habilidades em comunicação e liderança.",
-            en: "Teaching Assistant for Algorithms and Data Structures I at PUC Minas, helping students understand concepts and solve exercises, developing communication and leadership skills.",
+            // TODO(bernardo): se puder, cite UM sistema que você decidiu e por quê.
+            // "Escolhi NodeBB no lugar de X porque Y" vale mais que a lista abaixo.
+            pt: "Coordeno a área de TI da equipe: distribuo e reviso o trabalho dos membros, faço o onboarding de novatos e decido stack e arquitetura. Opero a infraestrutura que a equipe usa no dia a dia (VPS, containers, domínios, fórum e plataforma de sócios) e levanto a necessidade das outras subequipes para traduzir em sistema.",
+            en: "I lead the team's IT area: assigning and reviewing the members' work, onboarding newcomers, and making the stack and architecture calls. I run the infrastructure the team depends on day to day (VPS, containers, domains, forum and membership platform) and gather requirements from the other subteams to turn them into working systems.",
         },
         location: "Presencial",
-        startDate: "2024",
-        endDate: "2025",
-        technologies: ["C", "C++", "Algoritmos", "Estrutura de Dados"],
-        logo: "/pucminas.png",
+        startDate: "2026.1",
+        endDate: "2026.2",
+        technologies: ["Docker", "Nginx", "Linux", "VPS", "PostgreSQL", "Arquitetura"],
+        logo: "/cefast.svg",
     },
     {
-        company: "Fórmula CEFAST",
+        company: "Fórmula CEFAST, CEFET-MG",
         title: {
             pt: "Projetista Eletrônico",
             en: "Electronic Designer",
         },
         description: {
-            pt: "Projetista de Módulos Eletrônicos usando Altium Designer para a Equipe Fórmula CEFAST.",
-            en: "Electronic Module Designer using Altium Designer for the Formula CEFAST Team.",
+            // TODO(bernardo): cite um módulo concreto que você projetou.
+            // "Projetei a PCB do X, que faz Y" vale mais que "projetista de módulos".
+            pt: "Projetei módulos eletrônicos do protótipo de Fórmula SAE em Altium Designer, da esquemática ao layout de PCB, e trabalhei na telemetria embarcada do carro.",
+            en: "I designed electronic modules for the Formula SAE prototype in Altium Designer, from schematic to PCB layout, and worked on the car's embedded telemetry.",
+        },
+        location: "Presencial",
+        startDate: "2024.2",
+        endDate: "2026.1",
+        technologies: ["Altium Designer", "PCB Design", "CAN", "Sistemas Embarcados"],
+        logo: "/cefast.svg",
+    },
+    {
+        company: "PUC Minas",
+        title: {
+            pt: "Monitor de AEDS I",
+            en: "Teaching Assistant, Data Structures I",
+        },
+        description: {
+            pt: "Monitoria de Algoritmos e Estruturas de Dados I: atendimento a alunos, revisão de exercícios e apoio na correção.",
+            en: "Teaching assistant for Algorithms and Data Structures I: student office hours, exercise review and grading support.",
         },
         location: "Presencial",
         startDate: "2024",
-        endDate: null,
-        technologies: ["Altium Designer", "PCB Design", "Electronics", "Embedded Systems"],
-        logo: "/cefast.svg",
+        endDate: "2025",
+        technologies: ["C", "Algoritmos", "Estruturas de Dados"],
+        logo: "/pucminas.png",
     },
 ];
 
@@ -257,112 +280,119 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+    // ── EM DESTAQUE ─────────────────────────────────────────────────────────
     {
-        title: "UniCaronas",
+        title: "Plataforma de Sócios da Fórmula CEFAST",
         description: {
-            pt: "Projeto para facilitar a combinação de caronas entre estudantes universitários, promovendo transporte organizado e sustentável.",
-            en: "Project to facilitate carpooling among university students, promoting organized and sustainable transportation.",
+            pt: "Sistema de sócios da equipe, em produção: cadastro, planos por tier, área do associado e exportação de dados. Backend, frontend e deploy próprios, em containers atrás de Nginx numa VPS.",
+            en: "The team's membership system, in production: sign-up, tiered plans, a member area and data export. Backend, frontend and deployment all in-house, containerized behind Nginx on a VPS.",
         },
-        techStack: ["JavaScript", "jQuery", "HTML5", "CSS3", "Node.js"],
-        githubUrl: "https://github.com/bernardovieirarocha/UniCaronas",
-        icon: Truck,
-        image: "/unicaronas.png",
+        techStack: ["Docker", "Nginx", "PostgreSQL", "Node.js", "React", "VPS"],
+        githubUrl: "https://github.com/bernardovieirarocha/SociosFormula",
+        icon: Users,
+        featured: true,
+    },
+    {
+        title: "Eletrônica e telemetria do carro",
+        description: {
+            // TODO(bernardo): a ponte é a parte mais distintiva daqui. Diga o
+            // estado real dela, inclusive o que ainda não funciona (regra 5).
+            pt: "Eletrônica embarcada do protótipo de Fórmula SAE, das placas ao acesso remoto: datalogger próprio (MAQ), módulo de distribuição de potência controlado por CAN, modem LTE Cat-M1 (BG95-M3) e uma ponte serial para TCP em ESP32 que expõe a ECU MegaSquirt para tuning remoto por um relay mTLS, no lugar de um notebook ligado no box. Placas projetadas em Altium Designer.",
+            en: "Embedded electronics for the Formula SAE prototype, from the boards to remote access: an in-house datalogger (MAQ), a power distribution module controlled over CAN, an LTE Cat-M1 modem (BG95-M3), and an ESP32 serial-to-TCP bridge that exposes the MegaSquirt ECU for remote tuning through an mTLS relay, instead of a laptop wired up in the pit. Boards designed in Altium Designer.",
+        },
+        techStack: ["Altium Designer", "PCB Design", "CAN", "ESP32", "C++", "mTLS"],
+        icon: CircuitBoard,
         featured: true,
     },
     {
         title: "FlixMate",
         description: {
-            pt: "Uma aplicação web para recomendação e descoberta de filmes com interface moderna e sistema de matching.",
-            en: "A web application for movie recommendation and discovery with modern interface and matching system.",
+            pt: "Aplicação web de recomendação e descoberta de filmes, com sistema de matching entre usuários. Feita em dupla.",
+            en: "A web app for movie recommendation and discovery, with a matching system between users. Built with a teammate.",
         },
-        techStack: ["JavaScript", "React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+        techStack: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
         githubUrl: "https://github.com/rubensbkl/Flixmate",
-        icon: Film,
         image: "/flixmate.webp",
+        icon: Film,
         featured: true,
+    },
+    {
+        title: "Site da Fórmula CEFAST",
+        description: {
+            pt: "Site institucional da equipe, construído em Next.js com shadcn/ui.",
+            en: "The team's public website, built with Next.js and shadcn/ui.",
+        },
+        techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+        // TODO(bernardo): link do site no ar e do repo, se for público.
+        icon: Globe,
+        featured: true,
+    },
+    {
+        title: "Homelab em Proxmox e ZFS",
+        description: {
+            pt: "Infraestrutura doméstica em Proxmox VE com storage ZFS: containers de serviços, proxy reverso com TLS, DNS local, acesso remoto zero-trust e monitoramento. Documentado em MkDocs enquanto é construído.",
+            en: "Home infrastructure on Proxmox VE with ZFS storage: service containers, a reverse proxy with TLS, local DNS, zero-trust remote access and monitoring. Documented in MkDocs as it is built.",
+        },
+        techStack: ["Proxmox", "ZFS", "Docker", "Nginx", "Linux", "MkDocs"],
+        // TODO(bernardo): publicar o homelabdocs num repo e linkar aqui.
+        icon: Server,
+        featured: true,
+    },
+
+    // ── OUTROS ──────────────────────────────────────────────────────────────
+    {
+        title: "CriptoEscape",
+        description: {
+            pt: "Escape room digital para ensino de aritmética modular e criptografia de curvas elípticas, com motor matemático próprio e cinco etapas encadeadas. Apresentado no I Seminário de Tecnologias no Ensino de Matemática (CEFET-MG, 2026).",
+            en: "A digital escape room for teaching modular arithmetic and elliptic-curve cryptography, with its own math engine and five chained stages. Presented at the 1st Seminar on Technologies in Mathematics Education (CEFET-MG, 2026).",
+        },
+        techStack: ["Criptografia", "ECC", "Python", "React"],
+        // TODO(bernardo): link do repo ou do resumo publicado, quando houver.
+        icon: KeyRound,
+    },
+    {
+        title: "CORE (Cefast Operational Real-Time Engine)",
+        description: {
+            // Enquadramento é deliberado: CORE foi concebido para a prova de
+            // Business Presentation, com cliente fictício. Não apresentar como
+            // produto entregue a cliente real. Ver regra 5 do CLAUDE.md.
+            pt: "Plataforma operacional que concebemos para a prova de Business Presentation da FSAE Brasil 2026, com quatro módulos: previsão de demanda, programação de produção por otimização matemática, análise de telemetria via OBD-II e leitura de texto em português. Inclui modelagem técnica e financeira própria e um protótipo web navegável. O cliente é fictício, definido pela prova.",
+            en: "An operations platform we designed for the FSAE Brasil 2026 Business Presentation event, with four modules: demand forecasting, production scheduling via mathematical optimization, OBD-II telemetry analysis and Portuguese-language text analysis. It includes our own technical and financial modeling plus a navigable web prototype. The client is fictional, defined by the event.",
+        },
+        techStack: ["Python", "OR-Tools", "SimPy", "LightGBM", "XGBoost", "NLP"],
+        icon: Factory,
+    },
+    {
+        title: "Migração do fórum: phpBB para NodeBB",
+        description: {
+            pt: "Migração do fórum da equipe, incluindo a transferência do conteúdo existente e o novo deploy em Docker numa VPS.",
+            en: "Migrated the team's forum, including moving the existing content and redeploying it with Docker on a VPS.",
+        },
+        techStack: ["NodeBB", "Docker", "Nginx", "Linux"],
+        icon: MessagesSquare,
+    },
+    {
+        title: "RustCraft",
+        description: {
+            pt: "Projeto em Rust organizado como workspace, com crates separados por responsabilidade. Feito para aprender a linguagem em algo maior que um exercício.",
+            en: "A Rust project organized as a workspace, with crates split by responsibility. Built to learn the language on something larger than an exercise.",
+        },
+        techStack: ["Rust", "Cargo"],
+        githubUrl: "https://github.com/bernardovieirarocha/RustCraft",
+        icon: Boxes,
     },
     {
         title: "Class2Cal",
         description: {
-            pt: "Automatiza a criação de calendários acadêmicos integrando CSV e JSON para o formato iCalendar (.ics).",
-            en: "Automates academic calendar creation by integrating CSV and JSON into iCalendar (.ics) format.",
+            pt: "Converte a grade horária da faculdade em um calendário no formato iCalendar (.ics), a partir de CSV e JSON.",
+            en: "Turns the university class schedule into an iCalendar (.ics) file, from CSV and JSON input.",
         },
-        techStack: ["Python", "Data Processing", "GUI"],
+        techStack: ["Python", "iCalendar"],
         githubUrl: "https://github.com/bernardovieirarocha/Class2Cal",
         liveUrl: "https://bernardovieirarocha.github.io/Class2Cal/",
         icon: Calendar,
-        image: "/class2cal.png",
-        featured: true,
-    },
-    {
-        title: "Schoolsys",
-        description: {
-            pt: "Plataforma responsiva para auxiliar estudantes na organização de rotinas de estudo.",
-            en: "Responsive platform to help students organize study routines effectively.",
-        },
-        techStack: ["Django", "DjangoRest", "PostgreSQL", "JavaScript"],
-        githubUrl: "https://github.com/upwardweb/schoolsys",
-        icon: GraduationCap,
-    },
-    {
-        title: "Respect Above Violence",
-        description: {
-            pt: "Projeto de ONG escolar: combatendo o cyberbullying com recursos educacionais e documentação.",
-            en: "NGO School Project: Combating cyberbullying with educational resources and documentation.",
-        },
-        techStack: ["Node.js", "Express", "EJS"],
-        githubUrl: "https://github.com/upwardweb/respectaboveviolence",
-        icon: Hand,
-    },
-    {
-        title: "Testador C/C++",
-        description: {
-            pt: "Script de automação para testar códigos em C/C++, verificando se as saídas estão corretas de forma automatizada.",
-            en: "Automation script to test C/C++ code, automatically verifying if outputs are correct.",
-        },
-        techStack: ["C++", "C", "Linux", "Python", "Shell"],
-        githubUrl: "https://github.com/bernardovieirarocha/TestadorC",
-        icon: Terminal,
-    },
-    {
-        title: "Genius TinkerCad",
-        description: {
-            pt: "Implementação funcional do popular jogo de memória 'Genius' usando Tinkercad Circuits para a disciplina de LIP.",
-            en: "Functional implementation of the popular 'Genius' memory game using Tinkercad Circuits for LIP course.",
-        },
-        techStack: ["Arduino", "C++", "Tinkercad"],
-        githubUrl: "https://github.com/bernardovieirarocha/GeniusTinkerCadLIP",
-        icon: Cpu,
-    },
-    {
-        title: "Datetimewidget",
-        description: {
-            pt: "Widget aprimorado de seleção de Data e Hora para Django, simplificando integração em formulários.",
-            en: "Enhanced Django Date & Time dropdown widget, simplifying form integration.",
-        },
-        techStack: ["Python", "Django", "JavaScript", "CSS"],
-        githubUrl: "https://github.com/upwardweb/datetimewidget",
-        icon: Clock,
-    },
-    {
-        title: "Mundo.informação",
-        description: {
-            pt: "Recurso bibliográfico para cada seção de uma apresentação.",
-            en: "A bibliographic resource for each section of a presentation.",
-        },
-        techStack: ["Next.js"],
-        githubUrl: "https://github.com/upwardweb/mundo.informacao",
-        icon: Globe,
     },
 ];
 
-// ============================================
-// STATS
-// ============================================
-
-export const stats = {
-    projectsCompleted: "15+",
-    yearsExperience: "3+",
-    certifications: "5+",
-    coffeeConsumed: "∞",
-} as const;
+// Não adicionar métricas de vaidade aqui (contadores de projetos, "anos de
+// experiência", "∞ cafés", % de proficiência). Ver CLAUDE.md, regra 1.

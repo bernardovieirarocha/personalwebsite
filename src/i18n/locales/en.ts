@@ -4,124 +4,134 @@ export const en: TranslationKeys = {
     // Navigation
     nav: {
         about: "About",
+        experience: "Experience",
         skills: "Skills",
         projects: "Projects",
-        travel: "Travel",
         contact: "Contact",
         resumeSite: "Resume",
     },
 
     // Hero Section
     hero: {
-        greeting: "./init --portfolio",
-        role: "Computer Engineer & Computer Scientist",
-        tagline: "<Building what matters./>",
-        viewProjects: "View Projects",
+        role: "Computer Engineering at CEFET-MG and Computer Science at PUC Minas",
+        summary:
+            "I designed the Formula CEFAST team's embedded electronics and now lead its IT area.",
+        viewProjects: "View projects",
         contactMe: "Contact",
-        scroll: "scroll",
     },
 
     // About Section
     about: {
         sectionNumber: "01.",
-        title: "About Me",
-        paragraph1: {
-            start: "I'm a technology enthusiast who believes in the power of",
-            highlight1: "well-crafted engineering",
-            middle: ". As a Computer Engineering and Computer Science student, I navigate between hardware and software with ease.",
+        title: "About",
+        // TODO(bernardo): these three paragraphs are yours to rewrite.
+        paragraphs: {
+            p1: "I study Computer Engineering at CEFET-MG and Computer Science at PUC Minas at the same time. In practice that means spending the day between a board schematic and a service deploy, and that combination is something I have been building on purpose.",
+            p2: "I joined Formula CEFAST, CEFET-MG's Formula SAE team, designing electronic modules in Altium Designer. Today I am the team's Head of IT: I make the stack calls, run the infrastructure we depend on (the membership platform, the forum, the servers) and coordinate the other people in the area.",
+            p3: "Outside the team I run a Proxmox homelab on ZFS, which I use to learn infrastructure the most direct way there is: by breaking it and fixing it. I also have a specific interest in cryptography, which is where CriptoEscape came from.",
         },
-        paragraph2: {
-            start: "My passion lies in creating solutions that make a difference — from",
-            highlight1: "embedded systems",
-            middle: "operating at the bare metal to",
-            highlight2: "backend architectures",
-            end: "that are scalable and resilient.",
-        },
-        paragraph3: {
-            start: "I believe the best technology is the one that",
-            highlight: "just works",
-            end: "— elegant under the hood, invisible to those who use it.",
-        },
-        terminalUser: "bernardo@portfolio",
-        terminalCommand: "echo $PHILOSOPHY",
-        terminalOutput: '"Clean code, robust systems, measurable impact."',
         highlights: {
             softwareEngineering: "Software Engineering",
             embeddedSystems: "Embedded Systems",
             electronics: "Electronics",
             backend: "Backend",
-            devops: "DevOps",
+            devops: "Infrastructure",
             systemsDesign: "Systems Design",
         },
     },
 
+    // Experience Section
+    experience: {
+        sectionNumber: "02.",
+        title: "Experience",
+        educationTitle: "Education",
+        since: "since",
+    },
+
     // Skills Section
     skills: {
-        sectionNumber: "02.",
+        sectionNumber: "03.",
         title: "Technologies",
         categories: {
             languages: "Languages",
             backend: "Backend & APIs",
             embedded: "Embedded & Hardware",
-            devops: "DevOps & Cloud",
-        },
-        stats: {
-            projects: "Completed Projects",
-            experience: "Years of Experience",
-            certifications: "Certifications",
-            coffee: "Coffee Consumed",
+            devops: "DevOps & Infra",
+            frontend: "Frontend & Web",
         },
     },
 
     // Projects Section
     projects: {
-        sectionNumber: "03.",
+        sectionNumber: "04.",
         title: "Projects",
-        featured: "Featured Project",
         otherProjects: "Other Projects",
     },
 
-    // Travel Section
-    travel: {
-        sectionNumber: "04.",
-        title: "Travel",
-    },
 
     // Contact Section
     contact: {
         sectionNumber: "05.",
         title: "Contact",
         description:
-            "I'm always open to new opportunities, collaborations, and conversations about technology. If you have an interesting project or just want to exchange ideas, I'd be happy to chat.",
+            "Open to conversations about embedded systems, infrastructure and cryptography, and to internship and research opportunities. Email is the most direct way to reach me.",
         emailLabel: "Email",
-        locationLabel: "Location",
-        location: "Belo Horizonte, Brazil",
-        sendMessage: "Send Message",
-        thankYou: 'echo "Thanks for visiting!"',
+        githubLabel: "GitHub",
+        linkedinLabel: "LinkedIn",
+        location: "Belo Horizonte, MG, Brazil",
+        sendMessage: "Send an email",
     },
 
     // Footer
     footer: {
-        designedWith: "Designed & Developed with",
+        builtWith: "Built with React, TypeScript and Tailwind CSS.",
+    },
+
+    // Per-route SEO
+    seo: {
+        home: {
+            title: "Bernardo Rocha | Computer Engineering, embedded systems and infrastructure",
+            description:
+                "Computer Engineering student at CEFET-MG and Computer Science student at PUC Minas. I design embedded electronics, telemetry and infrastructure for the Formula CEFAST team.",
+        },
+        resume: {
+            title: "Resume | Bernardo Rocha",
+            description:
+                "Education, experience, certifications and projects of Bernardo Vieira Rocha, Computer Engineering student at CEFET-MG and Computer Science student at PUC Minas.",
+        },
+        notFound: {
+            title: "Page not found | Bernardo Rocha",
+            description: "This page does not exist.",
+        },
+    },
+
+    // 404
+    notFound: {
+        title: "Page not found",
+        description: "The address you opened does not exist or has moved.",
+        backHome: "Back to home",
     },
 
     // Resume Page
     resume: {
-        downloadPdf: "Download PDF",
-        role: "Computer Engineer & Computer Scientist",
+        downloadPdf: "Print / save as PDF",
+        backHome: "Back",
+        role: "Computer Engineering (CEFET-MG) and Computer Science (PUC Minas)",
         summary:
-            "Computer Engineering and Computer Science student with strong experience in software engineering, embedded systems, electronics, backend, and DevOps. Passionate about creating solutions that make a difference — from systems operating at the hardware edge to scalable and resilient backend architectures.",
+            "I study Computer Engineering at CEFET-MG and Computer Science at PUC Minas, concurrently. On the Formula CEFAST SAE team I designed electronic modules in Altium Designer and now serve as Head of IT, owning the stack, the infrastructure and the people in the area.",
         sections: {
             experience: "Experience",
             education: "Education",
             skills: "Technical Skills",
+            projects: "Projects",
             certifications: "Certifications",
         },
         skillCategories: {
             languages: "Languages",
             backend: "Backend & APIs",
             embedded: "Embedded & Hardware",
-            devops: "DevOps & Cloud",
+            devops: "DevOps & Infra",
+            frontend: "Frontend & Web",
         },
         updatedIn: "Updated in",
     },

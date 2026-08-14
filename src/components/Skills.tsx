@@ -1,6 +1,6 @@
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 import { useTranslation } from "@/i18n";
-import { skills, stats } from "@/data/content";
+import { skills } from "@/data/content";
 
 const Skills = () => {
   const { t } = useTranslation();
@@ -22,13 +22,10 @@ const Skills = () => {
       title: t.skills.categories.devops,
       skills: skills.devops,
     },
-  ];
-
-  const statsData = [
-    { value: stats.projectsCompleted, label: t.skills.stats.projects },
-    { value: stats.yearsExperience, label: t.skills.stats.experience },
-    { value: stats.certifications, label: t.skills.stats.certifications },
-    { value: stats.coffeeConsumed, label: t.skills.stats.coffee },
+    {
+      title: t.skills.categories.frontend,
+      skills: skills.frontend,
+    },
   ];
 
   return (
@@ -44,11 +41,18 @@ const Skills = () => {
             </div>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* items-stretch + h-full em cada nível: as caixas ficam da mesma
+              altura mesmo quando uma categoria tem mais tecnologias que a outra */}
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
             {skillCategories.map((category, categoryIndex) => (
-              <AnimatedSection key={category.title} animation="fade-up" delay={categoryIndex * 100}>
+              <AnimatedSection
+                key={category.title}
+                animation="fade-up"
+                delay={categoryIndex * 100}
+                className="h-full"
+              >
                 <div
-                  className="p-6 rounded-xl border border-border bg-card/50 hover:border-primary/30 transition-all duration-300"
+                  className="h-full p-6 rounded-xl border border-border bg-card/50 hover:border-primary/30 transition-all duration-300"
                 >
                   <h3 className="font-mono text-primary text-sm mb-6 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-primary" />
@@ -64,20 +68,6 @@ const Skills = () => {
                       </span>
                     ))}
                   </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-            {statsData.map((stat, index) => (
-              <AnimatedSection key={stat.label} animation="scale" delay={index * 100}>
-                <div
-                  className="text-center p-6 rounded-xl border border-border bg-card/30"
-                >
-                  <p className="text-4xl font-bold text-gradient mb-2">{stat.value}</p>
-                  <p className="text-sm text-muted-foreground font-mono">{stat.label}</p>
                 </div>
               </AnimatedSection>
             ))}
