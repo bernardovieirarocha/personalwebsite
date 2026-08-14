@@ -8,7 +8,7 @@
 
    Archivo: grotesca industrial, para texto e títulos.
    JetBrains Mono: só para dado e rótulo (períodos, tecnologias,
-   numeração de seção). Nunca para prosa.
+   rótulos de categoria). Nunca para prosa.
    ============================================================ */
 
 @font-face {
@@ -52,6 +52,20 @@
     U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+/* Fallback com métricas casadas às da Archivo.
+   Enquanto a fonte real não chega, o texto é desenhado em Arial/Helvetica.
+   Sem estes overrides a troca reflui o parágrafo inteiro — os valores foram
+   medidos contra a Archivo carregada, não estimados:
+   largura 99.19% da Arial, ascent 87.8%, descent 21%. */
+@font-face {
+  font-family: 'Archivo Fallback';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  size-adjust: 99.19%;
+  ascent-override: 87.8%;
+  descent-override: 21%;
+  line-gap-override: 0%;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -80,11 +94,22 @@
     --muted-foreground: 215 15% 60%;
 
     /* --- Acento ------------------------------------------------------
-       Um ciano. O segundo tom (--accent) existe só para hover e para o
-       traço de circuito; não é uma segunda cor de marca. */
-    --primary: 185 100% 50%;
+       Um ciano, dessaturado. `185 100% 50%` era ciano neon puro — a escolha
+       mais repetida em portfólio de dev, e o sinal mais genérico que restava
+       na página. Em 52% de saturação continua sendo a mesma cor da marca,
+       sem o brilho de LED.
+
+       O acento é ainda mais quieto: ele só desenha os traços de circuito,
+       que são fundo. Não é uma segunda cor de marca.
+
+       Onde o ciano tem permissão de aparecer: o sobrenome no hero (o único
+       momento grande), o botão primário, o anel de foco, o hover de link e o
+       marcador da timeline. Em rótulo de categoria, nome de empresa e título
+       de subseção ele foi retirado — lá a distinção vem de peso e família,
+       não de cor. Acento em tudo é acento em nada. */
+    --primary: 185 52% 58%;
     --primary-foreground: 220 20% 4%;
-    --accent: 185 70% 38%;
+    --accent: 185 35% 40%;
     --accent-foreground: var(--foreground);
 
     --destructive: 0 70% 55%;
@@ -98,7 +123,9 @@
     --border: 220 14% 26%;
     --border-strong: 220 14% 40%;
     --input: var(--border);
-    --ring: 185 100% 50%;
+    /* O anel de foco é o único lugar onde vale mais saturação que a marca:
+       ele precisa ser inconfundível, não discreto. */
+    --ring: 185 75% 62%;
 
     --radius: 0.5rem;
 
@@ -154,7 +181,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Archivo', 'Archivo Fallback', ui-sans-serif, system-ui, sans-serif;
     font-size: var(--text-base);
     line-height: 1.65; /* texto claro sobre fundo escuro pede mais ar */
     font-weight: var(--weight-regular);

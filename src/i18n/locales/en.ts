@@ -25,7 +25,6 @@ export const en: TranslationKeys = {
 
     // About Section
     about: {
-        sectionNumber: "01.",
         title: "About",
         // TODO(bernardo): these three paragraphs are yours to rewrite.
         paragraphs: {
@@ -45,7 +44,6 @@ export const en: TranslationKeys = {
 
     // Experience Section
     experience: {
-        sectionNumber: "02.",
         title: "Experience",
         educationTitle: "Education",
         since: "since",
@@ -53,7 +51,6 @@ export const en: TranslationKeys = {
 
     // Skills Section
     skills: {
-        sectionNumber: "03.",
         title: "Technologies",
         categories: {
             languages: "Languages",
@@ -66,7 +63,6 @@ export const en: TranslationKeys = {
 
     // Projects Section
     projects: {
-        sectionNumber: "04.",
         title: "Projects",
         otherProjects: "Other Projects",
     },
@@ -74,7 +70,6 @@ export const en: TranslationKeys = {
 
     // Contact Section
     contact: {
-        sectionNumber: "05.",
         title: "Contact",
         description:
             "Open to conversations about embedded systems, infrastructure and cryptography, and to internship and research opportunities. Email is the most direct way to reach me.",

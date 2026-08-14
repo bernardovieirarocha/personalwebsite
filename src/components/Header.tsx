@@ -54,11 +54,11 @@ const Header = () => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { href: "#about", label: t.nav.about, number: "01" },
-    { href: "#experience", label: t.nav.experience, number: "02" },
-    { href: "#skills", label: t.nav.skills, number: "03" },
-    { href: "#projects", label: t.nav.projects, number: "04" },
-    { href: "#contact", label: t.nav.contact, number: "05" },
+    { href: "#about", label: t.nav.about },
+    { href: "#experience", label: t.nav.experience },
+    { href: "#skills", label: t.nav.skills },
+    { href: "#projects", label: t.nav.projects },
+    { href: "#contact", label: t.nav.contact },
   ];
 
   return (
@@ -87,10 +87,7 @@ const Header = () => {
               href={link.href}
               className="-mx-1 inline-flex items-center gap-1.5 px-1 py-2 font-mono text-xs text-muted-foreground transition-colors duration-fast hover:text-foreground"
             >
-              <span className="text-primary" aria-hidden="true">
-                {link.number}
-              </span>
-              {link.label}
+                {link.label}
             </a>
           ))}
           <Link
@@ -131,9 +128,6 @@ const Header = () => {
                 className="inline-flex min-h-[44px] items-center gap-2 font-mono text-base text-muted-foreground transition-colors duration-fast hover:text-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span className="text-primary" aria-hidden="true">
-                  {link.number}
-                </span>
                 {link.label}
               </a>
             ))}

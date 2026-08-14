@@ -20,7 +20,7 @@ const About = () => {
     <section id="about" className="py-section">
       <div className="container px-6">
         <Reveal className="mx-auto max-w-5xl">
-          <SectionHeading number={t.about.sectionNumber} title={t.about.title} />
+          <SectionHeading title={t.about.title} />
 
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
             {/* max-w-[68ch]: linha de leitura confortável. Antes o parágrafo
@@ -39,7 +39,7 @@ const About = () => {
             <ul className="flex flex-wrap gap-x-6 gap-y-3 lg:max-w-[14rem] lg:flex-col lg:gap-y-4">
               {highlights.map((label) => (
                 <li key={label} className="flex items-baseline gap-3 text-sm text-foreground">
-                  <span aria-hidden="true" className="h-px w-4 shrink-0 translate-y-[-0.3em] bg-primary" />
+                  <span aria-hidden="true" className="h-px w-4 shrink-0 translate-y-[-0.3em] bg-border-strong" />
                   {label}
                 </li>
               ))}

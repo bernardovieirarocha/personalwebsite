@@ -21,7 +21,7 @@ const Skills = () => {
     <section id="skills" className="pb-section pt-section-tight">
       <div className="container px-6">
         <Reveal className="mx-auto max-w-5xl">
-          <SectionHeading number={t.skills.sectionNumber} title={t.skills.title} />
+          <SectionHeading title={t.skills.title} />
 
           {/* Eram cinco caixas com borda, e a quinta ficava órfã numa grade
               de duas colunas. Sem caixa não há órfã: cada categoria é uma
@@ -32,7 +32,7 @@ const Skills = () => {
                 key={category.title}
                 className="grid gap-2 py-5 sm:grid-cols-[13rem_minmax(0,1fr)] sm:gap-8"
               >
-                <dt className="font-mono text-xs text-primary sm:pt-1">{category.title}</dt>
+                <dt className="font-mono text-xs font-medium text-foreground sm:pt-1">{category.title}</dt>
                 <dd className="flex flex-wrap gap-x-5 gap-y-2">
                   {category.items.map((item) => (
                     <span key={item} className="text-sm text-foreground">

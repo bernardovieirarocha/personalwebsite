@@ -23,7 +23,6 @@ export const pt = {
 
     // About Section
     about: {
-        sectionNumber: "01.",
         title: "Sobre",
         // TODO(bernardo): estes três parágrafos são o seu texto. Reescreva com
         // fatos que só você sabe: que módulo você projetou, o que quebrou,
@@ -45,7 +44,6 @@ export const pt = {
 
     // Experience Section
     experience: {
-        sectionNumber: "02.",
         title: "Experiência",
         educationTitle: "Formação",
         since: "desde",
@@ -53,7 +51,6 @@ export const pt = {
 
     // Skills Section
     skills: {
-        sectionNumber: "03.",
         title: "Tecnologias",
         categories: {
             languages: "Linguagens",
@@ -66,7 +63,6 @@ export const pt = {
 
     // Projects Section
     projects: {
-        sectionNumber: "04.",
         title: "Projetos",
         otherProjects: "Outros Projetos",
     },
@@ -74,7 +70,6 @@ export const pt = {
 
     // Contact Section
     contact: {
-        sectionNumber: "05.",
         title: "Contato",
         description:
             "Aberto a conversas sobre sistemas embarcados, infraestrutura e criptografia, e a oportunidades de estágio e pesquisa. O e-mail é o caminho mais direto.",

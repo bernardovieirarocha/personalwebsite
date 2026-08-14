@@ -85,7 +85,7 @@ const Projects = () => {
     <section id="projects" className="py-section">
       <div className="container px-6">
         <Reveal className="mx-auto max-w-5xl">
-          <SectionHeading number={t.projects.sectionNumber} title={t.projects.title} />
+          <SectionHeading title={t.projects.title} />
 
           <div className="space-y-8">
             {featured.map((project) => (
@@ -93,7 +93,7 @@ const Projects = () => {
             ))}
           </div>
 
-          <h3 className="mb-5 mt-16 font-mono text-xs text-primary">{t.projects.otherProjects}</h3>
+          <h3 className="mb-5 mt-16 font-mono text-xs font-medium text-foreground">{t.projects.otherProjects}</h3>
 
           <ul className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
             {others.map((project) => (

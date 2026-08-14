@@ -13,7 +13,7 @@ const Experience = () => {
     <section id="experience" className="py-section">
       <div className="container px-6">
         <Reveal className="mx-auto max-w-4xl">
-          <SectionHeading number={t.experience.sectionNumber} title={t.experience.title} />
+          <SectionHeading title={t.experience.title} />
 
           {/* Timeline: uma régua contínua à esquerda, marcador por item.
               A régua aqui carrega informação (a sequência), diferente da
@@ -33,7 +33,7 @@ const Experience = () => {
                   </span>
                 </div>
 
-                <p className="mt-1 text-sm text-primary">{job.company}</p>
+                <p className="mt-1 text-sm text-foreground">{job.company}</p>
                 <p className="mt-3 max-w-[68ch] text-sm text-muted-foreground">
                   {job.description[language]}
                 </p>
@@ -49,7 +49,7 @@ const Experience = () => {
             ))}
           </ol>
 
-          <h3 className="mb-5 mt-14 font-mono text-xs text-primary">
+          <h3 className="mb-5 mt-14 font-mono text-xs font-medium text-foreground">
             {t.experience.educationTitle}
           </h3>
 
