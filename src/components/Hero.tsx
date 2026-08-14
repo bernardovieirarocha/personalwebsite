@@ -2,65 +2,49 @@ import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { useTranslation } from "@/i18n";
 import { personalInfo, socialLinks } from "@/data/content";
-import CircuitAnimation from "./CircuitAnimation";
+import CircuitTraces from "./CircuitTraces";
 
 const Hero = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden noise-overlay">
-      {/* Circuit Animation Background */}
-      <div className="absolute inset-0 z-0">
-        <CircuitAnimation />
+    // pt-32: o header é fixo com 5rem de altura; sem isso o avatar encosta
+    // no logo no mobile, onde a coluna é estreita e o hero começa mais alto.
+    <section className="relative flex min-h-[92vh] items-center overflow-hidden pb-16 pt-32">
+      {/* Único efeito de fundo da página. Ver CircuitTraces.tsx. */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <CircuitTraces />
       </div>
 
-      {/* Grid background */}
-      <div className="absolute inset-0 grid-background opacity-40" />
-
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }} />
-
       <div className="container relative z-10 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Avatar + Name Section */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-6 opacity-0 animate-fade-up stagger-1">
-            {/* Large Circular Avatar */}
-            <div className="relative group">
-              <div className="absolute inset-0 bg-primary/30 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500 animate-glow-pulse" />
-              <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-2 border-primary/50 group-hover:border-primary transition-all duration-300">
-                <img
-                  src={personalInfo.avatarUrl}
-                  alt={`Foto de ${personalInfo.name}`}
-                  width={192}
-                  height={192}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              {/* Status indicator */}
-              <div className="absolute bottom-2 right-2 w-5 h-5 bg-green-500 rounded-full border-2 border-background animate-pulse" />
-            </div>
+        <div className="mx-auto max-w-4xl">
+          {/* Alinhado à esquerda: o texto centralizado anterior obrigava a
+              vista a voltar ao meio a cada linha e achatava a hierarquia. */}
+          <div className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:gap-10">
+            <img
+              src={personalInfo.avatarUrl}
+              alt={`Foto de ${personalInfo.name}`}
+              width={160}
+              height={160}
+              decoding="async"
+              // Candidato a LCP: nunca lazy, e prioridade alta na fila de rede.
+              // Em minúsculo e via spread porque o React 18 desta versão ainda
+              // não conhece a prop camelCase e a descarta com aviso.
+              {...{ fetchpriority: "high" }}
+              className="h-24 w-24 shrink-0 rounded-full border border-border-strong object-cover sm:h-32 sm:w-32"
+            />
 
-            {/* Main heading */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-left">
-              <span className="text-foreground">{personalInfo.name.split(' ')[0]}</span>
-              <br />
-              <span className="text-gradient">{personalInfo.name.split(' ')[1]}</span>
+            <h1 className="text-display font-bold">
+              <span className="block text-foreground">{personalInfo.name.split(" ")[0]}</span>
+              <span className="block text-primary">{personalInfo.name.split(" ")[1]}</span>
             </h1>
           </div>
 
-          {/* Tagline */}
-          <p className="font-mono text-sm md:text-base text-muted-foreground mb-6 opacity-0 animate-fade-up stagger-2">
-            {t.hero.role}
-          </p>
+          <p className="mt-8 font-mono text-sm text-muted-foreground">{t.hero.role}</p>
 
-          {/* Uma frase concreta, sem slogan */}
-          <p className="text-base md:text-lg text-foreground/90 max-w-2xl mx-auto mb-12 opacity-0 animate-fade-up stagger-3">
-            {t.hero.summary}
-          </p>
+          <p className="mt-4 max-w-2xl text-lead text-foreground/90">{t.hero.summary}</p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 opacity-0 animate-fade-up stagger-4">
+          <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
             <Button variant="hero" size="xl" asChild>
               <a href="#projects">{t.hero.viewProjects}</a>
             </Button>
@@ -69,30 +53,22 @@ const Hero = () => {
             </Button>
           </div>
 
-          {/* Social links */}
-          <div className="flex items-center justify-center gap-6 opacity-0 animate-fade-up stagger-5">
-            <a
-              href={socialLinks.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full border border-border bg-secondary/50 hover:bg-secondary hover:border-primary transition-all duration-300 hover:scale-110"
-            >
-              <Github className="w-5 h-5" />
-            </a>
-            <a
-              href={socialLinks.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full border border-border bg-secondary/50 hover:bg-secondary hover:border-primary transition-all duration-300 hover:scale-110"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a
-              href={`mailto:${personalInfo.email}`}
-              className="p-3 rounded-full border border-border bg-secondary/50 hover:bg-secondary hover:border-primary transition-all duration-300 hover:scale-110"
-            >
-              <Mail className="w-5 h-5" />
-            </a>
+          <div className="mt-12 flex items-center gap-2">
+            {[
+              { href: socialLinks.github, label: "GitHub", Icon: Github },
+              { href: socialLinks.linkedin, label: "LinkedIn", Icon: Linkedin },
+              { href: `mailto:${personalInfo.email}`, label: t.contact.emailLabel, Icon: Mail },
+            ].map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                aria-label={label}
+                className="grid h-11 w-11 place-items-center rounded-md border border-border text-muted-foreground transition-colors duration-fast hover:border-border-strong hover:text-primary"
+              >
+                <Icon className="h-5 w-5" aria-hidden="true" />
+              </a>
+            ))}
           </div>
         </div>
       </div>

@@ -1,30 +1,32 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { useTranslation, Language } from "@/i18n";
+import { Link } from "react-router-dom";
+import { useTranslation } from "@/i18n";
 
 const LanguageToggle = () => {
   const { language, setLanguage } = useTranslation();
 
   return (
-    <div className="flex items-center border border-border rounded-md overflow-hidden font-mono text-xs">
-      <button
-        onClick={() => setLanguage("pt")}
-        className={`px-2 py-1.5 transition-colors ${language === "pt"
-          ? "bg-primary text-primary-foreground"
-          : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+    <div
+      role="group"
+      aria-label="Idioma / Language"
+      className="flex items-center overflow-hidden rounded-md border border-border font-mono text-xs"
+    >
+      {(["pt", "en"] as const).map((code) => (
+        <button
+          key={code}
+          type="button"
+          onClick={() => setLanguage(code)}
+          aria-pressed={language === code}
+          className={`px-2.5 py-1.5 uppercase transition-colors duration-fast ${
+            language === code
+              ? "bg-primary text-primary-foreground"
+              : "text-muted-foreground hover:text-foreground"
           }`}
-      >
-        PT
-      </button>
-      <button
-        onClick={() => setLanguage("en")}
-        className={`px-2 py-1.5 transition-colors ${language === "en"
-          ? "bg-primary text-primary-foreground"
-          : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-          }`}
-      >
-        EN
-      </button>
+        >
+          {code}
+        </button>
+      ))}
     </div>
   );
 };
@@ -35,93 +37,94 @@ const Header = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Trava o scroll do fundo enquanto o menu mobile está aberto.
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
     { href: "#about", label: t.nav.about, number: "01" },
-    { href: "#skills", label: t.nav.skills, number: "02" },
-    { href: "#projects", label: t.nav.projects, number: "03" },
-    { href: "#travel", label: t.nav.travel, number: "04" },
+    { href: "#experience", label: t.nav.experience, number: "02" },
+    { href: "#skills", label: t.nav.skills, number: "03" },
+    { href: "#projects", label: t.nav.projects, number: "04" },
     { href: "#contact", label: t.nav.contact, number: "05" },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 ${isMobileMenuOpen ? "" : "transition-all duration-300"} ${isMobileMenuOpen
-        ? "bg-[#080A0D] border-b border-border"
-        : isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border"
-          : "bg-transparent"
-        }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-base ${
+        isScrolled || isMobileMenuOpen
+          ? "border-b border-border bg-background/85 backdrop-blur"
+          : "border-b border-transparent bg-transparent"
+      }`}
     >
-      <nav className="container px-6 h-20 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="group">
-          <img
-            src="/bernardologo.png"
-            alt="BR Logo"
-            className="h-10 w-10 rounded-full group-hover:scale-110 transition-transform duration-300"
-          />
+      <nav className="container flex h-20 items-center justify-between px-6">
+        <a href="#" aria-label={t.nav.about}>
+          <img src="/bernardologo.webp" alt="" width={36} height={36} className="h-9 w-9 rounded-full" />
         </a>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="font-mono text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="-mx-1 inline-flex items-center px-1 py-2 font-mono text-xs text-muted-foreground transition-colors duration-fast hover:text-foreground"
             >
-              <span className="text-primary">{link.number}.</span> {link.label}
+              <span className="text-primary">{link.number}</span> {link.label}
             </a>
           ))}
-          <a
-            href="https://bernardorocha.me"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-3 py-1.5 rounded-md border border-primary/50 text-primary font-mono text-xs hover:bg-primary hover:text-primary-foreground transition-colors"
+          <Link
+            to="/resume"
+            className="rounded-md border border-border-strong px-3 py-1.5 font-mono text-xs text-primary transition-colors duration-fast hover:bg-primary hover:text-primary-foreground"
           >
             {t.nav.resumeSite}
-          </a>
+          </Link>
           <LanguageToggle />
         </div>
 
-        {/* Mobile menu button */}
         <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          type="button"
+          className="grid h-11 w-11 place-items-center text-foreground md:hidden"
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
+          aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
         >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
-      {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-20 bg-background/95 backdrop-blur-lg z-40">
-          <div className="flex flex-col items-center justify-center h-full gap-8">
+        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-20 bg-background md:hidden">
+          <div className="container flex flex-col items-start gap-6 px-6 pt-10">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="font-mono text-lg text-muted-foreground hover:text-primary transition-colors"
+                className="inline-flex min-h-[44px] items-center font-mono text-base text-muted-foreground transition-colors duration-fast hover:text-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span className="text-primary">{link.number}.</span> {link.label}
+                <span className="text-primary">{link.number}</span> {link.label}
               </a>
             ))}
-            <a
-              href="https://bernardorocha.me"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 rounded-md border border-primary text-primary font-mono text-lg hover:bg-primary hover:text-primary-foreground transition-colors"
+            <Link
+              to="/resume"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="rounded-md border border-border-strong px-4 py-2 font-mono text-sm text-primary"
             >
               {t.nav.resumeSite}
-            </a>
+            </Link>
             <LanguageToggle />
           </div>
         </div>

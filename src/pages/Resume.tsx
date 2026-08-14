@@ -83,7 +83,7 @@ const Resume = () => {
                 cada serviço — o ícone já diz qual é, e o espaço vai para o
                 conteúdo do currículo. */}
             <section className="mb-10 pb-6 border-b border-border">
-              <h1 className="text-4xl md:text-5xl font-bold mb-2">{personalInfo.fullName}</h1>
+              <h1 className="text-title font-bold mb-2">{personalInfo.fullName}</h1>
               <p className="text-base text-primary mb-4">{t.resume.role}</p>
 
               <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
@@ -138,7 +138,7 @@ const Resume = () => {
             <section className="mb-10 print:break-inside-avoid">
               <div className="flex items-center gap-3 mb-6">
                 <Briefcase className="w-5 h-5 text-primary" aria-hidden="true" />
-                <h2 className="text-xl font-bold">{t.resume.sections.experience}</h2>
+                <h2 className="text-lead font-bold">{t.resume.sections.experience}</h2>
               </div>
               <div className="space-y-6">
                 {workExperience.map((exp) => (
@@ -175,7 +175,7 @@ const Resume = () => {
             <section className="mb-10 print:break-inside-avoid">
               <div className="flex items-center gap-3 mb-6">
                 <GraduationCap className="w-5 h-5 text-primary" aria-hidden="true" />
-                <h2 className="text-xl font-bold">{t.resume.sections.education}</h2>
+                <h2 className="text-lead font-bold">{t.resume.sections.education}</h2>
               </div>
               <div className="space-y-5">
                 {education.map((edu) => (
@@ -206,7 +206,7 @@ const Resume = () => {
             <section className="mb-10 print:break-inside-avoid">
               <div className="flex items-center gap-3 mb-6">
                 <Code2 className="w-5 h-5 text-primary" aria-hidden="true" />
-                <h2 className="text-xl font-bold">{t.resume.sections.skills}</h2>
+                <h2 className="text-lead font-bold">{t.resume.sections.skills}</h2>
               </div>
               <div className="grid sm:grid-cols-2 gap-5 print:grid-cols-2">
                 {skillGroups.map((group) => (
@@ -222,7 +222,7 @@ const Resume = () => {
             <section className="mb-10 print:break-inside-avoid">
               <div className="flex items-center gap-3 mb-6">
                 <FolderKanban className="w-5 h-5 text-primary" aria-hidden="true" />
-                <h2 className="text-xl font-bold">{t.resume.sections.projects}</h2>
+                <h2 className="text-lead font-bold">{t.resume.sections.projects}</h2>
               </div>
               <div className="space-y-4">
                 {featuredProjects.map((project) => (
@@ -256,7 +256,7 @@ const Resume = () => {
             <section className="mb-10 print:break-inside-avoid">
               <div className="flex items-center gap-3 mb-6">
                 <Award className="w-5 h-5 text-primary" aria-hidden="true" />
-                <h2 className="text-xl font-bold">{t.resume.sections.certifications}</h2>
+                <h2 className="text-lead font-bold">{t.resume.sections.certifications}</h2>
               </div>
               <div className="space-y-3">
                 {certifications.map((cert) => (

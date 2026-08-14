@@ -19,24 +19,46 @@ const translations: Record<Language, TranslationKeys> = {
 
 const STORAGE_KEY = "portfolio-language";
 
+/** Preferência do visitante: localStorage primeiro, idioma do browser depois. */
+function detectLanguage(): Language {
+    if (typeof window === "undefined") return "pt";
+
+    try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored === "pt" || stored === "en") return stored;
+    } catch {
+        // Modo privado / storage bloqueado: cai no idioma do browser.
+    }
+
+    return navigator.language?.split("-")[0] === "pt" ? "pt" : "en";
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-    const [language, setLanguageState] = useState<Language>(() => {
-        if (typeof window !== "undefined") {
-            const stored = localStorage.getItem(STORAGE_KEY);
-            if (stored === "pt" || stored === "en") {
-                return stored;
-            }
-            // Default to browser language if Portuguese, otherwise English
-            const browserLang = navigator.language.split("-")[0];
-            return browserLang === "pt" ? "pt" : "en";
-        }
-        return "pt";
-    });
+    // Começa SEMPRE em "pt", que é o idioma com que as rotas são
+    // pré-renderizadas. Ler localStorage/navigator aqui no inicializador
+    // fazia o primeiro render do cliente divergir do HTML do servidor:
+    // React descartava a árvore inteira e re-renderizava no cliente
+    // (erros #418/#425), jogando fora o ganho do SSG. A preferência é
+    // aplicada logo depois da montagem, num efeito.
+    const [language, setLanguageState] = useState<Language>("pt");
+    const [hasHydrated, setHasHydrated] = useState(false);
 
     useEffect(() => {
-        localStorage.setItem(STORAGE_KEY, language);
+        setLanguageState(detectLanguage());
+        setHasHydrated(true);
+    }, []);
+
+    useEffect(() => {
         document.documentElement.lang = language;
-    }, [language]);
+        // Só persiste depois que a detecção rodou, para não gravar o "pt"
+        // inicial por cima de uma preferência real do visitante.
+        if (!hasHydrated) return;
+        try {
+            localStorage.setItem(STORAGE_KEY, language);
+        } catch {
+            // Sem storage o site continua funcionando; só não lembra a escolha.
+        }
+    }, [language, hasHydrated]);
 
     const setLanguage = (lang: Language) => {
         setLanguageState(lang);

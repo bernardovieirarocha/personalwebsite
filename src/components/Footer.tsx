@@ -5,58 +5,35 @@ import { personalInfo, socialLinks } from "@/data/content";
 const Footer = () => {
   const { t } = useTranslation();
 
+  const links = [
+    { href: socialLinks.github, label: "GitHub", Icon: Github },
+    { href: socialLinks.linkedin, label: "LinkedIn", Icon: Linkedin },
+    { href: `mailto:${personalInfo.email}`, label: t.contact.emailLabel, Icon: Mail },
+  ];
+
   return (
-    <footer className="py-12 border-t border-border">
+    <footer className="border-t border-border py-10">
       <div className="container px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Main row - Logo, Social, Copyright */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            {/* Logo */}
-            <a href="#">
-              <img
-                src="/bernardologo.png"
-                alt="BR Logo"
-                className="h-10 w-10 rounded-full hover:scale-110 transition-transform duration-300"
-              />
-            </a>
-
-
-
-            {/* Copyright */}
-            <p className="font-mono text-xs text-muted-foreground">
+        <div className="mx-auto flex max-w-5xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="font-mono text-xs text-muted-foreground">
+            <p>
               &copy; {new Date().getFullYear()} {personalInfo.name}
             </p>
+            <p className="mt-1">{t.footer.builtWith}</p>
           </div>
 
-          {/* Built with - centered below with icons */}
-          <div className="flex flex-col items-center mt-8 gap-4">
-            <div className="flex items-center gap-6">
+          <div className="flex items-center gap-1">
+            {links.map(({ href, label, Icon }) => (
               <a
-                href={socialLinks.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                key={label}
+                href={href}
+                {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                aria-label={label}
+                className="grid h-11 w-11 place-items-center rounded-md text-muted-foreground transition-colors duration-fast hover:text-primary"
               >
-                <Github className="w-5 h-5" />
+                <Icon className="h-4 w-4" aria-hidden="true" />
               </a>
-              <a
-                href={socialLinks.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-            </div>
-            <p className="font-mono text-xs text-muted-foreground text-center">
-              {t.footer.builtWith}
-            </p>
+            ))}
           </div>
         </div>
       </div>

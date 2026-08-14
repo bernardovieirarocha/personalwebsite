@@ -78,6 +78,7 @@ export const en: TranslationKeys = {
         emailLabel: "Email",
         githubLabel: "GitHub",
         linkedinLabel: "LinkedIn",
+        locationLabel: "Location",
         location: "Belo Horizonte, MG, Brazil",
         sendMessage: "Send an email",
     },

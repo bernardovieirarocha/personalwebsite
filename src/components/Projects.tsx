@@ -1,137 +1,121 @@
-import { ExternalLink, Github, Folder } from "lucide-react";
-import { AnimatedSection } from "@/hooks/useScrollAnimation";
+import { ExternalLink, Github } from "lucide-react";
+import { Reveal } from "@/hooks/useScrollAnimation";
 import { useTranslation } from "@/i18n";
-import { projects } from "@/data/content";
+import { projects, type Project } from "@/data/content";
+import SectionHeading from "./SectionHeading";
+
+/**
+ * Projeto em destaque. Não é card: é uma entrada de lista com régua acima,
+ * imagem quando existe e texto quando não. A grade de cards idênticos com
+ * borda arredondada era o que mais entregava "template" na página.
+ */
+const FeaturedProject = ({ project, language }: { project: Project; language: "pt" | "en" }) => (
+  // A coluna da imagem só existe quando há imagem. Reservá-la sempre deixava
+  // um vão morto de 18rem à direita da maioria dos projetos.
+  <article
+    className={`grid gap-5 border-t border-border pt-8 ${
+      project.image ? "md:grid-cols-[minmax(0,1fr)_18rem] md:gap-10" : ""
+    }`}
+  >
+    <div className="max-w-[68ch]">
+      <div className="flex items-start justify-between gap-4">
+        <h3 className="text-lead font-bold text-foreground">{project.title}</h3>
+        <ProjectLinks project={project} />
+      </div>
+
+      <p className="mt-3 text-sm text-muted-foreground">{project.description[language]}</p>
+
+      <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1">
+        {project.techStack.map((tech) => (
+          <li key={tech} className="font-mono text-xs text-muted-foreground">
+            {tech}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {project.image && (
+      <img
+        src={project.image}
+        alt={project.title}
+        width={576}
+        height={324}
+        loading="lazy"
+        decoding="async"
+        className="order-first aspect-[16/9] w-full rounded-md border border-border object-cover md:order-none"
+      />
+    )}
+  </article>
+);
+
+const ProjectLinks = ({ project }: { project: Project }) => (
+  <div className="flex shrink-0 items-center gap-1">
+    {project.githubUrl && (
+      <a
+        href={project.githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${project.title} no GitHub`}
+        className="grid h-9 w-9 place-items-center rounded-md text-muted-foreground transition-colors duration-fast hover:text-primary"
+      >
+        <Github className="h-4 w-4" aria-hidden="true" />
+      </a>
+    )}
+    {project.liveUrl && (
+      <a
+        href={project.liveUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${project.title}, site`}
+        className="grid h-9 w-9 place-items-center rounded-md text-muted-foreground transition-colors duration-fast hover:text-primary"
+      >
+        <ExternalLink className="h-4 w-4" aria-hidden="true" />
+      </a>
+    )}
+  </div>
+);
 
 const Projects = () => {
   const { t, language } = useTranslation();
 
-  // Get featured and other projects
-  const featuredProjects = projects.filter(p => p.featured);
-  const otherProjects = projects.filter(p => !p.featured);
+  const featured = projects.filter((project) => project.featured);
+  const others = projects.filter((project) => !project.featured);
 
   return (
-    <section id="projects" className="py-32 relative">
+    <section id="projects" className="py-section">
       <div className="container px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Section header */}
-          <AnimatedSection animation="fade-up">
-            <div className="flex items-center gap-4 mb-16">
-              <span className="font-mono text-primary text-sm">{t.projects.sectionNumber}</span>
-              <h2 className="text-3xl md:text-4xl font-bold">{t.projects.title}</h2>
-              <div className="flex-1 h-px bg-border" />
-            </div>
-          </AnimatedSection>
+        <Reveal className="mx-auto max-w-5xl">
+          <SectionHeading number={t.projects.sectionNumber} title={t.projects.title} />
 
-          {/* Featured projects */}
-          <div className="space-y-24 mb-24">
-            {featuredProjects.map((project, index) => (
-              <AnimatedSection key={project.title} animation={index % 2 === 0 ? "fade-right" : "fade-left"} delay={100}>
-                <div
-                  className={`grid lg:grid-cols-2 gap-8 items-center ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''
-                    }`}
-                >
-                  {/* Project image placeholder */}
-                  <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                    <div className="aspect-video rounded-xl bg-secondary border border-border overflow-hidden group cursor-pointer relative">
-                      {project.image ? (
-                        <>
-                          <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          />
-                        </>
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                          <project.icon className="w-16 h-16 text-primary/50" />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Project info */}
-                  <div className={`${index % 2 === 1 ? 'lg:col-start-1 lg:text-right' : ''}`}>
-                    <p className="font-mono text-primary text-sm mb-2">{t.projects.featured}</p>
-                    <h3 className="text-2xl font-bold mb-4 hover:text-primary transition-colors cursor-pointer">
-                      {project.title}
-                    </h3>
-                    <div className="p-6 rounded-xl bg-card border border-border mb-4">
-                      <p className="text-muted-foreground">
-                        {project.description[language]}
-                      </p>
-                    </div>
-                    <div className={`flex flex-wrap gap-3 mb-6 ${index % 2 === 1 ? 'lg:justify-end' : ''}`}>
-                      {project.techStack.map((tech) => (
-                        <span key={tech} className="font-mono text-xs text-muted-foreground">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className={`flex items-center gap-4 ${index % 2 === 1 ? 'lg:justify-end' : ''}`}>
-                      {project.githubUrl && (
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
-                          <Github className="w-5 h-5" />
-                        </a>
-                      )}
-                      {project.liveUrl && (
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
-                          <ExternalLink className="w-5 h-5" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </AnimatedSection>
+          <div className="space-y-8">
+            {featured.map((project) => (
+              <FeaturedProject key={project.title} project={project} language={language} />
             ))}
           </div>
 
-          {/* Other projects */}
-          <div>
-            <AnimatedSection animation="fade-up">
-              <h3 className="text-xl font-bold text-center mb-12">{t.projects.otherProjects}</h3>
-            </AnimatedSection>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {otherProjects.map((project, index) => (
-                <AnimatedSection key={project.title} animation="scale" delay={index * 100}>
-                  <div
-                    className="group p-6 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/50 hover:-translate-y-2 transition-all duration-300 h-full"
-                  >
-                    <div className="flex items-center justify-between mb-6">
-                      <Folder className="w-10 h-10 text-primary" />
-                      <div className="flex items-center gap-3">
-                        {project.githubUrl && (
-                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                            <Github className="w-4 h-4" />
-                          </a>
-                        )}
-                        {project.liveUrl && (
-                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                            <ExternalLink className="w-4 h-4" />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                    <h4 className="font-bold mb-2 group-hover:text-primary transition-colors">
-                      {project.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      {project.description[language]}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.techStack.slice(0, 3).map((tag) => (
-                        <span key={tag} className="font-mono text-xs text-muted-foreground">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </AnimatedSection>
-              ))}
-            </div>
-          </div>
-        </div>
+          <h3 className="mb-5 mt-16 font-mono text-xs text-primary">{t.projects.otherProjects}</h3>
+
+          <ul className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
+            {others.map((project) => (
+              <li key={project.title} className="border-t border-border pt-4">
+                <div className="flex items-start justify-between gap-3">
+                  <h4 className="text-sm font-bold text-foreground">{project.title}</h4>
+                  <ProjectLinks project={project} />
+                </div>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {project.description[language]}
+                </p>
+                <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+                  {project.techStack.map((tech) => (
+                    <li key={tech} className="font-mono text-xs text-muted-foreground">
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );

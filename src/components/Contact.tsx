@@ -1,73 +1,50 @@
 import { Button } from "@/components/ui/button";
-import { Mail, MapPin, Send } from "lucide-react";
-import { AnimatedSection } from "@/hooks/useScrollAnimation";
+import { Reveal } from "@/hooks/useScrollAnimation";
 import { useTranslation } from "@/i18n";
 import { personalInfo } from "@/data/content";
+import SectionHeading from "./SectionHeading";
 
 const Contact = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="contact" className="py-32 relative">
+    <section id="contact" className="py-section">
       <div className="container px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          {/* Section header */}
-          <AnimatedSection animation="fade-up">
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <span className="font-mono text-primary text-sm">{t.contact.sectionNumber}</span>
-              <h2 className="text-3xl md:text-4xl font-bold">{t.contact.title}</h2>
-            </div>
-          </AnimatedSection>
+        <Reveal className="mx-auto max-w-4xl">
+          <SectionHeading number={t.contact.sectionNumber} title={t.contact.title} />
 
-          <AnimatedSection animation="fade-up" delay={100}>
-            <p className="text-lg text-muted-foreground mb-12 max-w-xl mx-auto">
-              {t.contact.description}
-            </p>
-          </AnimatedSection>
+          <p className="max-w-[62ch] text-lead text-muted-foreground">{t.contact.description}</p>
 
-          {/* Contact options */}
-          <div className="grid sm:grid-cols-2 gap-4 mb-12">
-            <AnimatedSection animation="fade-right" delay={200}>
-              <div className="p-6 rounded-xl border border-border bg-card/50 hover:border-primary/50 transition-all duration-300">
-                <Mail className="w-8 h-8 text-primary mx-auto mb-4" />
-                <p className="font-mono text-sm text-muted-foreground mb-2">{t.contact.emailLabel}</p>
+          {/* Eram dois cards com ícone centralizado, e o da direita renderizava
+              sem rótulo porque t.contact.locationLabel não existe em idioma
+              nenhum. Vira lista de definição: o rótulo é o <dt>, não uma
+              chave de tradução que ninguém escreveu. */}
+          <dl className="mt-10 grid gap-x-10 gap-y-6 border-t border-border pt-6 sm:grid-cols-2">
+            <div>
+              <dt className="font-mono text-xs text-muted-foreground">{t.contact.emailLabel}</dt>
+              <dd className="mt-1">
                 <a
                   href={`mailto:${personalInfo.email}`}
-                  className="text-foreground hover:text-primary transition-colors link-underline"
+                  className="link-underline text-base text-foreground transition-colors duration-fast hover:text-primary"
                 >
                   {personalInfo.email}
                 </a>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection animation="fade-left" delay={200}>
-              <div className="p-6 rounded-xl border border-border bg-card/50 hover:border-primary/50 transition-all duration-300">
-                <MapPin className="w-8 h-8 text-primary mx-auto mb-4" />
-                <p className="font-mono text-sm text-muted-foreground mb-2">{t.contact.locationLabel}</p>
-                <p className="text-foreground">{t.contact.location}</p>
-              </div>
-            </AnimatedSection>
-          </div>
-
-          {/* CTA Button */}
-          <AnimatedSection animation="scale" delay={300}>
-            <Button variant="hero" size="xl" asChild>
-              <a href={`mailto:${personalInfo.email}`} className="gap-3">
-                <Send className="w-5 h-5" />
-                {t.contact.sendMessage}
-              </a>
-            </Button>
-          </AnimatedSection>
-
-          {/* Terminal signature */}
-          <AnimatedSection animation="fade" delay={400}>
-            <div className="mt-16 p-4 rounded-lg bg-secondary/30 border border-border inline-block">
-              <p className="font-mono text-sm text-muted-foreground">
-                <span className="text-primary">$</span> {t.contact.thankYou}
-                <span className="text-primary animate-pulse">▌</span>
-              </p>
+              </dd>
             </div>
-          </AnimatedSection>
-        </div>
+            <div>
+              <dt className="font-mono text-xs text-muted-foreground">
+                {t.contact.locationLabel}
+              </dt>
+              <dd className="mt-1 text-base text-foreground">{t.contact.location}</dd>
+            </div>
+          </dl>
+
+          <div className="mt-10">
+            <Button variant="hero" size="xl" asChild>
+              <a href={`mailto:${personalInfo.email}`}>{t.contact.sendMessage}</a>
+            </Button>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

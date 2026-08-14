@@ -1,17 +1,3 @@
-import {
-    Boxes,
-    Calendar,
-    CircuitBoard,
-    Factory,
-    Film,
-    Globe,
-    KeyRound,
-    MessagesSquare,
-    Server,
-    Users,
-    type LucideIcon,
-} from "lucide-react";
-
 // ============================================
 // PERSONAL INFORMATION
 // ============================================
@@ -29,8 +15,9 @@ export const personalInfo = {
         country: "Brasil",
         countryEn: "Brazil",
     },
-    avatarUrl:
-        "https://avatars.githubusercontent.com/u/64905090?s=400&u=38aeca0edb2c6c8ccd97e96726c6ab622026c39f&v=4",
+    // Auto-hospedado: vinha de avatars.githubusercontent.com a cada visita,
+    // 215 KB de PNG num <img> de 128 px, e era terceiro no caminho crítico.
+    avatarUrl: "/avatar.webp",
     website: "https://bernardorocha.com",
 } as const;
 
@@ -274,7 +261,6 @@ export type Project = {
     techStack: string[];
     githubUrl?: string;
     liveUrl?: string;
-    icon: LucideIcon;
     image?: string;
     featured?: boolean;
 };
@@ -289,7 +275,6 @@ export const projects: Project[] = [
         },
         techStack: ["Docker", "Nginx", "PostgreSQL", "Node.js", "React", "VPS"],
         githubUrl: "https://github.com/bernardovieirarocha/SociosFormula",
-        icon: Users,
         featured: true,
     },
     {
@@ -301,7 +286,6 @@ export const projects: Project[] = [
             en: "Embedded electronics for the Formula SAE prototype, from the boards to remote access: an in-house datalogger (MAQ), a power distribution module controlled over CAN, an LTE Cat-M1 modem (BG95-M3), and an ESP32 serial-to-TCP bridge that exposes the MegaSquirt ECU for remote tuning through an mTLS relay, instead of a laptop wired up in the pit. Boards designed in Altium Designer.",
         },
         techStack: ["Altium Designer", "PCB Design", "CAN", "ESP32", "C++", "mTLS"],
-        icon: CircuitBoard,
         featured: true,
     },
     {
@@ -313,7 +297,6 @@ export const projects: Project[] = [
         techStack: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
         githubUrl: "https://github.com/rubensbkl/Flixmate",
         image: "/flixmate.webp",
-        icon: Film,
         featured: true,
     },
     {
@@ -324,7 +307,6 @@ export const projects: Project[] = [
         },
         techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
         // TODO(bernardo): link do site no ar e do repo, se for público.
-        icon: Globe,
         featured: true,
     },
     {
@@ -335,7 +317,6 @@ export const projects: Project[] = [
         },
         techStack: ["Proxmox", "ZFS", "Docker", "Nginx", "Linux", "MkDocs"],
         // TODO(bernardo): publicar o homelabdocs num repo e linkar aqui.
-        icon: Server,
         featured: true,
     },
 
@@ -348,7 +329,6 @@ export const projects: Project[] = [
         },
         techStack: ["Criptografia", "ECC", "Python", "React"],
         // TODO(bernardo): link do repo ou do resumo publicado, quando houver.
-        icon: KeyRound,
     },
     {
         title: "CORE (Cefast Operational Real-Time Engine)",
@@ -360,7 +340,6 @@ export const projects: Project[] = [
             en: "An operations platform we designed for the FSAE Brasil 2026 Business Presentation event, with four modules: demand forecasting, production scheduling via mathematical optimization, OBD-II telemetry analysis and Portuguese-language text analysis. It includes our own technical and financial modeling plus a navigable web prototype. The client is fictional, defined by the event.",
         },
         techStack: ["Python", "OR-Tools", "SimPy", "LightGBM", "XGBoost", "NLP"],
-        icon: Factory,
     },
     {
         title: "Migração do fórum: phpBB para NodeBB",
@@ -369,7 +348,6 @@ export const projects: Project[] = [
             en: "Migrated the team's forum, including moving the existing content and redeploying it with Docker on a VPS.",
         },
         techStack: ["NodeBB", "Docker", "Nginx", "Linux"],
-        icon: MessagesSquare,
     },
     {
         title: "RustCraft",
@@ -379,7 +357,6 @@ export const projects: Project[] = [
         },
         techStack: ["Rust", "Cargo"],
         githubUrl: "https://github.com/bernardovieirarocha/RustCraft",
-        icon: Boxes,
     },
     {
         title: "Class2Cal",
@@ -390,7 +367,6 @@ export const projects: Project[] = [
         techStack: ["Python", "iCalendar"],
         githubUrl: "https://github.com/bernardovieirarocha/Class2Cal",
         liveUrl: "https://bernardovieirarocha.github.io/Class2Cal/",
-        icon: Calendar,
     },
 ];
 

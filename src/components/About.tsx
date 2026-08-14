@@ -1,81 +1,51 @@
-import { Code2, Cpu, Database, Server, Workflow, Zap } from "lucide-react";
-import { AnimatedSection } from "@/hooks/useScrollAnimation";
+import { Reveal } from "@/hooks/useScrollAnimation";
 import { useTranslation } from "@/i18n";
+import SectionHeading from "./SectionHeading";
 
 const About = () => {
   const { t } = useTranslation();
 
   const highlights = [
-    { icon: Code2, label: t.about.highlights.softwareEngineering },
-    { icon: Cpu, label: t.about.highlights.embeddedSystems },
-    { icon: Zap, label: t.about.highlights.electronics },
-    { icon: Server, label: t.about.highlights.backend },
-    { icon: Workflow, label: t.about.highlights.devops },
-    { icon: Database, label: t.about.highlights.systemsDesign },
+    t.about.highlights.softwareEngineering,
+    t.about.highlights.embeddedSystems,
+    t.about.highlights.electronics,
+    t.about.highlights.backend,
+    t.about.highlights.devops,
+    t.about.highlights.systemsDesign,
   ];
 
+  const paragraphs = [t.about.paragraphs.p1, t.about.paragraphs.p2, t.about.paragraphs.p3];
+
   return (
-    <section id="about" className="py-32 relative">
+    <section id="about" className="py-section">
       <div className="container px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Section header */}
-          <AnimatedSection animation="fade-up">
-            <div className="flex items-center gap-4 mb-16">
-              <span className="font-mono text-primary text-sm">{t.about.sectionNumber}</span>
-              <h2 className="text-3xl md:text-4xl font-bold">{t.about.title}</h2>
-              <div className="flex-1 h-px bg-border" />
-            </div>
-          </AnimatedSection>
+        <Reveal className="mx-auto max-w-5xl">
+          <SectionHeading number={t.about.sectionNumber} title={t.about.title} />
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Text content */}
-            <AnimatedSection animation="fade-right" delay={100}>
-              <div className="space-y-6">
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  {t.about.paragraph1.start}
-                  <span className="text-foreground font-medium"> {t.about.paragraph1.highlight1}</span>
-                  {t.about.paragraph1.middle}
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
+            {/* max-w-[68ch]: linha de leitura confortável. Antes o parágrafo
+                esticava até a metade de uma tela de 1440. */}
+            <div className="max-w-[68ch] space-y-5">
+              {paragraphs.map((paragraph) => (
+                <p key={paragraph.slice(0, 24)} className="text-lead text-muted-foreground">
+                  {paragraph}
                 </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  {t.about.paragraph2.start}
-                  <span className="text-foreground font-medium"> {t.about.paragraph2.highlight1} </span>
-                  {t.about.paragraph2.middle}
-                  <span className="text-foreground font-medium"> {t.about.paragraph2.highlight2} </span>
-                  {t.about.paragraph2.end}
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  {t.about.paragraph3.start}
-                  <span className="text-primary font-semibold"> {t.about.paragraph3.highlight}</span>
-                  {t.about.paragraph3.end}
-                </p>
-
-                {/* Terminal-style quote */}
-                <div className="mt-8 p-4 rounded-lg bg-secondary/50 border border-border">
-                  <p className="font-mono text-sm text-muted-foreground">
-                    <span className="text-primary">{t.about.terminalUser}</span>:<span className="text-accent">~</span>$ {t.about.terminalCommand}
-                  </p>
-                  <p className="font-mono text-sm text-foreground mt-2">
-                    {t.about.terminalOutput}
-                  </p>
-                </div>
-              </div>
-            </AnimatedSection>
-
-            {/* Skills grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              {highlights.map((item, index) => (
-                <AnimatedSection key={item.label} animation="scale" delay={150 + index * 100}>
-                  <div
-                    className="group p-6 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/50 transition-all duration-300 cursor-default h-full min-h-[120px] flex flex-col justify-center"
-                  >
-                    <item.icon className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
-                    <p className="text-sm font-medium text-foreground">{item.label}</p>
-                  </div>
-                </AnimatedSection>
               ))}
             </div>
+
+            {/* Eram seis cards com ícone — a grade de cards idênticos que faz
+                qualquer página parecer template. São seis rótulos; agora são
+                seis rótulos, numa lista. */}
+            <ul className="flex flex-wrap gap-x-6 gap-y-3 lg:max-w-[14rem] lg:flex-col lg:gap-y-4">
+              {highlights.map((label) => (
+                <li key={label} className="flex items-baseline gap-3 text-sm text-foreground">
+                  <span aria-hidden="true" className="h-px w-4 shrink-0 translate-y-[-0.3em] bg-primary" />
+                  {label}
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

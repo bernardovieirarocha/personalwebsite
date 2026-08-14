@@ -2,15 +2,73 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Bernardo Rocha - Engenheiro de Computação & Cientista da Computação. Especialista em software engineering, sistemas embarcados, backend e DevOps." />
-    <meta name="keywords" content="Bernardo Rocha, Engenheiro de Computação, Software Engineer, Backend Developer, DevOps, Embedded Systems" />
-    <meta name="author" content="Bernardo Rocha" />
-    <meta property="og:title" content="Bernardo Rocha | Portfolio" />
-    <meta property="og:description" content="Transformando bits em impacto real. Engenheiro de Computação especializado em software, hardware e sistemas." />
-    <meta property="og:type" content="website" />
-    <title>Bernardo Rocha | Portfolio</title>
+    <link rel="icon" sizes="any" href="/favicon.ico" />
+    <link rel="icon" type="image/webp" href="/bernardologo.webp" />
+    <link rel="apple-touch-icon" href="/apple-icon.png" />
+    <meta name="author" content="Bernardo Vieira Rocha" />
+    <meta name="theme-color" content="#0a0d12" />
+
+    <!-- A fonte de texto e o avatar são o que o visitante vê primeiro; sem
+         preload eles só começam a baixar depois do CSS ser parseado. Ambos
+         são same-origin (nada de fonts.gstatic aqui), então o preload não
+         abre conexão nova. -->
+    <link
+      rel="preload"
+      href="/fonts/archivo-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="preload" href="/avatar.webp" as="image" type="image/webp" />
+    <!-- NÃO adicione <title>, description, canonical nem og:*/twitter:* aqui.
+         Eles são definidos por rota em src/components/Seo.tsx e injetados no
+         HTML estático durante o build; declarar de novo gera tags duplicadas. -->
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Bernardo Vieira Rocha",
+        "alternateName": "Bernardo Rocha",
+        "url": "https://bernardorocha.com/",
+        "image": "https://bernardorocha.com/og-image.png",
+        "email": "mailto:b.vieira.rocha@gmail.com",
+        "jobTitle": "Projetista Eletrônico",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Fórmula CEFAST"
+        },
+        "alumniOf": [
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Centro Federal de Educação Tecnológica de Minas Gerais (CEFET-MG)"
+          },
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Pontifícia Universidade Católica de Minas Gerais (PUC Minas)"
+          }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Belo Horizonte",
+          "addressRegion": "MG",
+          "addressCountry": "BR"
+        },
+        "knowsAbout": [
+          "Sistemas embarcados",
+          "Projeto de PCB",
+          "Telemetria veicular",
+          "Barramento CAN",
+          "Infraestrutura e DevOps",
+          "Engenharia de software"
+        ],
+        "sameAs": [
+          "https://github.com/bernardovieirarocha",
+          "https://www.linkedin.com/in/bernardovrocha/"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

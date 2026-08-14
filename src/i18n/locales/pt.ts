@@ -78,6 +78,9 @@ export const pt = {
         emailLabel: "E-mail",
         githubLabel: "GitHub",
         linkedinLabel: "LinkedIn",
+        // Contact.tsx já pedia esta chave; ela nunca existiu em nenhum
+        // idioma, então o card de localização renderizava sem rótulo.
+        locationLabel: "Localização",
         location: "Belo Horizonte, MG, Brasil",
         sendMessage: "Mandar um e-mail",
     },

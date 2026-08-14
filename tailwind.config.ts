@@ -14,11 +14,50 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        sans: ['Archivo', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+      },
+      // Escala fechada de SEIS valores. text-xl e text-3xl..9xl deixam de
+      // existir de propósito: se o build reclamar de uma delas, escolha um
+      // destes seis em vez de reabrir a escala.
+      //
+      // `lg` e `2xl` são apelidos para dois valores da própria escala, e
+      // existem só porque src/components/ui/ é código shadcn gerado e os
+      // usa — não os use em código de aplicação.
+      fontSize: {
+        xs: ["var(--text-xs)", { lineHeight: "1.5" }],
+        sm: ["var(--text-sm)", { lineHeight: "1.6" }],
+        base: ["var(--text-base)", { lineHeight: "1.65" }],
+        lead: ["var(--text-lead)", { lineHeight: "1.6" }],
+        title: ["var(--text-title)", { lineHeight: "1.15", letterSpacing: "-0.02em" }],
+        display: ["var(--text-display)", { lineHeight: "1.02", letterSpacing: "-0.035em" }],
+        lg: ["var(--text-lead)", { lineHeight: "1.6" }],
+        "2xl": ["var(--text-title)", { lineHeight: "1.15", letterSpacing: "-0.02em" }],
+      },
+      fontWeight: {
+        normal: "var(--weight-regular)",
+        medium: "var(--weight-medium)",
+        bold: "var(--weight-bold)",
+      },
+      // Só nomes semânticos. A escala numérica do Tailwind (base 4px) já é
+      // consistente e é usada pelo shadcn — sobrescrever 1..6 aqui quebraria
+      // px-2 / p-4 / p-6 em todo o ui/.
+      spacing: {
+        section: "var(--section-y)",
+        "section-tight": "var(--section-y-tight)",
+      },
+      transitionTimingFunction: {
+        "out-quart": "var(--ease-out-quart)",
+      },
+      transitionDuration: {
+        fast: "var(--duration-fast)",
+        base: "var(--duration-base)",
       },
       colors: {
         border: "hsl(var(--border))",
+        "border-strong": "hsl(var(--border-strong))",
+        surface: "hsl(var(--surface))",
+        "surface-raised": "hsl(var(--surface-raised))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
