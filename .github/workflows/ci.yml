@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  build:
+    name: Lint, i18n e build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        # Sem isto, `vite build` não checa tipo nenhum e chaves de i18n
+        # inexistentes chegam ao ar renderizando vazio.
+        run: npm run typecheck
+
+      - name: Paridade de tradução PT/EN
+        run: npm run check:i18n
+
+      - name: Build (pré-renderizado)
+        run: npm run build
+
+      - name: Conferir que o HTML estático tem conteúdo
+        # Se isto falhar, a pré-renderização parou de funcionar e o site
+        # voltou a ser uma SPA vazia para crawlers e previews de link.
+        run: |
+          set -e
+          test -f dist/index.html
+          test -f dist/resume.html
+          test -f dist/404.html
+          test -f dist/sitemap.xml
+          grep -q "Fórmula CEFAST" dist/index.html \
+            || (echo "dist/index.html não contém o conteúdo da home" && exit 1)
+          grep -q 'rel="canonical"' dist/index.html \
+            || (echo "dist/index.html sem canonical" && exit 1)
+          echo "HTML estático OK"
+
+      - name: Guardar o build
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 7
+
+  lighthouse:
+    name: Lighthouse
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true

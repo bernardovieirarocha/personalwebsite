@@ -6,8 +6,8 @@ const Footer = () => {
   const { t } = useTranslation();
 
   const links = [
-    { href: socialLinks.github, label: "GitHub", Icon: Github },
-    { href: socialLinks.linkedin, label: "LinkedIn", Icon: Linkedin },
+    { href: socialLinks.github, label: t.contact.githubLabel, Icon: Github },
+    { href: socialLinks.linkedin, label: t.contact.linkedinLabel, Icon: Linkedin },
     { href: `mailto:${personalInfo.email}`, label: t.contact.emailLabel, Icon: Mail },
   ];
 

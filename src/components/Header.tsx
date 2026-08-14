@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "@/i18n";
 
 const LanguageToggle = () => {
-  const { language, setLanguage } = useTranslation();
+  const { language, setLanguage, t } = useTranslation();
 
   return (
     <div
       role="group"
-      aria-label="Idioma / Language"
+      aria-label={t.nav.language}
       className="flex items-center overflow-hidden rounded-md border border-border font-mono text-xs"
     >
       {(["pt", "en"] as const).map((code) => (
@@ -99,7 +99,7 @@ const Header = () => {
           onClick={() => setIsMobileMenuOpen((open) => !open)}
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-menu"
-          aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-label={isMobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
         >
           {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>

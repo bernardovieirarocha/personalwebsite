@@ -3,9 +3,51 @@
   publish = "dist"
 
 [build.environment]
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  NODE_VERSION = "20"
 
+# O build é pré-renderizado (vite-react-ssg): cada rota vira um HTML estático
+# em dist/, então NÃO existe mais um rewrite "/* -> /index.html 200".
+# Um caminho inexistente cai no 404 real abaixo, como deve ser.
 [[redirects]]
   from = "/*"
-  to = "/index.html"
-  status = 200
+  to = "/404.html"
+  status = 404
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/og-image.png"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Fontes auto-hospedadas (src/index.css). O nome do arquivo não tem hash, então
+# a regra é: trocou a fonte, troca o nome do arquivo. Sem isso elas caem no
+# cache padrão do Netlify e voltam a ser baixadas a cada visita, o que anula
+# boa parte do ganho de ter saído do Google Fonts.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Avatar do hero (candidato a LCP) e logo. Mesma regra de nome acima, mas com
+# prazo menor: é mais provável trocar a foto que a fonte.
+[[headers]]
+  for = "/avatar.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/bernardologo.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

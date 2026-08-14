@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite-react-ssg build && node scripts/generate-sitemap.mjs",
+    "build": "vite-react-ssg build && node scripts/fix-charset.mjs && node scripts/generate-sitemap.mjs",
     "build:spa": "vite build",
     "preview": "vite preview --outDir dist",
     "lint": "eslint .",

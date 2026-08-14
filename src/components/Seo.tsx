@@ -12,6 +12,12 @@ type SeoProps = {
   /** Imagem do card social, relativa à raiz. */
   image?: string;
   type?: "website" | "profile" | "article";
+  /**
+   * Imagem que é candidata a LCP nesta rota. Vira <link rel="preload">.
+   * Só a home tem uma (o avatar do hero); preloadar em toda rota faria o
+   * /resume baixar uma imagem que ele nem mostra.
+   */
+  preloadImage?: string;
 };
 
 /**
@@ -19,7 +25,14 @@ type SeoProps = {
  * Durante o build o vite-react-ssg escreve isso direto no HTML estático,
  * então previews de link e crawlers enxergam o conteúdo certo sem executar JS.
  */
-const Seo = ({ title, description, path, image = "/og-image.png", type = "website" }: SeoProps) => {
+const Seo = ({
+  title,
+  description,
+  path,
+  image = "/og-image.png",
+  type = "website",
+  preloadImage,
+}: SeoProps) => {
   const { language } = useTranslation();
   const url = `${SITE_URL}${path === "/" ? "/" : path}`;
   const imageUrl = `${SITE_URL}${image}`;
@@ -30,6 +43,7 @@ const Seo = ({ title, description, path, image = "/og-image.png", type = "websit
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
+      {preloadImage && <link rel="preload" as="image" href={preloadImage} />}
 
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="Bernardo Rocha" />

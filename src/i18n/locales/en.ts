@@ -8,6 +8,9 @@ export const en: TranslationKeys = {
         skills: "Skills",
         projects: "Projects",
         contact: "Contact",
+        language: "Language",
+        openMenu: "Open menu",
+        closeMenu: "Close menu",
         resumeSite: "Resume",
     },
 

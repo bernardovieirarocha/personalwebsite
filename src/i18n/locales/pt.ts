@@ -6,6 +6,9 @@ export const pt = {
         skills: "Skills",
         projects: "Projetos",
         contact: "Contato",
+        language: "Idioma",
+        openMenu: "Abrir menu",
+        closeMenu: "Fechar menu",
         resumeSite: "Currículo",
     },
 

@@ -8,6 +8,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import { useTranslation } from "@/i18n";
+import { personalInfo } from "@/data/content";
 
 const Index = () => {
   const { t } = useTranslation();
@@ -19,6 +20,7 @@ const Index = () => {
         description={t.seo.home.description}
         path="/"
         type="profile"
+        preloadImage={personalInfo.avatarUrl}
       />
       <div className="min-h-screen bg-background">
         <Header />

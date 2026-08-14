@@ -9,10 +9,11 @@
     <meta name="author" content="Bernardo Vieira Rocha" />
     <meta name="theme-color" content="#0a0d12" />
 
-    <!-- A fonte de texto e o avatar são o que o visitante vê primeiro; sem
-         preload eles só começam a baixar depois do CSS ser parseado. Ambos
-         são same-origin (nada de fonts.gstatic aqui), então o preload não
-         abre conexão nova. -->
+    <!-- A fonte de texto é o que atrasa o primeiro texto legível em toda
+         rota; sem preload ela só começa a baixar depois do CSS ser parseado.
+         É same-origin (nada de fonts.gstatic aqui), então não abre conexão
+         nova. O avatar é preloadado só na home, via Seo.tsx: o /resume não
+         mostra avatar e não deve baixá-lo. -->
     <link
       rel="preload"
       href="/fonts/archivo-latin.woff2"
@@ -20,7 +21,6 @@
       type="font/woff2"
       crossorigin
     />
-    <link rel="preload" href="/avatar.webp" as="image" type="image/webp" />
     <!-- NÃO adicione <title>, description, canonical nem og:*/twitter:* aqui.
          Eles são definidos por rota em src/components/Seo.tsx e injetados no
          HTML estático durante o build; declarar de novo gera tags duplicadas. -->
