@@ -27,19 +27,16 @@ export const en: TranslationKeys = {
     // About Section
     about: {
         title: "About",
-        // TODO(bernardo): these three paragraphs are yours to rewrite.
+        // Mirror of pt.ts: this section states how I work and proves it with
+        // one artifact. It must not restate the timeline — Experience and
+        // Projects already do, with dates.
         paragraphs: {
-            p1: "I study Computer Engineering at CEFET-MG and Computer Science at PUC Minas at the same time. In practice that means spending the day between a board schematic and a service deploy, and that combination is something I have been building on purpose.",
-            p2: "I joined Formula CEFAST, CEFET-MG's Formula SAE team, designing electronic modules in Altium Designer. Today I am the team's Head of IT: I make the stack calls, run the infrastructure we depend on (the membership platform, the forum, the servers) and coordinate the other people in the area.",
-            p3: "Outside the team I run a Proxmox homelab on ZFS, which I use to learn infrastructure the most direct way there is: by breaking it and fixing it. I also have a specific interest in cryptography, which is where CriptoEscape came from.",
-        },
-        highlights: {
-            softwareEngineering: "Software Engineering",
-            embeddedSystems: "Embedded Systems",
-            electronics: "Electronics",
-            backend: "Backend",
-            devops: "Infrastructure",
-            systemsDesign: "Systems Design",
+            p1: "I work on both sides of the same system. I designed the boards that go in the Formula CEFAST car in Altium, and I wrote the service that talks to them. What interests me is the seam: where a firmware problem turns into a network problem, and then into a deployment problem.",
+            // TODO(bernardo): rule 5 — close this paragraph with ONE sentence on
+            // what is still unresolved in the bridge. Keep it in sync with pt.ts.
+            p2: "The clearest case is the ESP32 serial-to-TCP bridge: it exists only because I was on both sides. Tuning the MegaSquirt ECU meant a laptop wired to the car inside the pit, and getting that laptop out of there was half a firmware problem and half a networking one. It became an mTLS relay.",
+            // TODO(bernardo): the human line. Empty means it is not rendered.
+            p3: "",
         },
     },
 

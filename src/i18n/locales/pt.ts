@@ -25,21 +25,21 @@ export const pt = {
     // About Section
     about: {
         title: "Sobre",
-        // TODO(bernardo): estes três parágrafos são o seu texto. Reescreva com
-        // fatos que só você sabe: que módulo você projetou, o que quebrou,
-        // o que você aprendeu consertando. Ver as regras 3 e 4 do CLAUDE.md.
+        // O Sobre não repete a linha do tempo: Experiência e Projetos já a
+        // contam, com data. Aqui vai a única coisa que elas não conseguem
+        // dizer — como você trabalha — e a prova disso num artefato seu.
         paragraphs: {
-            p1: "Curso Engenharia de Computação no CEFET-MG e Ciência da Computação na PUC Minas ao mesmo tempo. Na prática isso significa passar o dia entre o esquemático de uma placa e o deploy de um serviço, e é essa combinação que eu venho construindo de propósito.",
-            p2: "Entrei na Fórmula CEFAST, equipe de Fórmula SAE do CEFET-MG, projetando módulos eletrônicos em Altium Designer. Hoje sou Head de TI da equipe: decido a stack, opero a infraestrutura que a gente usa (a plataforma de sócios, o fórum, os servidores) e coordeno as outras pessoas da área.",
-            p3: "Fora da equipe, mantenho um homelab em Proxmox com ZFS que uso para aprender infraestrutura da forma mais direta possível: quebrando e consertando. E tenho um interesse específico por criptografia, e foi de onde saiu o CriptoEscape.",
-        },
-        highlights: {
-            softwareEngineering: "Engenharia de Software",
-            embeddedSystems: "Sistemas Embarcados",
-            electronics: "Eletrônica",
-            backend: "Backend",
-            devops: "Infraestrutura",
-            systemsDesign: "Projeto de Sistemas",
+            p1: "Trabalho nos dois lados do mesmo sistema. Projetei em Altium as placas que vão no carro da Fórmula CEFAST e escrevi o serviço que fala com elas. O que me interessa é a fronteira: onde um problema de firmware vira problema de rede, e depois problema de deploy.",
+            // TODO(bernardo): regra 5 — feche este parágrafo com UMA frase sobre
+            // o que na ponte ainda não está resolvido. O estado incompleto dito
+            // vale mais que o silêncio, e é o que separa isto de um release note.
+            p2: "O caso mais direto é a ponte serial para TCP em ESP32: ela só existe porque eu estava dos dois lados. Fazer o tuning da ECU MegaSquirt exigia um notebook ligado no carro dentro do box, e tirar esse notebook dali era metade problema de firmware, metade problema de rede. Virou um relay mTLS.",
+            // TODO(bernardo): a linha humana, e só você tem essa. O modelo é o
+            // Mitchell Hashimoto: não "sou apaixonado por aviação", mas "tenho
+            // licença de piloto privado com habilitação por instrumentos".
+            // Específica, verificável, sem relação com o trabalho. Enquanto
+            // estiver vazia ela simplesmente não é renderizada.
+            p3: "",
         },
     },
 
