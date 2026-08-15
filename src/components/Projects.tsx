@@ -5,44 +5,54 @@ import { projects, type Project } from "@/data/content";
 import SectionHeading from "./SectionHeading";
 
 /**
- * Projeto em destaque. Não é card: é uma entrada de lista com régua acima,
- * imagem quando existe e texto quando não. A grade de cards idênticos com
- * borda arredondada era o que mais entregava "template" na página.
+ * Projeto em destaque, num painel.
+ *
+ * O que se evita aqui é a GRADE de cards idênticos — cinco caixas do mesmo
+ * tamanho, ícone em cima, título, dois parágrafos. Isso é template. Estes são
+ * painéis empilhados em largura cheia, de alturas diferentes (três têm captura,
+ * dois não), e a superfície existe para um motivo: as capturas precisavam de
+ * uma moldura para não parecerem PNG solto no fundo da página.
+ *
+ * O tier de baixo ("Outros projetos") continua sendo lista sem caixa, de
+ * propósito — é o contraste entre os dois que faz a hierarquia aparecer.
  */
 const FeaturedProject = ({ project, language }: { project: Project; language: "pt" | "en" }) => (
-  <article className="border-t border-border pt-8">
-    <div className="max-w-[68ch]">
-      <div className="flex items-start justify-between gap-4">
-        <h3 className="text-lead font-bold text-foreground">{project.title}</h3>
-        <ProjectLinks project={project} />
-      </div>
-
-      <p className="mt-3 text-sm text-muted-foreground">{project.description[language]}</p>
-
-      <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1">
-        {project.techStack.map((tech) => (
-          <li key={tech} className="font-mono text-xs text-muted-foreground">
-            {tech}
-          </li>
-        ))}
-      </ul>
+  <article className="rounded-lg border border-border bg-surface p-6 transition-colors duration-fast hover:border-border-strong sm:p-8">
+    <div className="flex items-start justify-between gap-4">
+      <h3 className="text-lead font-bold text-foreground">{project.title}</h3>
+      <ProjectLinks project={project} />
     </div>
 
+    <p className="mt-3 max-w-[68ch] text-sm text-muted-foreground">{project.description[language]}</p>
+
+    {/* Sem borda nos chips: sobre um painel que já tem borda, cada pílula
+        contornada vira mais um retângulo competindo. Só o degrau de superfície. */}
+    <ul className="mt-5 flex flex-wrap gap-2">
+      {project.techStack.map((tech) => (
+        <li
+          key={tech}
+          className="rounded bg-surface-raised px-2 py-1 font-mono text-xs text-muted-foreground"
+        >
+          {tech}
+        </li>
+      ))}
+    </ul>
+
     {project.image && (
-      // Largura cheia e proporção nativa. A versão anterior espremia tudo numa
-      // coluna de 18rem e forçava aspect-[16/9] com object-cover — as capturas
-      // vão de 1.47:1 a 2.27:1, então qualquer proporção fixa cortava alguma.
-      // Aqui `width`/`height` são os do arquivo: o browser reserva a altura
-      // exata antes de baixar, e nada é recortado.
-      <img
-        src={project.image.src}
-        alt={project.title}
-        width={project.image.width}
-        height={project.image.height}
-        loading="lazy"
-        decoding="async"
-        className="mt-7 h-auto w-full rounded-md border border-border bg-surface"
-      />
+      // Proporção nativa, sem recorte: as capturas vão de 1.47:1 a 2.27:1, e
+      // qualquer aspect fixo cortaria alguma. `width`/`height` são os do
+      // arquivo, então o browser reserva a altura exata antes de baixar.
+      <div className="mt-7 overflow-hidden rounded-md border border-border bg-background">
+        <img
+          src={project.image.src}
+          alt={project.title}
+          width={project.image.width}
+          height={project.image.height}
+          loading="lazy"
+          decoding="async"
+          className="block h-auto w-full"
+        />
+      </div>
     )}
   </article>
 );
@@ -86,7 +96,9 @@ const Projects = () => {
         <Reveal className="mx-auto max-w-3xl">
           <SectionHeading title={t.projects.title} />
 
-          <div className="space-y-14">
+          {/* space-y-6, não 14: com painel, a moldura já separa uma entrada da
+              seguinte — o vão grande era para compensar a ausência dela. */}
+          <div className="space-y-6">
             {featured.map((project) => (
               <FeaturedProject key={project.title} project={project} language={language} />
             ))}

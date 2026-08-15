@@ -29,11 +29,10 @@ export const pt = {
         // contam, com data. Aqui vai a única coisa que elas não conseguem
         // dizer — como você trabalha — e a prova disso num artefato seu.
         paragraphs: {
-            p1: "Trabalho nos dois lados do mesmo sistema. Projetei em Altium as placas que vão no carro da Fórmula CEFAST e escrevi o serviço que fala com elas. O que me interessa é a fronteira: onde um problema de firmware vira problema de rede, e depois problema de deploy.",
-            // TODO(bernardo): regra 5 — feche este parágrafo com UMA frase sobre
-            // o que na ponte ainda não está resolvido. O estado incompleto dito
-            // vale mais que o silêncio, e é o que separa isto de um release note.
-            p2: "O caso mais direto é a ponte serial para TCP em ESP32: ela só existe porque eu estava dos dois lados. Fazer o tuning da ECU MegaSquirt exigia um notebook ligado no carro dentro do box, e tirar esse notebook dali era metade problema de firmware, metade problema de rede. Virou um relay mTLS.",
+            p1: "Gosto de trabalhar dos dois lados: hardware e software. Na Fórmula CEFAST isso é literal — desenhei placas em Altium para o carro e hoje também respondo pelos servidores, pelo fórum e pela plataforma de sócios da equipe.",
+            // TODO(bernardo): regra 5 — uma frase sobre algo que ainda não está
+            // resolvido faz mais por este parágrafo que qualquer adjetivo.
+            p2: "Na prática a semana alterna entre coisas bem diferentes: layout de PCB, barramento CAN e firmware de um lado; container, proxy reverso, banco e deploy do outro. O que me interessa é a fronteira entre os dois, quando um problema de firmware vira problema de rede — foi de onde saiu a ponte serial para TCP em ESP32 que tirou o notebook de dentro do box.",
             // TODO(bernardo): a linha humana, e só você tem essa. O modelo é o
             // Mitchell Hashimoto: não "sou apaixonado por aviação", mas "tenho
             // licença de piloto privado com habilitação por instrumentos".

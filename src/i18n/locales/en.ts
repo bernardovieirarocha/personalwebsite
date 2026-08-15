@@ -31,10 +31,10 @@ export const en: TranslationKeys = {
         // one artifact. It must not restate the timeline — Experience and
         // Projects already do, with dates.
         paragraphs: {
-            p1: "I work on both sides of the same system. I designed the boards that go in the Formula CEFAST car in Altium, and I wrote the service that talks to them. What interests me is the seam: where a firmware problem turns into a network problem, and then into a deployment problem.",
-            // TODO(bernardo): rule 5 — close this paragraph with ONE sentence on
-            // what is still unresolved in the bridge. Keep it in sync with pt.ts.
-            p2: "The clearest case is the ESP32 serial-to-TCP bridge: it exists only because I was on both sides. Tuning the MegaSquirt ECU meant a laptop wired to the car inside the pit, and getting that laptop out of there was half a firmware problem and half a networking one. It became an mTLS relay.",
+            p1: "I like working on both sides: hardware and software. At Formula CEFAST that is literal — I drew boards in Altium for the car, and today I am also the one responsible for the servers, the forum and the team's membership platform.",
+            // TODO(bernardo): rule 5 — one sentence about something still
+            // unresolved does more here than any adjective. Keep in sync with pt.ts.
+            p2: "In practice the week alternates between very different things: PCB layout, the CAN bus and firmware on one side; containers, a reverse proxy, a database and deployment on the other. What interests me is the seam between them, when a firmware problem turns into a network problem — which is where the ESP32 serial-to-TCP bridge came from, the one that got the laptop out of the pit.",
             // TODO(bernardo): the human line. Empty means it is not rendered.
             p3: "",
         },
