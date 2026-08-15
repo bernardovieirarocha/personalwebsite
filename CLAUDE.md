@@ -1,4 +1,4 @@
-# CLAUDE.md — bernardorocha.com
+# CLAUDE.md: bernardorocha.com
 
 Contexto para o Claude Code trabalhando neste repositório. Leia antes de qualquer alteração.
 
@@ -10,19 +10,19 @@ Este repositório (`personalwebsite`) é a **única fonte da verdade**. O antigo
 
 **Stack:** Vite 5 · React 18 · TypeScript · Tailwind CSS · shadcn/ui · React Router · Netlify.
 
-## Quem é o dono do site (fatos verificados — use estes, não invente outros)
+## Quem é o dono do site (fatos verificados: use estes, não invente outros)
 
 - Cursa **Engenharia de Computação no CEFET-MG** (2024–2029, campus BH) **e Ciência da
   Computação na PUC Minas** (2024–2028), simultaneamente.
-- **Fórmula CEFAST (SAE), desde 2024** — Projetista Eletrônico (Altium Designer / PCB).
+- **Fórmula CEFAST (SAE), desde 2024**. Projetista Eletrônico (Altium Designer / PCB).
   Atua tanto na eletrônica embarcada e telemetria quanto no lado de software/infra da equipe.
 - **Monitor de AEDS I na PUC Minas**, 2024–2025.
-- **Plano de Trabalho de Extensão (AEX PJ085-2026)** na Fórmula CEFAST — 600 h, 05/2026–12/2026.
+- **Plano de Trabalho de Extensão (AEX PJ085-2026)** na Fórmula CEFAST: 600 h, 05/2026–12/2026.
 - **Não tem estágio.** Não inventar um, nem "experiência freelance", nem preencher lacuna na
   timeline. Não está buscando estágio imediatamente; está construindo base para isso.
 - Perfil-alvo: **híbrido hardware + software**, com braço de **pesquisa**.
 - **Candidatura em aberto** (não publicar até ser confirmada): IC voluntária do Prof. Jeferson
-  Chaves — verificação e refatoração de módulos Verilog HDL do núcleo do NES na plataforma
+  Chaves: verificação e refatoração de módulos Verilog HDL do núcleo do NES na plataforma
   MiSTer FPGA, com testbenches automatizados e ferramentas Cadence.
 
 Projetos reais que devem aparecer (repos e contexto existem):
@@ -34,7 +34,7 @@ RustCraft (Rust) · site da Fórmula CEFAST (Next.js).
 **Fora do site por decisão do dono:** apresentação de TLS 1.3 / handshake híbrido pós-quântico
 e artigo de RSA-OAEP. Não reintroduzir.
 
-## Regras de conteúdo — não negociáveis
+## Regras de conteúdo, não negociáveis
 
 1. **Nunca invente métricas.** Proibido: contadores de projetos, "anos de experiência",
    número de certificações, "∞ cafés", percentuais de proficiência, barras de skill.
@@ -49,31 +49,35 @@ e artigo de RSA-OAEP. Não reintroduzir.
 5. **Estados incompletos são ditos, não escondidos.** "Reconexão automática ainda em aberto"
    é conteúdo melhor que silêncio.
 6. **PT e EN sempre juntos.** Nenhum PR pode adicionar uma chave em um idioma só.
-   O site é bilíngue completo — meio-traduzido é pior que monolíngue.
+   O site é bilíngue completo: meio-traduzido é pior que monolíngue.
 7. **Sem dado pessoal sensível no bundle.** Sem telefone, sem endereço. E-mail é o único canal.
 8. **Nenhuma chave de API com prefixo `VITE_`.** Tudo com `VITE_` vai para o JavaScript público.
    Chamada autenticada → Netlify Function em `netlify/functions/`.
+9. **Sem travessão (`—`).** Não usar em texto do site, em comentário de código, em README
+   nem em mensagem de commit. Use dois-pontos quando o que vem depois explica, ponto quando
+   é frase independente, vírgula quando é aposto, parênteses quando é lateral. Vale também
+   para as respostas do assistente no chat. Preferência do dono, não estilo.
 
 ## Regras de código
 
 - Todo conteúdo textual vive em `src/content/` (dados) e `src/i18n/locales/{pt,en}.ts` (strings).
   **Nunca** escreva texto visível direto num componente `.tsx`.
-- `src/content/*` é validado por schema **Zod** — o build falha se um campo obrigatório faltar.
+- `src/content/*` é validado por schema **Zod**: o build falha se um campo obrigatório faltar.
 - i18n é **tipado**. Não reintroduzir o padrão de chave plana em string (`t('nav.about')`) do
   repo `cv` antigo; ele falha silenciosamente.
 - Um único `src/lib/utils.ts`. Não recriar `src/libs/`.
-- Componentes de `src/components/ui/` são shadcn — não editar à mão; regenerar quando preciso.
+- Componentes de `src/components/ui/` são shadcn: não editar à mão; regenerar quando preciso.
 - Toda animação respeita `prefers-reduced-motion`.
 - Toda imagem tem `alt`, `width`, `height` e `loading="lazy"` (exceto a do hero).
 
-## Sistema visual — a escala é fechada
+## Sistema visual: a escala é fechada
 
 Tokens e justificativas ficam em `src/index.css`. Regras que não se reabrem sem motivo:
 
 1. **Seis tamanhos de texto, três pesos.** `text-xs · sm · base · lead · title · display`.
    `text-xl` e `text-3xl`..`9xl` não são gerados de propósito. Se algo "não cabe",
    o problema é de hierarquia, não de tamanho. (`lg` e `2xl` existem só como apelido
-   para código shadcn gerado — não use em componente de aplicação.)
+   para código shadcn gerado, não use em componente de aplicação.)
 2. **Duas famílias.** Archivo para texto, JetBrains Mono só para dado e rótulo
    (período, tecnologia, numeração de seção). Mono nunca em prosa.
 3. **Fontes auto-hospedadas** em `public/fonts`, variáveis, subset latin + latin-ext.
@@ -85,7 +89,7 @@ Tokens e justificativas ficam em `src/index.css`. Regras que não se reabrem sem
    glow nem gradiente em texto. Gradiente em texto é proibido.
 6. **Revelação por seção**, um `<Reveal>` por seção. Não embrulhar card a card.
    Conteúdo é visível por padrão: nunca dependa da transição para ele existir.
-7. **Todo movimento morre sob `prefers-reduced-motion`** — há um bloco global no fim
+7. **Todo movimento morre sob `prefers-reduced-motion`**: há um bloco global no fim
    de `src/index.css`. Animação nova não precisa de guarda própria, mas confira.
 8. **Foco**: um `:focus-visible` global. Não usar `focus-visible:ring` do Tailwind
    (o `ring-offset` é branco e abre halo sobre o fundo escuro).
@@ -118,7 +122,7 @@ npm run lint       # eslint
 ## O que NÃO fazer
 
 - Não reintroduzir `lovable-tagger` nem o nome de pacote `vite_react_shadcn_ts`.
-- Não adicionar uma seção nova sem cortar outra — a home tem orçamento fixo de atenção.
+- Não adicionar uma seção nova sem cortar outra: a home tem orçamento fixo de atenção.
 - Não usar `localStorage`/`sessionStorage` como única fonte de estado de idioma sem fallback
   para a preferência do navegador.
 - Não commitar `.env`.

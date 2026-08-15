@@ -4,7 +4,7 @@ import { useTranslation } from "@/i18n";
 export const SITE_URL = "https://bernardorocha.com";
 
 type SeoProps = {
-  /** Título da aba e do card social. Sem sufixo — ele é adicionado aqui. */
+  /** Título da aba e do card social. Sem sufixo: ele é adicionado aqui. */
   title: string;
   description: string;
   /** Caminho da rota, começando com "/". Vira canonical e og:url. */

@@ -3,7 +3,7 @@ import { useTranslation } from "@/i18n";
 import SectionHeading from "./SectionHeading";
 
 /**
- * O Sobre não resume a linha do tempo — Experiência e Projetos já a contam,
+ * O Sobre não resume a linha do tempo: Experiência e Projetos já a contam,
  * com data. Dois dos três parágrafos antigos eram a versão longa da frase do
  * Hero logo acima, e a coluna de seis rótulos ("Engenharia de Software",
  * "Backend", "Infraestrutura"...) era a seção Skills escrita como substantivo

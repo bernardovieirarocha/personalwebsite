@@ -4,14 +4,14 @@ import { useMemo } from "react";
  * Fundo do hero: roteamento de PCB, desenhado uma vez.
  *
  * Substitui o canvas anterior, que era uma rede de pontos aleatórios ligados
- * aos dois vizinhos mais próximos, com atração ao mouse — o fundo de herói
+ * aos dois vizinhos mais próximos, com atração ao mouse: o fundo de herói
  * mais copiado da internet, e o elemento menos característico da página.
  * Ele também rodava requestAnimationFrame para sempre e ignorava
  * prefers-reduced-motion.
  *
  * Aqui a geometria é a de uma placa de verdade: traços com dogleg de 45°,
  * snap em grade de 20 mil, vias nas mudanças de camada e um barramento de
- * traços paralelos. É SVG estático — entra no HTML pré-renderizado, não usa
+ * traços paralelos. É SVG estático: entra no HTML pré-renderizado, não usa
  * JavaScript em runtime e não custa main-thread.
  *
  * O PRNG é semeado: servidor e cliente produzem exatamente o mesmo desenho,
@@ -22,7 +22,7 @@ const W = 1440;
 const H = 900;
 const GRID = 20;
 
-/** mulberry32 — pequeno, determinístico, suficiente para layout. */
+/** mulberry32: pequeno, determinístico, suficiente para layout. */
 function makeRandom(seed: number) {
   let a = seed;
   return () => {
@@ -38,7 +38,7 @@ const snap = (v: number) => Math.round(v / GRID) * GRID;
 
 /**
  * Traço entre dois pontos com dogleg de 45°: reto, diagonal, reto. É assim
- * que um roteador de PCB resolve um desvio — nunca uma linha torta ligando
+ * que um roteador de PCB resolve um desvio, nunca uma linha torta ligando
  * dois pontos quaisquer.
  */
 function route(x1: number, y1: number, x2: number, y2: number, t: number): string {
@@ -108,7 +108,7 @@ function buildBoard() {
   }
 
   // Três traços "vivos": recebem um pulso lento de sinal. Único movimento
-  // que sobrou na página — e some inteiro sob prefers-reduced-motion.
+  // que sobrou na página, e some inteiro sob prefers-reduced-motion.
   traces[3].live = true;
   traces[11].live = true;
 
@@ -129,7 +129,7 @@ const CircuitTraces = () => {
       <defs>
         {/* Máscara por luminância: preto oculta, branco revela. Preto no
             centro (onde fica o texto do hero) abrindo para branco nas
-            bordas — o circuito emoldura o conteúdo em vez de disputar
+            bordas. O circuito emoldura o conteúdo em vez de disputar
             leitura com ele. */}
         <radialGradient id="board-fade" cx="38%" cy="50%" r="78%">
           <stop offset="0%" stopColor="#000" />

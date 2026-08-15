@@ -4,7 +4,7 @@
  *
  * O TypeScript já cobre parte disso (en.ts é tipado por TranslationKeys),
  * mas este script roda no CI e dá uma mensagem legível apontando a chave
- * exata que faltou — inclusive em PRs de quem não roda o typecheck local.
+ * exata que faltou, inclusive em PRs de quem não roda o typecheck local.
  *
  * O site é bilíngue completo: meio-traduzido é pior que monolíngue.
  */
@@ -118,7 +118,7 @@ const missingInEn = [...pt].filter((key) => !en.has(key)).sort();
 const missingInPt = [...en].filter((key) => !pt.has(key)).sort();
 
 if (missingInEn.length === 0 && missingInPt.length === 0) {
-  console.log(`i18n OK — ${pt.size} chaves presentes em PT e EN.`);
+  console.log(`i18n OK: ${pt.size} chaves presentes em PT e EN.`);
   process.exit(0);
 }
 

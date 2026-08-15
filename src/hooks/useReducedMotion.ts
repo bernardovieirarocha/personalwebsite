@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
  * (macOS: Acessibilidade → Exibição → Reduzir movimento).
  *
  * Começa em `false` também durante a pré-renderização, onde `window`
- * não existe — o valor real é resolvido no primeiro efeito no browser.
+ * não existe. O valor real é resolvido no primeiro efeito no browser.
  */
 export function useReducedMotion(): boolean {
     const [reduced, setReduced] = useState(false);

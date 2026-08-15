@@ -80,7 +80,7 @@ const Resume = () => {
         <main className="pt-24 pb-16 print:pt-0 print:pb-0">
           <div className="container px-6 max-w-4xl mx-auto">
             {/* Cabeçalho: contatos numa linha só, sem repetir o domínio de
-                cada serviço — o ícone já diz qual é, e o espaço vai para o
+                cada serviço. O ícone já diz qual é, e o espaço vai para o
                 conteúdo do currículo. */}
             <section className="mb-10 pb-6 border-b border-border">
               <h1 className="text-title font-bold mb-2">{personalInfo.fullName}</h1>

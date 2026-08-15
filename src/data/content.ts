@@ -267,7 +267,7 @@ export type Project = {
     /**
      * Dimensões são as do arquivo, não as de exibição: elas reservam o espaço
      * antes da imagem carregar (sem isso o texto abaixo pula) e definem a
-     * proporção de render. Cada screenshot tem a sua — nenhuma é cortada.
+     * proporção de render. Cada screenshot tem a sua, e nenhuma é cortada.
      */
     image?: { src: string; width: number; height: number };
     featured?: boolean;

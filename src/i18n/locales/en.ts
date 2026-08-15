@@ -28,13 +28,13 @@ export const en: TranslationKeys = {
     about: {
         title: "About",
         // Mirror of pt.ts: this section states how I work and proves it with
-        // one artifact. It must not restate the timeline — Experience and
+        // one artifact. It must not restate the timeline: Experience and
         // Projects already do, with dates.
         paragraphs: {
-            p1: "I like working on both sides: hardware and software. At Formula CEFAST that is literal — I drew boards in Altium for the car, and today I am also the one responsible for the servers, the forum and the team's membership platform.",
-            // TODO(bernardo): rule 5 — one sentence about something still
+            p1: "I like working on both sides: hardware and software. At Formula CEFAST that is literal. I drew boards in Altium for the car, and today I am also the one responsible for the servers, the forum and the team's membership platform.",
+            // TODO(bernardo): rule 5, one sentence about something still
             // unresolved does more here than any adjective. Keep in sync with pt.ts.
-            p2: "In practice the week alternates between very different things: PCB layout, the CAN bus and firmware on one side; containers, a reverse proxy, a database and deployment on the other. What interests me is the seam between them, when a firmware problem turns into a network problem — which is where the ESP32 serial-to-TCP bridge came from, the one that got the laptop out of the pit.",
+            p2: "In practice the week alternates between very different things: PCB layout, the CAN bus and firmware on one side; containers, a reverse proxy, a database and deployment on the other. What interests me is the seam between them, when a firmware problem turns into a network problem.",
             // TODO(bernardo): the human line. Empty means it is not rendered.
             p3: "",
         },

@@ -3,7 +3,7 @@
  * Gera dist/sitemap.xml a partir da lista de rotas do site.
  * Roda depois do build (ver o script "build" em package.json).
  *
- * A lista de rotas vive em src/routes.tsx (SSG_ROUTES) — é lida como texto
+ * A lista de rotas vive em src/routes.tsx (SSG_ROUTES). É lida como texto
  * aqui para o script não precisar de um passo de compilação de TypeScript.
  */
 import { readFileSync, writeFileSync, existsSync, copyFileSync } from "node:fs";
@@ -68,7 +68,7 @@ if (existsSync(resolve(outDir, "404.html"))) {
   copyFileSync(resolve(outDir, "404", "index.html"), resolve(outDir, "404.html"));
   console.log("404.html gerado a partir de dist/404/index.html.");
 } else {
-  console.error("ERRO: nenhuma página 404 foi gerada — confira includedRoutes em vite.config.ts.");
+  console.error("ERRO: nenhuma página 404 foi gerada. Confira includedRoutes em vite.config.ts.");
   process.exit(1);
 }
 

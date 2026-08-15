@@ -4,7 +4,7 @@ import { useReducedMotion } from "./useReducedMotion";
 /**
  * useLayoutEffect avisa no console durante a pré-renderização, onde não há
  * layout para medir. No servidor cai para useEffect (que lá é no-op); no
- * browser continua sendo layout effect, que é o ponto — decidir antes da
+ * browser continua sendo layout effect, que é o ponto: decidir antes da
  * pintura, para o conteúdo não piscar visível e sumir.
  */
 const useIsomorphicLayoutEffect =
@@ -14,7 +14,7 @@ const useIsomorphicLayoutEffect =
  * Revelação por SEÇÃO.
  *
  * O padrão anterior embrulhava cada card, cada parágrafo e cada chip num
- * wrapper próprio com delay escalonado — 39 wrappers e 8 delays distintos —
+ * wrapper próprio com delay escalonado (39 wrappers e 8 delays distintos),
  * e o efeito era o de uma página que nunca termina de carregar.
  *
  * Três regras que o padrão antigo quebrava:

@@ -7,14 +7,14 @@ import SectionHeading from "./SectionHeading";
 /**
  * Projeto em destaque, num painel.
  *
- * O que se evita aqui é a GRADE de cards idênticos — cinco caixas do mesmo
+ * O que se evita aqui é a GRADE de cards idênticos: cinco caixas do mesmo
  * tamanho, ícone em cima, título, dois parágrafos. Isso é template. Estes são
  * painéis empilhados em largura cheia, de alturas diferentes (três têm captura,
  * dois não), e a superfície existe para um motivo: as capturas precisavam de
  * uma moldura para não parecerem PNG solto no fundo da página.
  *
  * O tier de baixo ("Outros projetos") continua sendo lista sem caixa, de
- * propósito — é o contraste entre os dois que faz a hierarquia aparecer.
+ * propósito. É o contraste entre os dois que faz a hierarquia aparecer.
  */
 const FeaturedProject = ({ project, language }: { project: Project; language: "pt" | "en" }) => (
   <article className="rounded-lg border border-border bg-surface p-6 transition-colors duration-fast hover:border-border-strong sm:p-8">
@@ -97,7 +97,7 @@ const Projects = () => {
           <SectionHeading title={t.projects.title} />
 
           {/* space-y-6, não 14: com painel, a moldura já separa uma entrada da
-              seguinte — o vão grande era para compensar a ausência dela. */}
+              seguinte, e o vão grande era para compensar a ausência dela. */}
           <div className="space-y-6">
             {featured.map((project) => (
               <FeaturedProject key={project.title} project={project} language={language} />
@@ -113,7 +113,7 @@ const Projects = () => {
             AQUI o grid faz sentido, e só aqui. Estes cinco não têm captura: são
             título, um parágrafo e as tecnologias, então duas colunas cabem sem
             perder nada. Os destaques ficam em largura cheia justamente por
-            causa da imagem — em duas colunas dentro de 768px cada captura teria
+            causa da imagem: em duas colunas dentro de 768px cada captura teria
             ~360px, e o dashboard da telemetria e a tabela do Proxmox voltariam a
             ser ilegíveis. Foi esse o problema que a versão de coluna estreita
             tinha.

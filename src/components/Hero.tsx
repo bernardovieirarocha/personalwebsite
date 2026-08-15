@@ -19,7 +19,7 @@ const Hero = () => {
       <div className="container relative z-10 px-6">
         {/* Duas colunas no desktop. Antes o avatar era pequeno e ficava colado
             no nome, à esquerda, deixando metade da dobra vazia. Agora ele
-            ancora a coluna da direita e o texto ocupa a esquerda inteira —
+            ancora a coluna da direita e o texto ocupa a esquerda inteira, e
             o vazio some sem precisar inventar conteúdo para preenchê-lo. */}
         <div className="mx-auto grid max-w-3xl items-center gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
           <div>

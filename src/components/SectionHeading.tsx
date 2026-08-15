@@ -4,10 +4,10 @@
  * Já teve número (`01.`), régua atravessando a linha e prefixo colado no
  * título. Saiu tudo. Numerar toda seção é gramática de landing page genérica,
  * não voz: o número só carrega informação quando a seção é mesmo uma sequência,
- * e aqui não é — Sobre, Experiência, Skills e Projetos não têm ordem
+ * e aqui não é: Sobre, Experiência, Skills e Projetos não têm ordem
  * obrigatória.
  *
- * Depois veio o oposto: `text-title` bold, até 40px — a palavra "Sobre" ficava
+ * Depois veio o oposto: `text-title` bold, até 40px, e a palavra "Sobre" ficava
  * maior que o conteúdo que ela rotula. A correção seguinte passou do ponto:
  * 14px em mono, MENOR que os 19px da prosa logo abaixo. Os dois números saíram
  * de medição no browser, não de impressão.
@@ -17,7 +17,7 @@
  * h3 e precisam ficar visivelmente abaixo deste.
  *
  * Sans e não mono: em 32px o monoespaçado fica pesado, e a JetBrains Mono é
- * auto-hospedada só nos pesos 400–500 — pedir bold nela rende negrito
+ * auto-hospedada só nos pesos 400 a 500, e pedir bold nela rende negrito
  * sintético, borrado. Sem uppercase e sem tracking-wider, que é o eyebrow que
  * o CLAUDE.md bane.
  */

@@ -1,5 +1,5 @@
 /* ============================================================
-   Sistema visual — bernardorocha.com
+   Sistema visual: bernardorocha.com
 
    Fontes auto-hospedadas em public/fonts (variáveis, subset latin
    + latin-ext). O @import do Google Fonts foi removido: ele
@@ -54,7 +54,7 @@
 
 /* Fallback com métricas casadas às da Archivo.
    Enquanto a fonte real não chega, o texto é desenhado em Arial/Helvetica.
-   Sem estes overrides a troca reflui o parágrafo inteiro — os valores foram
+   Sem estes overrides a troca reflui o parágrafo inteiro, e os valores foram
    medidos contra a Archivo carregada, não estimados:
    largura 99.19% da Arial, ascent 87.8%, descent 21%. */
 @font-face {
@@ -94,7 +94,7 @@
     --muted-foreground: 215 15% 60%;
 
     /* --- Acento ------------------------------------------------------
-       Um ciano, dessaturado. `185 100% 50%` era ciano neon puro — a escolha
+       Um ciano, dessaturado. `185 100% 50%` era ciano neon puro, a escolha
        mais repetida em portfólio de dev, e o sinal mais genérico que restava
        na página. Em 52% de saturação continua sendo a mesma cor da marca,
        sem o brilho de LED.
@@ -105,7 +105,7 @@
        Onde o ciano tem permissão de aparecer: o sobrenome no hero (o único
        momento grande), o botão primário, o anel de foco, o hover de link e o
        marcador da timeline. Em rótulo de categoria, nome de empresa e título
-       de subseção ele foi retirado — lá a distinção vem de peso e família,
+       de subseção ele foi retirado: lá a distinção vem de peso e família,
        não de cor. Acento em tudo é acento em nada. */
     --primary: 185 52% 58%;
     --primary-foreground: 220 20% 4%;
@@ -129,7 +129,7 @@
 
     --radius: 0.5rem;
 
-    /* --- Escala tipográfica — 6 degraus, fechada --------------------
+    /* --- Escala tipográfica, 6 degraus, fechada --------------------
        Não acrescente um sétimo. Se um texto não cabe em nenhum destes,
        o problema é de hierarquia, não de tamanho. */
     --text-xs: 0.75rem;                             /* rótulo mono, metadado */
@@ -138,13 +138,13 @@
     --text-lead: clamp(1.0625rem, 0.98rem + 0.4vw, 1.1875rem);  /* parágrafo de abertura */
     /* 28→40px era alto demais: a palavra "Sobre" ficava maior que o conteúdo.
        14px em mono, a correção seguinte, ficou MENOR que a prosa de 19px logo
-       abaixo — inversão medida no browser, não impressão. 26→32px é o meio:
+       abaixo. Inversão medida no browser, não impressão. 26→32px é o meio:
        acima dos 19px do parágrafo de abertura e dos 19px dos títulos de
        projeto (h3), sem voltar a gritar. */
     --text-title: clamp(1.625rem, 1.35rem + 1.2vw, 2rem);       /* h2 de seção */
     --text-display: clamp(2.75rem, 1.9rem + 4.2vw, 4.75rem);    /* h1 do hero */
 
-    /* --- Pesos — 3, fechada ---------------------------------------- */
+    /* --- Pesos, 3, fechada ---------------------------------------- */
     --weight-regular: 400;
     --weight-medium: 500;
     --weight-bold: 700;
@@ -158,7 +158,7 @@
     --space-5: 3.25rem;
     --space-6: 5rem;
 
-    /* Ritmo de seção. Antes era py-32 em todas — repetição, não ritmo.
+    /* Ritmo de seção. Antes era py-32 em todas: repetição, não ritmo.
        --section-y abre um bloco novo; --section-y-tight continua o
        bloco anterior (Skills continua Experiência: ambos são credencial). */
     --section-y: clamp(4.5rem, 3rem + 7vw, 7.5rem);
@@ -239,7 +239,7 @@
   }
 
   /* Pulso de sinal nos traços do hero. É o único movimento contínuo que
-     sobrou na página: sem JS, sem rAF, só dashoffset — e o bloco de
+     sobrou na página: sem JS, sem rAF, só dashoffset, e o bloco de
      prefers-reduced-motion lá embaixo o interrompe por completo. */
   .circuit-pulse {
     stroke-dasharray: 90 1400;
@@ -254,7 +254,7 @@
   }
 
   /* Menu mobile. Aparecia instantâneo, e sem transição a troca de tela inteira
-     lê como um corte de vídeo. 180ms só para dizer que a camada veio de cima —
+     lê como um corte de vídeo. 180ms só para dizer que a camada veio de cima.
      `both` garante que o estado final fica de pé quando o bloco de
      prefers-reduced-motion zera a duração. */
   .menu-panel {
@@ -287,7 +287,7 @@
    Redução de movimento.
    Antes: 10 animações CSS seguiam rodando (5 infinitas) porque o
    useReducedMotion só protegia o AnimatedSection e o hero usava
-   classes cruas. Este bloco é a rede de segurança — vale para
+   classes cruas. Este bloco é a rede de segurança: vale para
    qualquer animação futura, inclusive as que eu não escrevi.
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {

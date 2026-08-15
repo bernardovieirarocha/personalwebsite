@@ -52,7 +52,7 @@ const Header = () => {
    *
    * É layout effect, não effect, de propósito: os itens são âncoras (#about).
    * Num passive effect a restauração do overflow só rodava DEPOIS que o browser
-   * já tinha tentado rolar até a âncora — com o body ainda travado, o salto se
+   * já tinha tentado rolar até a âncora, e com o body ainda travado, o salto se
    * perdia e o clique parecia não fazer nada. Layout effect fecha antes.
    */
   useIsomorphicLayoutEffect(() => {
@@ -78,7 +78,7 @@ const Header = () => {
 
   /**
    * O painel é md:hidden: ao girar o celular ou alargar a janela ele some da
-   * tela, mas o estado continuava `true` e o body continuava travado — a página
+   * tela, mas o estado continuava `true` e o body continuava travado, e a página
    * ficava sem scroll, sem nada visível explicando por quê.
    */
   useEffect(() => {
@@ -158,13 +158,13 @@ const Header = () => {
       </header>
 
       {/*
-        IRMÃO do <header>, não filho — e é isso que conserta o menu.
+        IRMÃO do <header>, não filho, e é isso que conserta o menu.
 
         O header ganha `backdrop-blur` sempre que o menu abre, e um elemento com
         `backdrop-filter` vira bloco de contenção para descendentes `position:
         fixed` (Filter Effects, mesmo comportamento de `transform`). Como filho,
         o painel media `top-20 bottom-0` contra a caixa do header, de 80px de
-        altura: 80 − 80 − 0 = altura ZERO. Ele abria colapsado numa faixa nula
+        altura: 80 - 80 - 0 = altura ZERO. Ele abria colapsado numa faixa nula
         logo abaixo da barra. Fora do header, o bloco de contenção volta a ser a
         viewport e `top-20 bottom-0` significa o que aparenta significar.
       */}
