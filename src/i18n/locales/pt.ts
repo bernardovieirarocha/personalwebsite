@@ -32,7 +32,7 @@ export const pt = {
       p1: "Gosto de trabalhar dos dois lados: hardware e software. Na Fórmula CEFAST isso é literal. Desenhei placas em Altium para o carro e hoje também respondo pelos servidores, pelo fórum e pela plataforma de sócios da equipe.",
       // TODO(bernardo): regra 5, uma frase sobre algo que ainda não está
       // resolvido faz mais por este parágrafo que qualquer adjetivo.
-      p2: "Na prática a semana alterna entre coisas bem diferentes: layout de PCB, barramento CAN e firmware de um lado; container, proxy reverso, banco e deploy do outro. O que me interessa é a fronteira entre os dois, onde o mesmo sintoma pode vir da placa ou do servidor.",
+      p2: "Na prática a semana alterna entre coisas bem diferentes: layout de PCB, barramento CAN e firmware de um lado; container, proxy reverso, banco e deploy do outro. O que me interessa é a fronteira entre os dois, quando um problema de firmware vira problema de infraestrutura.",
       // TODO(bernardo): a linha humana, e só você tem essa. O modelo é o
       // Mitchell Hashimoto: não "sou apaixonado por aviação", mas "tenho
       // licença de piloto privado com habilitação por instrumentos".
