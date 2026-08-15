@@ -34,7 +34,7 @@ export const en: TranslationKeys = {
             p1: "I like working on both sides: hardware and software. At Formula CEFAST that is literal. I drew boards in Altium for the car, and today I am also the one responsible for the servers, the forum and the team's membership platform.",
             // TODO(bernardo): rule 5, one sentence about something still
             // unresolved does more here than any adjective. Keep in sync with pt.ts.
-            p2: "In practice the week alternates between very different things: PCB layout, the CAN bus and firmware on one side; containers, a reverse proxy, a database and deployment on the other. What interests me is the seam between them, when a firmware problem turns into a network problem.",
+            p2: "In practice the week alternates between very different things: PCB layout, the CAN bus and firmware on one side; containers, a reverse proxy, a database and deployment on the other. What interests me is the seam between them, where the same symptom can come from the board or from the server.",
             // TODO(bernardo): the human line. Empty means it is not rendered.
             p3: "",
         },
