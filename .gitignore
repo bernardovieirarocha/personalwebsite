@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 
 .env
+
+# Artefatos de build e de medicao (nao sao conteudo)
+.lighthouseci/
+*.tsbuildinfo
