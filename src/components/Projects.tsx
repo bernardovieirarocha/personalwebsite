@@ -83,7 +83,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-section">
       <div className="container px-6">
-        <Reveal className="mx-auto max-w-5xl">
+        <Reveal className="mx-auto max-w-3xl">
           <SectionHeading title={t.projects.title} />
 
           <div className="space-y-14">

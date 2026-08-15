@@ -10,7 +10,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-section">
       <div className="container px-6">
-        <Reveal className="mx-auto max-w-4xl">
+        <Reveal className="mx-auto max-w-3xl">
           <SectionHeading title={t.contact.title} />
 
           <p className="max-w-[62ch] text-lead text-muted-foreground">{t.contact.description}</p>

@@ -21,7 +21,7 @@ const Hero = () => {
             no nome, à esquerda, deixando metade da dobra vazia. Agora ele
             ancora a coluna da direita e o texto ocupa a esquerda inteira —
             o vazio some sem precisar inventar conteúdo para preenchê-lo. */}
-        <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
+        <div className="mx-auto grid max-w-3xl items-center gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
           <div>
             {/* Alinhado à esquerda: o texto centralizado anterior obrigava a
                 vista a voltar ao meio a cada linha e achatava a hierarquia. */}
@@ -74,7 +74,10 @@ const Hero = () => {
             // Em minúsculo e via spread porque o React 18 desta versão ainda
             // não conhece a prop camelCase e a descarta com aviso.
             {...{ fetchpriority: "high" }}
-            className="order-first h-28 w-28 rounded-full border border-border-strong object-cover sm:h-36 sm:w-36 lg:order-none lg:h-[clamp(10rem,16vw,12.5rem)] lg:w-[clamp(10rem,16vw,12.5rem)]"
+            // O teto caiu de 12.5rem para 11rem junto com a coluna, que passou
+            // de 1024px para 768px: com o avatar antigo sobravam ~504px para o
+            // nome em text-display (até 76px), e a folga ficava fina demais.
+            className="order-first h-28 w-28 rounded-full border border-border-strong object-cover sm:h-36 sm:w-36 lg:order-none lg:h-[clamp(9rem,16vw,11rem)] lg:w-[clamp(9rem,16vw,11rem)]"
           />
         </div>
       </div>

@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-border py-10">
       <div className="container px-6">
-        <div className="mx-auto flex max-w-5xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-3xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="font-mono text-xs text-muted-foreground">
             <p>
               &copy; {new Date().getFullYear()} {personalInfo.name}

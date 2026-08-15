@@ -20,7 +20,7 @@ const Skills = () => {
     // py-32 uniforme não tinha.
     <section id="skills" className="pb-section pt-section-tight">
       <div className="container px-6">
-        <Reveal className="mx-auto max-w-5xl">
+        <Reveal className="mx-auto max-w-3xl">
           <SectionHeading title={t.skills.title} />
 
           {/* Eram cinco caixas com borda, e a quinta ficava órfã numa grade
@@ -30,7 +30,11 @@ const Skills = () => {
             {categories.map((category) => (
               <div
                 key={category.title}
-                className="grid gap-2 py-5 sm:grid-cols-[13rem_minmax(0,1fr)] sm:gap-8"
+                // 13rem de rótulo era 27% da coluna nova de 768px. O maior
+                // rótulo é "Embedded & Hardware": 19 caracteres em mono de
+                // 12px, ~137px. 10rem cobre com folga e devolve o resto às
+                // tecnologias, que são o conteúdo.
+                className="grid gap-2 py-5 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-8"
               >
                 <dt className="font-mono text-xs font-medium text-foreground sm:pt-1">{category.title}</dt>
                 <dd className="flex flex-wrap gap-x-5 gap-y-2">

@@ -24,7 +24,7 @@ const About = () => {
   return (
     <section id="about" className="py-section">
       <div className="container px-6">
-        <Reveal className="mx-auto max-w-5xl">
+        <Reveal className="mx-auto max-w-3xl">
           <SectionHeading title={t.about.title} />
 
           {/* max-w-[68ch]: linha de leitura confortável. */}

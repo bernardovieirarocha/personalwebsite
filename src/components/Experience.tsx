@@ -12,7 +12,7 @@ const Experience = () => {
   return (
     <section id="experience" className="py-section">
       <div className="container px-6">
-        <Reveal className="mx-auto max-w-4xl">
+        <Reveal className="mx-auto max-w-3xl">
           <SectionHeading title={t.experience.title} />
 
           {/* Timeline: uma régua contínua à esquerda, marcador por item.
