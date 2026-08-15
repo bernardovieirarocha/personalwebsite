@@ -104,11 +104,30 @@ const Projects = () => {
             ))}
           </div>
 
-          <h3 className="mb-5 mt-16 font-mono text-xs font-medium text-foreground">{t.projects.otherProjects}</h3>
+          {/* text-base e não text-xs: em 12px este h3 ficava MENOR que os h4 de
+              14px dos cards logo abaixo dele. Mesma inversão do h2, um nível
+              adentro. Mono porque aqui é divisor de tier, não título. */}
+          <h3 className="mb-5 mt-16 font-mono text-base font-medium text-foreground">{t.projects.otherProjects}</h3>
 
-          <ul className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
+          {/*
+            AQUI o grid faz sentido, e só aqui. Estes cinco não têm captura: são
+            título, um parágrafo e as tecnologias, então duas colunas cabem sem
+            perder nada. Os destaques ficam em largura cheia justamente por
+            causa da imagem — em duas colunas dentro de 768px cada captura teria
+            ~360px, e o dashboard da telemetria e a tabela do Proxmox voltariam a
+            ser ilegíveis. Foi esse o problema que a versão de coluna estreita
+            tinha.
+
+            `items-start` e `auto-rows-fr` fora de propósito: as descrições têm
+            comprimentos bem diferentes, e forçar altura igual criaria a grade de
+            caixas idênticas. Cada uma termina onde o texto dela termina.
+          */}
+          <ul className="grid gap-4 sm:grid-cols-2">
             {others.map((project) => (
-              <li key={project.title} className="border-t border-border pt-4">
+              <li
+                key={project.title}
+                className="rounded-lg border border-border p-5 transition-colors duration-fast hover:border-border-strong"
+              >
                 <div className="flex items-start justify-between gap-3">
                   <h4 className="text-sm font-bold text-foreground">{project.title}</h4>
                   <ProjectLinks project={project} />
@@ -116,7 +135,7 @@ const Projects = () => {
                 <p className="mt-2 text-sm text-muted-foreground">
                   {project.description[language]}
                 </p>
-                <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+                <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
                   {project.techStack.map((tech) => (
                     <li key={tech} className="font-mono text-xs text-muted-foreground">
                       {tech}

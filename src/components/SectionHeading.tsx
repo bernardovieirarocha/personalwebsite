@@ -7,22 +7,22 @@
  * e aqui não é — Sobre, Experiência, Skills e Projetos não têm ordem
  * obrigatória.
  *
- * Depois veio o oposto: `text-title` bold, até 40px. A palavra "SOBRE" ficava
- * maior que o conteúdo que ela rotula — hierarquia invertida, o andaime na
- * frente do que ele sustenta. Agora é um rótulo: o mesmo tratamento que
- * "Outros projetos" já usava, um degrau acima por ser h2.
+ * Depois veio o oposto: `text-title` bold, até 40px — a palavra "Sobre" ficava
+ * maior que o conteúdo que ela rotula. A correção seguinte passou do ponto:
+ * 14px em mono, MENOR que os 19px da prosa logo abaixo. Os dois números saíram
+ * de medição no browser, não de impressão.
  *
- * Sem uppercase e sem tracking-wider de propósito. Rótulo mono maiúsculo e
- * espaçado acima de toda seção é o eyebrow que o CLAUDE.md bane — a forma mais
- * saturada de andaime de IA que existe. O rebaixamento é a ideia boa; o
- * uppercase é o clichê que vem de carona.
+ * O valor final é `text-title` reafinado para 26→32px (ver index.css): acima
+ * dos 19px do parágrafo de abertura e dos 19px dos títulos de projeto, que são
+ * h3 e precisam ficar visivelmente abaixo deste.
  *
- * `font-medium` e não `font-bold`: JetBrains Mono é auto-hospedada só nos pesos
- * 400–500 (ver index.css). Pedir 700 não carrega nada — o browser engrossa o
- * traço por conta, e negrito sintético em mono fica borrado.
+ * Sans e não mono: em 32px o monoespaçado fica pesado, e a JetBrains Mono é
+ * auto-hospedada só nos pesos 400–500 — pedir bold nela rende negrito
+ * sintético, borrado. Sem uppercase e sem tracking-wider, que é o eyebrow que
+ * o CLAUDE.md bane.
  */
 const SectionHeading = ({ title, id }: { title: string; id?: string }) => (
-  <h2 id={id} className="mb-6 font-mono text-sm font-medium text-foreground sm:mb-8">
+  <h2 id={id} className="mb-7 text-title font-bold text-foreground sm:mb-10">
     {title}
   </h2>
 );
