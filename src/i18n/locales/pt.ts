@@ -9,6 +9,7 @@ export const pt = {
         language: "Idioma",
         openMenu: "Abrir menu",
         closeMenu: "Fechar menu",
+        menu: "Menu",
         resumeSite: "Currículo",
     },
 

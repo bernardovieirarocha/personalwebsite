@@ -39,7 +39,10 @@ export const socialLinks = {
 // do array `projects` abaixo. Sem exceção. Ver CLAUDE.md.
 export const skills = {
     languages: ["C", "C++", "Python", "Java", "JavaScript", "TypeScript"],
-    backend: ["Node.js", "Django", "PostgreSQL", "MongoDB", "REST"],
+    // MongoDB saiu daqui junto com a correção do stack do FlixMate: era o único
+    // projeto que o sustentava, e o FlixMate usa PostgreSQL. Se voltar a ter um
+    // projeto em Mongo no site, volta aqui.
+    backend: ["Node.js", "Django", "PostgreSQL", "REST"],
     embedded: ["ESP32", "Arduino", "Altium Designer", "PCB Design", "CAN"],
     devops: ["Docker", "Linux", "Nginx", "Git", "Proxmox", "ZFS"],
     frontend: ["React", "Next.js", "Tailwind CSS", "HTML", "CSS"],
@@ -298,10 +301,10 @@ export const projects: Project[] = [
     {
         title: "FlixMate",
         description: {
-            pt: "Aplicação web de recomendação e descoberta de filmes, com sistema de matching entre usuários. Feita em dupla.",
-            en: "A web app for movie recommendation and discovery, with a matching system between users. Built with a teammate.",
+            pt: "Aplicação web de recomendação de filmes com matching entre usuários, feita em dupla. O motor de recomendação é um serviço próprio em Python: filtragem colaborativa por fatoração da matriz usuário-filme (SVD truncado), que dá a cada usuário um vetor de preferência a partir dos likes, somada a um filtro por conteúdo (TF-IDF sobre gênero, sinopse e idioma). O peso entre os dois se ajusta conforme o histórico do usuário cresce. Backend em Java, frontend em Next.js, tudo em containers.",
+            en: "A movie recommendation web app with matching between users, built with a teammate. The recommendation engine is a Python service of our own: collaborative filtering by factorizing the user-movie matrix (truncated SVD), which turns each user's likes into a preference vector, combined with content-based filtering (TF-IDF over genre, synopsis and language). The weighting between the two shifts as a user's history grows. Java backend, Next.js frontend, all containerized.",
         },
-        techStack: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+        techStack: ["Java", "Next.js", "Python", "scikit-learn", "PostgreSQL", "Docker"],
         githubUrl: "https://github.com/rubensbkl/Flixmate",
         image: { src: "/projects/flixmate.webp", width: 1600, height: 1000 },
         featured: true,
@@ -349,6 +352,8 @@ export const projects: Project[] = [
             en: "An operations platform we designed for the FSAE Brasil 2026 Business Presentation event, with four modules: demand forecasting, production scheduling via mathematical optimization, OBD-II telemetry analysis and Portuguese-language text analysis. It includes our own technical and financial modeling plus a navigable web prototype. The client is fictional, defined by the event.",
         },
         techStack: ["Python", "OR-Tools", "SimPy", "LightGBM", "XGBoost", "NLP"],
+        // Protótipo navegável da apresentação, não um produto em operação.
+        liveUrl: "https://core-ia-iota.vercel.app/",
     },
     {
         title: "Migração do fórum: phpBB para NodeBB",
@@ -361,8 +366,8 @@ export const projects: Project[] = [
     {
         title: "RustCraft",
         description: {
-            pt: "Projeto em Rust organizado como workspace, com crates separados por responsabilidade. Feito para aprender a linguagem em algo maior que um exercício.",
-            en: "A Rust project organized as a workspace, with crates split by responsibility. Built to learn the language on something larger than an exercise.",
+            pt: "Jogo sandbox em Rust, organizado como workspace com crates separados por responsabilidade. O objetivo é aprender a linguagem construindo algo maior que um exercício.",
+            en: "A sandbox game in Rust, organized as a workspace with crates split by responsibility. The point is learning the language by building something larger than an exercise.",
         },
         techStack: ["Rust", "Cargo"],
         githubUrl: "https://github.com/bernardovieirarocha/RustCraft",

@@ -248,6 +248,21 @@
     }
   }
 
+  /* Menu mobile. Aparecia instantâneo, e sem transição a troca de tela inteira
+     lê como um corte de vídeo. 180ms só para dizer que a camada veio de cima —
+     `both` garante que o estado final fica de pé quando o bloco de
+     prefers-reduced-motion zera a duração. */
+  .menu-panel {
+    animation: menuPanelIn 180ms var(--ease-out-quart) both;
+  }
+
+  @keyframes menuPanelIn {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+
   /* Revelação POR SEÇÃO, não por elemento. Antes eram 39 wrappers com
      8 delays distintos, e a página parecia estar sempre carregando. */
   .reveal {

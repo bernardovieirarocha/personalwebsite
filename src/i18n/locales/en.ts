@@ -11,6 +11,7 @@ export const en: TranslationKeys = {
         language: "Language",
         openMenu: "Open menu",
         closeMenu: "Close menu",
+        menu: "Menu",
         resumeSite: "Resume",
     },
 
