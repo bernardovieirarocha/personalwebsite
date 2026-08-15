@@ -26,10 +26,15 @@ Este repositório (`personalwebsite`) é a **única fonte da verdade**. O antigo
   MiSTer FPGA, com testbenches automatizados e ferramentas Cadence.
 
 Projetos reais que devem aparecer (repos e contexto existem):
-Plataforma de Sócios da Fórmula CEFAST · migração phpBB→NodeBB (Docker/VPS) · ponte ESP32
-serial↔TCP com relay mTLS para tuning remoto de ECU MegaSquirt · datalogger MAQ, PDM com CAN,
-modem LTE Cat-M1 BG95-M3 · homelab Proxmox/ZFS (docs em MkDocs) · CriptoEscape (ECC) ·
-RustCraft (Rust) · site da Fórmula CEFAST (Next.js).
+Plataforma de Sócios da Fórmula CEFAST · migração phpBB→NodeBB (Docker/VPS) · firmware de ESP32
+que faz interface com a ECU MegaSquirt e com o datalogger MAQ, mais VPN hospedada em VPS que
+permite tuning remoto e deixa computadores autorizados acompanharem os dados do carro em tempo
+real · datalogger MAQ, PDM com CAN, modem LTE Cat-M1 BG95-M3 · homelab Proxmox/ZFS (docs em
+MkDocs) · CriptoEscape (ECC) · RustCraft (Rust) · site da Fórmula CEFAST (Next.js).
+
+Duas correções que valem para a telemetria, porque a descrição antiga errava nas duas:
+o acesso remoto é **VPN em VPS**, não "relay mTLS" (não escrever mTLS aqui); e a participação
+dele no firmware do ESP32 é **contribuição, não autoria solo** ("contribuí com", nunca "fiz").
 
 **Fora do site por decisão do dono:** apresentação de TLS 1.3 / handshake híbrido pós-quântico
 e artigo de RSA-OAEP. Não reintroduzir.

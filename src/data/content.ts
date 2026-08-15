@@ -289,12 +289,15 @@ export const projects: Project[] = [
     {
         title: "Eletrônica e telemetria do carro",
         description: {
-            // TODO(bernardo): a ponte é a parte mais distintiva daqui. Diga o
-            // estado real dela, inclusive o que ainda não funciona (regra 5).
-            pt: "Eletrônica embarcada do protótipo de Fórmula SAE, das placas ao acesso remoto: datalogger próprio (MAQ), módulo de distribuição de potência controlado por CAN, modem LTE Cat-M1 (BG95-M3) e uma ponte serial para TCP em ESP32 que expõe a ECU MegaSquirt para tuning remoto por um relay mTLS, no lugar de um notebook ligado no box. Placas projetadas em Altium Designer.",
-            en: "Embedded electronics for the Formula SAE prototype, from the boards to remote access: an in-house datalogger (MAQ), a power distribution module controlled over CAN, an LTE Cat-M1 modem (BG95-M3), and an ESP32 serial-to-TCP bridge that exposes the MegaSquirt ECU for remote tuning through an mTLS relay, instead of a laptop wired up in the pit. Boards designed in Altium Designer.",
+            // A primeira frase é o escopo do projeto (trabalho de equipe); a
+            // segunda é a contribuição dele, e por isso diz "contribuí", não
+            // "fiz". O acesso remoto é uma VPN hospedada em VPS: a versão
+            // anterior dizia "relay mTLS", que não era o que existe.
+            // TODO(bernardo): regra 5, uma frase sobre o que ainda não funciona.
+            pt: "Eletrônica embarcada e telemetria do protótipo de Fórmula SAE: datalogger próprio (MAQ), módulo de distribuição de potência controlado por CAN e modem LTE Cat-M1 (BG95-M3). Contribuí com o firmware do ESP32 que faz a interface com a ECU MegaSquirt e com o datalogger MAQ, e com a VPN hospedada em VPS que permite o tuning remoto e deixa computadores autorizados acompanharem os dados do carro em tempo real, no lugar de um notebook ligado ao carro dentro do box. Placas projetadas em Altium Designer.",
+            en: "Embedded electronics and telemetry for the Formula SAE prototype: an in-house datalogger (MAQ), a power distribution module controlled over CAN and an LTE Cat-M1 modem (BG95-M3). I contributed to the ESP32 firmware that interfaces with the MegaSquirt ECU and the MAQ data logger, and to the VPS-hosted VPN that enables remote tuning and lets authorized computers monitor the car's data in real time, instead of a laptop wired to the car in the pit. Boards designed in Altium Designer.",
         },
-        techStack: ["Altium Designer", "PCB Design", "CAN", "ESP32", "C++", "mTLS"],
+        techStack: ["Altium Designer", "PCB Design", "CAN", "ESP32", "C++", "VPN"],
         image: { src: "/projects/telemetria-dashboard.webp", width: 1800, height: 881 },
         featured: true,
     },
