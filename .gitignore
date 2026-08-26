@@ -16,6 +16,7 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 .idea
+.claude/
 .DS_Store
 *.suo
 *.ntvs*
@@ -28,3 +29,6 @@ dist-ssr
 # Artefatos de build e de medicao (nao sao conteudo)
 .lighthouseci/
 *.tsbuildinfo
+
+# Documento de trabalho local, nao faz parte do site
+HANDOFF-CLAUDE-CODE.md
