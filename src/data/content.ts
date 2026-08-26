@@ -511,10 +511,10 @@ export const projects: Project[] = [
             // Enquadramento é deliberado: CORE foi concebido para a prova de
             // Business Presentation, com cliente fictício. Não apresentar como
             // produto entregue a cliente real. Ver regra 5 do CLAUDE.md.
-            pt: "Plataforma operacional que concebemos para a prova de Business Presentation da FSAE Brasil 2026, com quatro módulos: previsão de demanda, programação de produção por otimização matemática, análise de telemetria via OBD-II e leitura de texto em português. Inclui modelagem técnica e financeira própria e um protótipo web navegável. O cliente é fictício, definido pela prova.",
-            en: "An operations platform we designed for the FSAE Brasil 2026 Business Presentation event, with four modules: demand forecasting, production scheduling via mathematical optimization, OBD-II telemetry analysis and Portuguese-language text analysis. It includes our own technical and financial modeling plus a navigable web prototype. The client is fictional, defined by the event.",
+            pt: "Plataforma operacional que concebemos para a prova de Business Presentation da FSAE Brasil 2026, com quatro módulos propostos: previsão de demanda, programação de produção, análise de telemetria via OBD-II e leitura de texto em português. Construí o protótipo navegável: os dados são simulados de forma determinística, para a apresentação ser ensaiável, e não há chamada de rede em runtime. O cliente é fictício, definido pela prova.",
+            en: "An operations platform we designed for the FSAE Brasil 2026 Business Presentation event, with four proposed modules: demand forecasting, production scheduling, OBD-II telemetry analysis and Portuguese-language text analysis. I built the navigable prototype: the data is simulated deterministically so the presentation can be rehearsed, and there are no network calls at runtime. The client is fictional, defined by the event.",
         },
-        techStack: ["Python", "OR-Tools", "SimPy", "LightGBM", "XGBoost", "NLP"],
+        techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "PWA"],
         // Protótipo navegável da apresentação, não um produto em operação.
         liveUrl: "https://core-ia-iota.vercel.app/",
     },
