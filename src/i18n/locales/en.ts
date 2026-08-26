@@ -19,7 +19,7 @@ export const en: TranslationKeys = {
     hero: {
         role: "Computer Engineering at CEFET-MG",
         summary:
-            "I designed the Formula CEFAST team's embedded electronics and now lead its IT area.",
+            "I designed the Formula CEFAST team's embedded electronics and later ran its IT area.",
         viewProjects: "View projects",
         contactMe: "Contact",
     },
@@ -31,7 +31,7 @@ export const en: TranslationKeys = {
         // one artifact. It must not restate the timeline: Experience and
         // Projects already do, with dates.
         paragraphs: {
-            p1: "I like working on both sides: hardware and software. At Formula CEFAST that is literal. I drew boards in Altium for the car, and today I am also the one responsible for the servers, the forum and the team's membership platform.",
+            p1: "I like working on both sides: hardware and software. At Formula CEFAST that is literal. I drew boards in Altium for the car, and later I was the one responsible for the servers, the forum and the team's membership platform.",
             // TODO(bernardo): rule 5, one sentence about something still
             // unresolved does more here than any adjective. Keep in sync with pt.ts.
             p2: "In practice the week alternates between very different things: PCB layout, the CAN bus and firmware on one side; containers, a reverse proxy, a database and deployment on the other. What interests me is the seam between them, when a firmware problem turns into an infrastructure problem.",
@@ -115,7 +115,7 @@ export const en: TranslationKeys = {
         backHome: "Back",
         role: "Computer Engineering (CEFET-MG)",
         summary:
-            "I study Computer Engineering at CEFET-MG. On the Formula CEFAST SAE team I designed electronic modules in Altium Designer and now serve as Head of IT, owning the stack, the infrastructure and the people in the area.",
+            "I study Computer Engineering at CEFET-MG. On the Formula CEFAST SAE team I designed electronic modules in Altium Designer and later served as Head of IT, owning the stack, the infrastructure and the people in the area.",
         sections: {
             experience: "Experience",
             education: "Education",

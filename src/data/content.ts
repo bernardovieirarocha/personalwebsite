@@ -79,8 +79,8 @@ export const workExperience: WorkExperience[] = [
         description: {
             // TODO(bernardo): se puder, cite UM sistema que você decidiu e por quê.
             // "Escolhi NodeBB no lugar de X porque Y" vale mais que a lista abaixo.
-            pt: "Coordeno a área de TI da equipe: distribuo e reviso o trabalho dos membros, faço o onboarding de novatos e decido stack e arquitetura. Opero a infraestrutura que a equipe usa no dia a dia (VPS, containers, domínios, fórum e plataforma de sócios) e levanto a necessidade das outras subequipes para traduzir em sistema.",
-            en: "I lead the team's IT area: assigning and reviewing the members' work, onboarding newcomers, and making the stack and architecture calls. I run the infrastructure the team depends on day to day (VPS, containers, domains, forum and membership platform) and gather requirements from the other subteams to turn them into working systems.",
+            pt: "Coordenei a área de TI da equipe: distribuí e revisei o trabalho dos membros, fiz o onboarding de novatos e decidi stack e arquitetura. Operei a infraestrutura que a equipe usa no dia a dia (VPS, containers, domínios, fórum e plataforma de sócios) e levantei a necessidade das outras subequipes para traduzir em sistema.",
+            en: "I led the team's IT area: assigning and reviewing the members' work, onboarding newcomers, and making the stack and architecture calls. I ran the infrastructure the team depends on day to day (VPS, containers, domains, forum and membership platform) and gathered requirements from the other subteams to turn them into working systems.",
         },
         location: "Presencial",
         startDate: "fev/2026",

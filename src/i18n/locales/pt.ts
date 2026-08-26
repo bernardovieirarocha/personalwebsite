@@ -17,7 +17,7 @@ export const pt = {
   hero: {
     role: "Engenharia de Computação no CEFET-MG",
     summary:
-      "Projetei a eletrônica embarcada da equipe Fórmula CEFAST e hoje lidero a área de TI dela.",
+      "Projetei a eletrônica embarcada da equipe Fórmula CEFAST e depois respondi pela área de TI dela.",
     viewProjects: "Ver projetos",
     contactMe: "Contato",
   },
@@ -29,7 +29,7 @@ export const pt = {
     // contam, com data. Aqui vai a única coisa que elas não conseguem
     // dizer (como você trabalha) e a prova disso num artefato seu.
     paragraphs: {
-      p1: "Gosto de trabalhar dos dois lados: hardware e software. Na Fórmula CEFAST isso é literal. Desenhei placas em Altium para o carro e hoje também respondo pelos servidores, pelo fórum e pela plataforma de sócios da equipe.",
+      p1: "Gosto de trabalhar dos dois lados: hardware e software. Na Fórmula CEFAST isso é literal. Desenhei placas em Altium para o carro e depois respondi pelos servidores, pelo fórum e pela plataforma de sócios da equipe.",
       // TODO(bernardo): regra 5, uma frase sobre algo que ainda não está
       // resolvido faz mais por este parágrafo que qualquer adjetivo.
       p2: "Na prática a semana alterna entre coisas bem diferentes: layout de PCB, barramento CAN e firmware de um lado; container, proxy reverso, banco e deploy do outro. O que me interessa é a fronteira entre os dois, quando um problema de firmware vira problema de infraestrutura.",
@@ -119,7 +119,7 @@ export const pt = {
     backHome: "Voltar",
     role: "Engenharia de Computação (CEFET-MG)",
     summary:
-      "Curso Engenharia de Computação no CEFET-MG. Na equipe Fórmula CEFAST SAE, projetei módulos eletrônicos em Altium Designer e hoje sou Head de TI, respondendo pela stack, pela infraestrutura e pelas pessoas da área.",
+      "Curso Engenharia de Computação no CEFET-MG. Na equipe Fórmula CEFAST SAE, projetei módulos eletrônicos em Altium Designer e depois fui Head de TI, respondendo pela stack, pela infraestrutura e pelas pessoas da área.",
     sections: {
       experience: "Experiência",
       education: "Formação",
