@@ -4,6 +4,13 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  # O painel da Netlify ainda tem @netlify/plugin-nextjs instalado, heranca do
+  # site antigo. Este site e Vite + vite-react-ssg, entao o plugin procura um
+  # build de Next em dist/, nao acha e derruba o deploy DEPOIS do build ter dado
+  # certo. Plugin instalado pela UI nao pode ser removido pelo netlify.toml, e
+  # esta variavel e a saida documentada pelo proprio erro.
+  # Quando o plugin for removido no painel, esta linha pode sair.
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 # O build é pré-renderizado (vite-react-ssg): cada rota vira um HTML estático
 # em dist/, então NÃO existe mais um rewrite "/* -> /index.html 200".
