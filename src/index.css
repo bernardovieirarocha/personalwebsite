@@ -284,6 +284,93 @@
 }
 
 /* ============================================================
+   Impressão.
+
+   O botão de /resume chama window.print(), então ESTE bloco é o
+   PDF do currículo: não existe arquivo gerado à mão em public/,
+   e por isso o currículo nunca diverge de src/data/content.ts.
+   Um PDF versionado à parte é uma segunda fonte da verdade, e a
+   que ninguém lembra de atualizar é justamente a que o recrutador
+   abre.
+
+   A correção principal é de cor. O tema é escuro, então o texto
+   de apoio é cinza-claro (L=60%) e some no papel; o navegador não
+   imprime fundo por padrão, mas imprime a cor do texto. Em vez de
+   caçar classe por classe, os tokens são redefinidos aqui e todo
+   o resto herda: tinta escura sobre branco, uma vez só.
+   ============================================================ */
+@media print {
+  :root {
+    --background: 0 0% 100%;
+    --surface: 0 0% 100%;
+    --surface-raised: 0 0% 100%;
+    --secondary: 0 0% 100%;
+    --muted: 0 0% 100%;
+    --foreground: 220 20% 12%;
+    /* 32% dá ~9:1 no papel. O 60% do tema escuro sai lavado na
+       impressora e ilegível em fotocópia. */
+    --muted-foreground: 220 12% 32%;
+    /* O ciano do tema (L=58%) some no branco. Este é o mesmo matiz
+       puxado para baixo até virar tinta, e continua distinguível
+       em preto e branco. */
+    --primary: 190 60% 26%;
+    --border: 220 10% 72%;
+    --border-strong: 220 10% 52%;
+  }
+
+  @page {
+    margin: 12mm 13mm;
+  }
+
+  /* A escala encolhe pela raiz, não texto por texto: tipografia e
+     espaçamento do tema estão todos em rem, então mudar o rem reduz os
+     dois na mesma proporção e a hierarquia continua de pé.
+
+     Mexer no font-size do body em pt não resolve, e foi o que eu tentei
+     primeiro: text-sm e text-xs são rem e ignoram o pt, então só os
+     elementos SEM classe de tamanho encolhiam. O h3 de cada cargo ficou
+     menor que o parágrafo abaixo dele. */
+  html {
+    font-size: 13px;
+  }
+
+  body {
+    /* 1.65 existe para texto claro sobre fundo escuro. No papel, é só
+       página gasta. */
+    line-height: 1.4;
+  }
+
+  /* Quebra de página com critério: uma entrada de experiência ou de
+     formação não se parte no meio, mas a SEÇÃO pode se partir. Marcar
+     a seção inteira como indivisível empurrava Experiência inteira
+     para a página 2 e deixava meia página em branco na 1. */
+  article,
+  figure,
+  li {
+    break-inside: avoid;
+  }
+
+  /* Título de seção nunca fica sozinho no rodapé. */
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* A URL não aparece no papel, então o azul sublinhado não informa
+     nada: o texto do link já é o e-mail e o usuário de cada perfil. */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ============================================================
    Redução de movimento.
    Antes: 10 animações CSS seguiam rodando (5 infinitas) porque o
    useReducedMotion só protegia o AnimatedSection e o hero usava
