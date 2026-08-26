@@ -94,7 +94,7 @@ export const en: TranslationKeys = {
         resume: {
             title: "Resume | Bernardo Rocha",
             description:
-                "Education, experience, certifications and projects of Bernardo Vieira Rocha, Computer Engineering student at CEFET-MG and Computer Science student at PUC Minas.",
+                "Education, experience, research, certifications and projects of Bernardo Vieira Rocha, Computer Engineering student at CEFET-MG and Computer Science student at PUC Minas.",
         },
         notFound: {
             title: "Page not found | Bernardo Rocha",
@@ -111,7 +111,7 @@ export const en: TranslationKeys = {
 
     // Resume Page
     resume: {
-        downloadPdf: "Print / save as PDF",
+        downloadPdf: "Save as PDF",
         backHome: "Back",
         role: "Computer Engineering (CEFET-MG) and Computer Science (PUC Minas)",
         summary:
@@ -119,6 +119,7 @@ export const en: TranslationKeys = {
         sections: {
             experience: "Experience",
             education: "Education",
+            research: "Research and Talks",
             skills: "Technical Skills",
             projects: "Projects",
             certifications: "Certifications",
@@ -130,6 +131,7 @@ export const en: TranslationKeys = {
             devops: "DevOps & Infra",
             frontend: "Frontend & Web",
         },
+        advisors: "Advisors",
         updatedIn: "Updated in",
     },
 } as const;

@@ -184,6 +184,76 @@ export const education: Education[] = [
 ];
 
 // ============================================
+// RESEARCH AND TALKS
+// ============================================
+
+/**
+ * Trabalhos apresentados em evento acadêmico. Separado de `projects` de
+ * propósito: um projeto é o artefato, isto é o que foi submetido, aceito e
+ * apresentado, com autoria e orientação declaradas como o evento registrou.
+ *
+ * `authors` traz a lista completa e na ordem da submissão, inclusive quando
+ * ele não é o primeiro autor. Reordenar para se colocar na frente é o tipo de
+ * coisa que quem lê currículo de pesquisa confere.
+ */
+export type ResearchEntry = {
+    title: {
+        pt: string;
+        en: string;
+    };
+    venue: {
+        pt: string;
+        en: string;
+    };
+    /** Tipo de contribuição: resumo, pôster, apresentação oral. */
+    kind: {
+        pt: string;
+        en: string;
+    };
+    date: string;
+    authors: string[];
+    advisors?: string[];
+    description: {
+        pt: string;
+        en: string;
+    };
+    link?: string;
+};
+
+export const research: ResearchEntry[] = [
+    {
+        title: {
+            pt: "CriptoEscape: escape room para o ensino de aritmética modular e segurança em curvas elípticas",
+            en: "CriptoEscape: an escape room for teaching modular arithmetic and elliptic-curve security",
+        },
+        venue: {
+            pt: "I Seminário de Tecnologias no Ensino de Matemática, CEFET-MG",
+            en: "1st Seminar on Technologies in Mathematics Education, CEFET-MG",
+        },
+        kind: {
+            pt: "Resumo e apresentação",
+            en: "Abstract and talk",
+        },
+        // Apresentado em 22/08/2026.
+        date: "08/2026",
+        authors: [
+            "Iago Soares Santana",
+            "Bernardo Vieira Rocha",
+            "Renan Cabral Costa Cunningham",
+        ],
+        advisors: [
+            "Divane Aparecida de Moraes Dantas",
+            "Frederico Augusto Menezes Ribeiro",
+        ],
+        description: {
+            pt: "O resumo descreve o laboratório de curvas elípticas que deu origem à plataforma: um servidor ECDH que multiplica qualquer ponto recebido sem validá-lo. O participante determina a ordem dos pontos por somas sucessivas, coleta as congruências que o servidor devolve e reconstrói a chave privada pelo Teorema Chinês do Resto, etapa final do ataque de Pohlig-Hellman; na última etapa, as mesmas entradas são rejeitadas pelo modo que valida a ordem do ponto antes de usá-lo. A curva, y² ≡ x³ + 2x + 7 (mod 97) com 105 pontos, foi escolhida para que as contas sejam feitas à mão.",
+            en: "The abstract describes the elliptic-curve lab the platform grew out of: an ECDH server that multiplies any point it receives without validating it. The participant works out each point's order by repeated addition, collects the congruences the server returns and reconstructs the private key with the Chinese Remainder Theorem, the final step of the Pohlig-Hellman attack; in the last stage the same inputs are rejected by the mode that checks point order before using it. The curve, y² ≡ x³ + 2x + 7 (mod 97) with 105 points, was chosen so the arithmetic can be done by hand.",
+        },
+        // TODO(bernardo): link dos anais, quando o evento publicar.
+    },
+];
+
+// ============================================
 // CERTIFICATIONS
 // ============================================
 
@@ -255,6 +325,26 @@ export const certifications: Certification[] = [
 // PROJECTS
 // ============================================
 
+/**
+ * Dimensões são as do arquivo, não as de exibição: elas reservam o espaço
+ * antes da imagem carregar (sem isso o texto abaixo pula) e definem a
+ * proporção de render. Cada screenshot tem a sua, e nenhuma é cortada.
+ *
+ * `caption` é obrigatória e bilíngue porque estas imagens não se explicam:
+ * um layout de PCB e um painel de serviços dizem coisas diferentes sobre o
+ * mesmo projeto, e sem legenda o leitor não sabe qual está vendo. Ela também
+ * vira o `alt`, no lugar do título do projeto repetido em toda imagem.
+ */
+export type ProjectImage = {
+    src: string;
+    width: number;
+    height: number;
+    caption: {
+        pt: string;
+        en: string;
+    };
+};
+
 export type Project = {
     title: string;
     description: {
@@ -264,12 +354,7 @@ export type Project = {
     techStack: string[];
     githubUrl?: string;
     liveUrl?: string;
-    /**
-     * Dimensões são as do arquivo, não as de exibição: elas reservam o espaço
-     * antes da imagem carregar (sem isso o texto abaixo pula) e definem a
-     * proporção de render. Cada screenshot tem a sua, e nenhuma é cortada.
-     */
-    image?: { src: string; width: number; height: number };
+    images?: ProjectImage[];
     featured?: boolean;
 };
 
@@ -283,7 +368,17 @@ export const projects: Project[] = [
         },
         techStack: ["Docker", "Nginx", "PostgreSQL", "Node.js", "React", "VPS"],
         githubUrl: "https://github.com/bernardovieirarocha/SociosFormula",
-        image: { src: "/projects/socios-fcefast.webp", width: 1800, height: 1016 },
+        images: [
+            {
+                src: "/projects/socios-fcefast.webp",
+                width: 1800,
+                height: 1016,
+                caption: {
+                    pt: "Área do associado: o menu de planos, pagamentos e pedidos, e o bloqueio de conteúdo para quem ainda não assinou.",
+                    en: "The member area: the plans, payments and orders menu, and the content gate for visitors without an active plan.",
+                },
+            },
+        ],
         featured: true,
     },
     {
@@ -291,14 +386,41 @@ export const projects: Project[] = [
         description: {
             // A primeira frase é o escopo do projeto (trabalho de equipe); a
             // segunda é a contribuição dele, e por isso diz "contribuí", não
-            // "fiz". O acesso remoto é uma VPN hospedada em VPS: a versão
-            // anterior dizia "relay mTLS", que não era o que existe.
+            // "fiz". O acesso remoto é um relay em VPS (o serviço `tuner-relay`
+            // que aparece na captura), com stunnel fazendo o túnel TLS. Já foi
+            // descrito como "relay mTLS" e depois como "VPN"; nenhuma das duas
+            // versões batia com o que roda na VPS.
             // TODO(bernardo): regra 5, uma frase sobre o que ainda não funciona.
-            pt: "Eletrônica embarcada e telemetria do protótipo de Fórmula SAE: datalogger próprio (MAQ), módulo de distribuição de potência controlado por CAN e modem LTE Cat-M1 (BG95-M3). Contribuí com o firmware do ESP32 que faz a interface com a ECU MegaSquirt e com o datalogger MAQ, e com a VPN hospedada em VPS que permite o tuning remoto e deixa computadores autorizados acompanharem os dados do carro em tempo real, no lugar de um notebook ligado ao carro dentro do box. Placas projetadas em Altium Designer.",
-            en: "Embedded electronics and telemetry for the Formula SAE prototype: an in-house datalogger (MAQ), a power distribution module controlled over CAN and an LTE Cat-M1 modem (BG95-M3). I contributed to the ESP32 firmware that interfaces with the MegaSquirt ECU and the MAQ data logger, and to the VPS-hosted VPN that enables remote tuning and lets authorized computers monitor the car's data in real time, instead of a laptop wired to the car in the pit. Boards designed in Altium Designer.",
+            pt: "Eletrônica embarcada e telemetria do protótipo de Fórmula SAE: datalogger próprio (MAQ), módulo de distribuição de potência controlado por CAN e modem LTE Cat-M1 (BG95-M3). Contribuí com o firmware do ESP32 que faz a interface com a ECU MegaSquirt e com o datalogger MAQ, e com o relay hospedado em VPS que permite o tuning remoto e deixa computadores autorizados acompanharem os dados do carro em tempo real, no lugar de um notebook ligado ao carro dentro do box. O tráfego entre o carro e quem acompanha passa por um túnel TLS, feito com stunnel. Placas projetadas em Altium Designer.",
+            en: "Embedded electronics and telemetry for the Formula SAE prototype: an in-house datalogger (MAQ), a power distribution module controlled over CAN and an LTE Cat-M1 modem (BG95-M3). I contributed to the ESP32 firmware that interfaces with the MegaSquirt ECU and the MAQ data logger, and to the VPS-hosted relay that enables remote tuning and lets authorized computers monitor the car's data in real time, instead of a laptop wired to the car in the pit. Traffic between the car and whoever is watching runs through a TLS tunnel, built with stunnel. Boards designed in Altium Designer.",
         },
-        techStack: ["Altium Designer", "PCB Design", "CAN", "ESP32", "C++", "VPN"],
-        image: { src: "/projects/telemetria-dashboard.webp", width: 1800, height: 881 },
+        techStack: ["Altium Designer", "PCB Design", "CAN", "ESP32", "C++", "stunnel"],
+        // A placa vem antes do painel de propósito: o layout é a parte do
+        // projeto que só existe em hardware, e o painel sozinho fazia o
+        // trabalho parecer só software.
+        images: [
+            {
+                src: "/projects/telemetria-placa.webp",
+                width: 437,
+                height: 790,
+                caption: {
+                    pt: "Layout da PCB do módulo de telemetria em Altium Designer, com as duas camadas de cobre sobrepostas.",
+                    en: "PCB layout of the telemetry module in Altium Designer, with both copper layers overlaid.",
+                },
+            },
+            {
+                src: "/projects/telemetria-dashboard.webp",
+                width: 1800,
+                height: 881,
+                // O log está borrado no arquivo, de propósito: a captura
+                // original trazia o hostname da VPS e os IPs de quem tinha
+                // conectado na porta.
+                caption: {
+                    pt: "Painel de operação do relay na VPS: estado dos serviços e log em tempo real.",
+                    en: "Operations panel for the relay on the VPS: service status and live log.",
+                },
+            },
+        ],
         featured: true,
     },
     {
@@ -309,7 +431,17 @@ export const projects: Project[] = [
         },
         techStack: ["Java", "Next.js", "Python", "scikit-learn", "PostgreSQL", "Docker"],
         githubUrl: "https://github.com/rubensbkl/Flixmate",
-        image: { src: "/projects/flixmate.webp", width: 1600, height: 1000 },
+        images: [
+            {
+                src: "/projects/flixmate.webp",
+                width: 1600,
+                height: 1000,
+                caption: {
+                    pt: "Tela de descoberta: um filme por vez, e as ações do usuário que alimentam o motor de recomendação.",
+                    en: "The discovery screen: one movie at a time, and the user actions that feed the recommendation engine.",
+                },
+            },
+        ],
         featured: true,
     },
     {
@@ -319,7 +451,17 @@ export const projects: Project[] = [
             en: "The team's public website, built with Next.js and shadcn/ui.",
         },
         techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-        image: { src: "/projects/site-fcefast.webp", width: 1600, height: 1092 },
+        images: [
+            {
+                src: "/projects/site-fcefast.webp",
+                width: 1600,
+                height: 1092,
+                caption: {
+                    pt: "Página de protótipos, com o histórico de carros da equipe e o resultado de cada competição.",
+                    en: "The prototypes page, listing the team's cars and each one's competition result.",
+                },
+            },
+        ],
         // TODO(bernardo): link do site no ar e do repo, se for público.
         featured: true,
     },
@@ -330,7 +472,17 @@ export const projects: Project[] = [
             en: "Home infrastructure on Proxmox VE with ZFS storage: service containers, a reverse proxy with TLS, local DNS, zero-trust remote access and monitoring. Documented in MkDocs as it is built.",
         },
         techStack: ["Proxmox", "ZFS", "Docker", "Nginx", "Linux", "MkDocs"],
-        image: { src: "/projects/homelab-proxmox.webp", width: 1800, height: 794 },
+        images: [
+            {
+                src: "/projects/homelab-proxmox.webp",
+                width: 1800,
+                height: 794,
+                caption: {
+                    pt: "Painel do Proxmox: os containers LXC e os storages do nó, com uso de disco e memória.",
+                    en: "The Proxmox dashboard: the node's LXC containers and storages, with disk and memory usage.",
+                },
+            },
+        ],
         // TODO(bernardo): publicar o homelabdocs num repo e linkar aqui.
         featured: true,
     },
@@ -339,11 +491,19 @@ export const projects: Project[] = [
     {
         title: "CriptoEscape",
         description: {
-            pt: "Escape room digital para ensino de aritmética modular e criptografia de curvas elípticas, com motor matemático próprio e cinco etapas encadeadas. Apresentado no I Seminário de Tecnologias no Ensino de Matemática (CEFET-MG, 2026).",
-            en: "A digital escape room for teaching modular arithmetic and elliptic-curve cryptography, with its own math engine and five chained stages. Presented at the 1st Seminar on Technologies in Mathematics Education (CEFET-MG, 2026).",
+            // Os 42 módulos são a soma do que a página /salas do site mostra
+            // hoje (6+6+6+12+12). É o único número aqui que sai de uma fonte
+            // pública e conferível, e por isso é também o que envelhece: sala
+            // nova ou módulo novo no criptoescape.com, número novo aqui.
+            // O resumo do seminário fala em cinco etapas; aquelas cinco etapas
+            // são o desafio da sala 4, não a plataforma inteira.
+            pt: "Plataforma no ar para o primeiro contato com criptografia: cinco salas em sequência, 42 módulos ao todo, da cifra de César e da aritmética modular até criptografia simétrica, RSA, curvas elípticas e uma introdução à pós-quântica. Cada sala termina num desafio em que o participante faz a conta à mão e o sistema confere. Somos três estudantes de Engenharia de Computação do CEFET-MG: respondo pela aplicação Next.js, pelas contas e pela progressão de salas no Supabase, e pelo deploy. Ainda não foi usada por uma turma, e a aplicação piloto com pré-teste e pós-teste é o próximo passo.",
+            en: "A live platform for a first contact with cryptography: five rooms in sequence, 42 modules in total, from the Caesar cipher and modular arithmetic through symmetric cryptography, RSA, elliptic curves and an introduction to post-quantum. Each room ends in a challenge where the participant works the arithmetic out by hand and the system checks it. We are three Computer Engineering students at CEFET-MG: I own the Next.js application, the accounts and room progression on Supabase, and the deployment. No class has used it yet, and a pilot run with pre-test and post-test is the next step.",
         },
-        techStack: ["Criptografia", "ECC", "Python", "React"],
-        // TODO(bernardo): link do repo ou do resumo publicado, quando houver.
+        techStack: ["Next.js", "React", "Supabase", "MDX", "Criptografia", "ECC"],
+        liveUrl: "https://criptoescape.com",
+        // Não há repositório público: o código está fechado enquanto a
+        // plataforma não passa pela aplicação piloto.
     },
     {
         title: "CORE (Cefast Operational Real-Time Engine)",

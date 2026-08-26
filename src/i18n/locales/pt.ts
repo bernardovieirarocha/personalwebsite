@@ -98,7 +98,7 @@ export const pt = {
     resume: {
       title: "Currículo | Bernardo Rocha",
       description:
-        "Formação, experiência, certificações e projetos de Bernardo Vieira Rocha, estudante de Engenharia de Computação no CEFET-MG e Ciência da Computação na PUC Minas.",
+        "Formação, experiência, pesquisa, certificações e projetos de Bernardo Vieira Rocha, estudante de Engenharia de Computação no CEFET-MG e Ciência da Computação na PUC Minas.",
     },
     notFound: {
       title: "Página não encontrada | Bernardo Rocha",
@@ -115,7 +115,7 @@ export const pt = {
 
   // Resume Page
   resume: {
-    downloadPdf: "Imprimir / salvar em PDF",
+    downloadPdf: "Salvar em PDF",
     backHome: "Voltar",
     role: "Engenharia de Computação (CEFET-MG) e Ciência da Computação (PUC Minas)",
     summary:
@@ -123,6 +123,7 @@ export const pt = {
     sections: {
       experience: "Experiência",
       education: "Formação",
+      research: "Pesquisa e Apresentações",
       skills: "Habilidades Técnicas",
       projects: "Projetos",
       certifications: "Certificações",
@@ -134,6 +135,7 @@ export const pt = {
       devops: "DevOps & Infra",
       frontend: "Frontend & Web",
     },
+    advisors: "Orientação",
     updatedIn: "Atualizado em",
   },
 } as const;

@@ -9,9 +9,9 @@ import SectionHeading from "./SectionHeading";
  *
  * O que se evita aqui é a GRADE de cards idênticos: cinco caixas do mesmo
  * tamanho, ícone em cima, título, dois parágrafos. Isso é template. Estes são
- * painéis empilhados em largura cheia, de alturas diferentes (três têm captura,
- * dois não), e a superfície existe para um motivo: as capturas precisavam de
- * uma moldura para não parecerem PNG solto no fundo da página.
+ * painéis empilhados em largura cheia, de alturas diferentes, e a superfície
+ * existe para um motivo: as capturas precisavam de uma moldura para não
+ * parecerem PNG solto no fundo da página.
  *
  * O tier de baixo ("Outros projetos") continua sendo lista sem caixa, de
  * propósito. É o contraste entre os dois que faz a hierarquia aparecer.
@@ -38,20 +38,34 @@ const FeaturedProject = ({ project, language }: { project: Project; language: "p
       ))}
     </ul>
 
-    {project.image && (
-      // Proporção nativa, sem recorte: as capturas vão de 1.47:1 a 2.27:1, e
-      // qualquer aspect fixo cortaria alguma. `width`/`height` são os do
-      // arquivo, então o browser reserva a altura exata antes de baixar.
-      <div className="mt-7 overflow-hidden rounded-md border border-border bg-background">
-        <img
-          src={project.image.src}
-          alt={project.title}
-          width={project.image.width}
-          height={project.image.height}
-          loading="lazy"
-          decoding="async"
-          className="block h-auto w-full"
-        />
+    {project.images && (
+      <div className="mt-7 space-y-5">
+        {project.images.map((image) => (
+          // Proporção nativa, sem recorte: as capturas vão de 0.68:1 a 2.27:1,
+          // e qualquer aspect fixo cortaria alguma. `width`/`height` são os do
+          // arquivo, então o browser reserva a altura exata antes de baixar.
+          //
+          // `maxWidth` no tamanho do arquivo impede o upscale: o layout da PCB
+          // tem 437 px de largura e, esticado até a largura do painel, viraria
+          // borrão. As capturas grandes continuam ocupando a largura toda.
+          <figure key={image.src} className="mx-auto" style={{ maxWidth: image.width }}>
+            <div className="overflow-hidden rounded-md border border-border bg-background">
+              <img
+                src={image.src}
+                alt={image.caption[language]}
+                width={image.width}
+                height={image.height}
+                loading="lazy"
+                decoding="async"
+                className="block h-auto w-full"
+              />
+            </div>
+            {/* Mono porque é rótulo de figura, não prosa. */}
+            <figcaption className="mt-2 font-mono text-xs text-muted-foreground">
+              {image.caption[language]}
+            </figcaption>
+          </figure>
+        ))}
       </div>
     )}
   </article>
