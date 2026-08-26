@@ -1,80 +1,63 @@
-# 🌟 Personal Website
+# bernardorocha.com
 
-Um site pessoal moderno e responsivo construído com React, TypeScript e Vite. Apresenta animações suaves, design limpo e suporte para múltiplos idiomas.
+Site pessoal de **Bernardo Vieira Rocha**: Engenharia de Computação (CEFET-MG) e Ciência da
+Computação (PUC Minas), projetista eletrônico da equipe Fórmula CEFAST.
 
-## ✨ Características
+Este repositório é a **única fonte da verdade** do site. O repositório `cv`, que servia
+`bernardorocha.me`, está sendo aposentado; o `.me` passa a redirecionar (301) para cá.
 
-- 🎨 Design moderno e responsivo
-- 🌐 Suporte para internacionalização (i18n) - Português e Inglês
-- ⚡ Performance otimizada com Vite
-- 🎯 Componentes reutilizáveis com shadcn/ui
-- 🎭 Animações suaves e interativas
-- 📱 Mobile-first design
-- 🚀 Deploy automático no Netlify
+## Stack
 
-## 🛠️ Tecnologias
+Vite 5 · React 18 · TypeScript · Tailwind CSS · shadcn/ui · React Router · deploy na Netlify.
 
-- **Framework:** React 18
-- **Linguagem:** TypeScript
-- **Build Tool:** Vite
-- **Estilização:** Tailwind CSS
-- **Componentes UI:** shadcn/ui
-- **Roteamento:** React Router
-- **Deploy:** Netlify
-
-## 📦 Instalação
+## Rodando localmente
 
 ```bash
-# Clone o repositório
-git clone <URL_DO_REPOSITORIO>
-
-# Entre no diretório
-cd personalwebsite
-
-# Instale as dependências
 npm install
-
-# Inicie o servidor de desenvolvimento
-npm run dev
-```
-
-## 🚀 Scripts Disponíveis
-
-```bash
-# Desenvolvimento
-npm run dev
-
-# Build para produção
-npm run build
-
-# Preview da build de produção
-npm run preview
-
-# Lint
+npm run dev        # http://localhost:8080
+npm run build      # build de produção em dist/
+npm run preview    # serve o build
 npm run lint
 ```
 
-## 📁 Estrutura do Projeto
+## Onde fica o conteúdo
 
-```
-src/
-├── components/      # Componentes React
-│   ├── ui/         # Componentes base (shadcn/ui)
-│   ├── About.tsx   # Seção sobre
-│   ├── Projects.tsx # Projetos
-│   └── ...
-├── data/           # Dados estáticos
-├── hooks/          # Custom hooks
-├── i18n/           # Internacionalização
-│   └── locales/    # Traduções
-├── lib/            # Utilitários
-└── pages/          # Páginas principais
-```
+Nenhum texto visível é escrito direto em componente `.tsx`. Para editar o site:
 
-## 🌐 Deploy
+| O que | Onde |
+|---|---|
+| Dados (projetos, experiência, formação, certificações, skills) | `src/data/content.ts` |
+| Textos da interface, em PT e EN | `src/i18n/locales/pt.ts` e `en.ts` |
+| Metadados, Open Graph e JSON-LD | `index.html` |
+| Imagens e favicons | `public/` |
 
-O projeto está configurado para deploy automático no Netlify. Qualquer push para a branch principal irá disparar um novo deploy.
+`src/i18n/locales/pt.ts` é a fonte do tipo `TranslationKeys`. Adicionar uma chave em `pt.ts`
+faz o TypeScript exigir a mesma chave em `en.ts`, de propósito: o site é bilíngue completo e
+meio-traduzido é pior que monolíngue.
 
-## 📝 Licença
+## Regras de conteúdo
 
-Este projeto é de código aberto e está disponível sob a licença MIT.
+Estão em [`CLAUDE.md`](./CLAUDE.md) e valem para qualquer um que edite o site, humano ou agente.
+As duas principais:
+
+1. **Nada de métrica inventada.** Sem contador de projetos, "anos de experiência", "∞ cafés"
+   ou barra de proficiência. Número que não pode ser verificado não entra.
+2. **Nenhuma tecnologia listada sem projeto que a use.** Se está em `skills`, existe um projeto
+   no site que prova.
+
+## Segurança
+
+Toda variável de ambiente com prefixo `VITE_` é **embutida no JavaScript enviado ao navegador**.
+Ela não é secreta. Chamada que precise de chave vai para uma Netlify Function em
+`netlify/functions/`, lendo a variável **sem** o prefixo `VITE_`.
+
+## Deploy
+
+Netlify, automático a cada push na branch principal. Configuração em `netlify.toml`.
+
+## TODO
+
+- [ ] Substituir `public/og-image.png` pelo card definitivo (1200×630).
+- [ ] Prerender das rotas (hoje é SPA pura: crawlers e previews de link não veem conteúdo).
+- [ ] `sitemap.xml`, `robots.txt` e `lang` dinâmico sincronizado com o i18n.
+- [ ] Mover a chamada da API de versículos para uma Netlify Function e rotacionar a chave antiga.

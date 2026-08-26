@@ -6,7 +6,8 @@ Contexto para o Claude Code trabalhando neste repositório. Leia antes de qualqu
 
 Portfólio pessoal de **Bernardo Vieira Rocha** ("berd"), em `https://bernardorocha.com`.
 Este repositório (`personalwebsite`) é a **única fonte da verdade**. O antigo repo `cv`
-(que servia `bernardorocha.me`) foi aposentado; `bernardorocha.me` redireciona 301 para cá.
+(que servia `bernardorocha.me`) foi aposentado. **Pendente:** o `.me` ainda responde 200
+servindo o site antigo; o 301 para `bernardorocha.com` falta ser configurado na Netlify.
 
 **Stack:** Vite 5 · React 18 · TypeScript · Tailwind CSS · shadcn/ui · React Router · Netlify.
 
@@ -27,14 +28,19 @@ Este repositório (`personalwebsite`) é a **única fonte da verdade**. O antigo
 
 Projetos reais que devem aparecer (repos e contexto existem):
 Plataforma de Sócios da Fórmula CEFAST · migração phpBB→NodeBB (Docker/VPS) · firmware de ESP32
-que faz interface com a ECU MegaSquirt e com o datalogger MAQ, mais VPN hospedada em VPS que
+que faz interface com a ECU MegaSquirt e com o datalogger MAQ, mais relay hospedado em VPS que
 permite tuning remoto e deixa computadores autorizados acompanharem os dados do carro em tempo
 real · datalogger MAQ, PDM com CAN, modem LTE Cat-M1 BG95-M3 · homelab Proxmox/ZFS (docs em
 MkDocs) · CriptoEscape (ECC) · RustCraft (Rust) · site da Fórmula CEFAST (Next.js).
 
-Duas correções que valem para a telemetria, porque a descrição antiga errava nas duas:
-o acesso remoto é **VPN em VPS**, não "relay mTLS" (não escrever mTLS aqui); e a participação
-dele no firmware do ESP32 é **contribuição, não autoria solo** ("contribuí com", nunca "fiz").
+Dois pontos da telemetria que já foram escritos errado mais de uma vez:
+
+- O acesso remoto é um **relay hospedado em VPS** (o serviço `tuner-relay`), com o tráfego
+  dentro de um **túnel TLS feito por stunnel**. Não é VPN: a correção de agosto de 2026 trocou
+  "relay mTLS" por "VPN" e errou para o outro lado. Confirmado pelo dono em 16/08/2026, com a
+  captura do painel como evidência (`tuner-relay` e `stunnel4` rodando lado a lado).
+- A participação dele no firmware do ESP32 é **contribuição, não autoria solo**
+  ("contribuí com", nunca "fiz").
 
 **Fora do site por decisão do dono:** apresentação de TLS 1.3 / handshake híbrido pós-quântico
 e artigo de RSA-OAEP. Não reintroduzir.
