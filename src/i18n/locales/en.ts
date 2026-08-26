@@ -17,7 +17,7 @@ export const en: TranslationKeys = {
 
     // Hero Section
     hero: {
-        role: "Computer Engineering at CEFET-MG and Computer Science at PUC Minas",
+        role: "Computer Engineering at CEFET-MG",
         summary:
             "I designed the Formula CEFAST team's embedded electronics and now lead its IT area.",
         viewProjects: "View projects",
@@ -89,12 +89,12 @@ export const en: TranslationKeys = {
         home: {
             title: "Bernardo Rocha | Computer Engineering, embedded systems and infrastructure",
             description:
-                "Computer Engineering student at CEFET-MG and Computer Science student at PUC Minas. I design embedded electronics, telemetry and infrastructure for the Formula CEFAST team.",
+                "Computer Engineering student at CEFET-MG. I design embedded electronics, telemetry and infrastructure for the Formula CEFAST team.",
         },
         resume: {
             title: "Resume | Bernardo Rocha",
             description:
-                "Education, experience, research, certifications and projects of Bernardo Vieira Rocha, Computer Engineering student at CEFET-MG and Computer Science student at PUC Minas.",
+                "Education, experience, research, certifications and projects of Bernardo Vieira Rocha, Computer Engineering student at CEFET-MG.",
         },
         notFound: {
             title: "Page not found | Bernardo Rocha",
@@ -113,9 +113,9 @@ export const en: TranslationKeys = {
     resume: {
         downloadPdf: "Save as PDF",
         backHome: "Back",
-        role: "Computer Engineering (CEFET-MG) and Computer Science (PUC Minas)",
+        role: "Computer Engineering (CEFET-MG)",
         summary:
-            "I study Computer Engineering at CEFET-MG and Computer Science at PUC Minas, concurrently. On the Formula CEFAST SAE team I designed electronic modules in Altium Designer and now serve as Head of IT, owning the stack, the infrastructure and the people in the area.",
+            "I study Computer Engineering at CEFET-MG. On the Formula CEFAST SAE team I designed electronic modules in Altium Designer and now serve as Head of IT, owning the stack, the infrastructure and the people in the area.",
         sections: {
             experience: "Experience",
             education: "Education",

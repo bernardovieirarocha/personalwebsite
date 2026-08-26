@@ -13,11 +13,17 @@ servindo o site antigo; o 301 para `bernardorocha.com` falta ser configurado na 
 
 ## Quem é o dono do site (fatos verificados: use estes, não invente outros)
 
-- Cursa **Engenharia de Computação no CEFET-MG** (2024–2029, campus BH) **e Ciência da
-  Computação na PUC Minas** (2024–2028), simultaneamente.
-- **Fórmula CEFAST (SAE), desde 2024**. Projetista Eletrônico (Altium Designer / PCB).
-  Atua tanto na eletrônica embarcada e telemetria quanto no lado de software/infra da equipe.
-- **Monitor de AEDS I na PUC Minas**, 2024–2025.
+- Cursa **Engenharia de Computação no CEFET-MG**, 2024 a **jul/2029**, campus BH. O mês da
+  colação importa: é o que decide elegibilidade em programa de estágio com janela de formatura.
+- **Parou Ciência da Computação na PUC Minas** (2024 a 2025) e não concluiu. **Não é mais
+  dupla graduação**, e isso já esteve escrito errado no site inteiro: não reintroduzir.
+- **Fórmula CEFAST (SAE)**: Projetista Eletrônico (Altium Designer / PCB) de nov/2024 a
+  mar/2026, e **Head de TI** de fev/2026 a set/2026. Atua tanto na eletrônica embarcada e
+  telemetria quanto no lado de software/infra da equipe.
+- **Datas sempre em mês/ano, nunca em notação de semestre.** O `2024.2` que existia aqui foi
+  convertido para "ago/2024" quando o certo era nov/2024, e o erro foi para um currículo.
+  Na dúvida sobre um mês, perguntar: não deduzir pelo calendário letivo.
+- **Monitor de AEDS I na PUC Minas**, ago/2024 a nov/2024.
 - **Plano de Trabalho de Extensão (AEX PJ085-2026)** na Fórmula CEFAST: 600 h, 05/2026–12/2026.
 - **Não tem estágio.** Não inventar um, nem "experiência freelance", nem preencher lacuna na
   timeline. Não está buscando estágio imediatamente; está construindo base para isso.

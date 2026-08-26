@@ -15,7 +15,7 @@ export const pt = {
 
   // Hero Section
   hero: {
-    role: "Engenharia de Computação no CEFET-MG e Ciência da Computação na PUC Minas",
+    role: "Engenharia de Computação no CEFET-MG",
     summary:
       "Projetei a eletrônica embarcada da equipe Fórmula CEFAST e hoje lidero a área de TI dela.",
     viewProjects: "Ver projetos",
@@ -93,12 +93,12 @@ export const pt = {
       title:
         "Bernardo Rocha | Engenharia de Computação, sistemas embarcados e infraestrutura",
       description:
-        "Estudante de Engenharia de Computação (CEFET-MG) e Ciência da Computação (PUC Minas). Projeto eletrônica embarcada, telemetria e infraestrutura para a equipe Fórmula CEFAST.",
+        "Estudante de Engenharia de Computação no CEFET-MG. Projeto eletrônica embarcada, telemetria e infraestrutura para a equipe Fórmula CEFAST.",
     },
     resume: {
       title: "Currículo | Bernardo Rocha",
       description:
-        "Formação, experiência, pesquisa, certificações e projetos de Bernardo Vieira Rocha, estudante de Engenharia de Computação no CEFET-MG e Ciência da Computação na PUC Minas.",
+        "Formação, experiência, pesquisa, certificações e projetos de Bernardo Vieira Rocha, estudante de Engenharia de Computação no CEFET-MG.",
     },
     notFound: {
       title: "Página não encontrada | Bernardo Rocha",
@@ -117,9 +117,9 @@ export const pt = {
   resume: {
     downloadPdf: "Salvar em PDF",
     backHome: "Voltar",
-    role: "Engenharia de Computação (CEFET-MG) e Ciência da Computação (PUC Minas)",
+    role: "Engenharia de Computação (CEFET-MG)",
     summary:
-      "Curso Engenharia de Computação no CEFET-MG e Ciência da Computação na PUC Minas, simultaneamente. Na equipe Fórmula CEFAST SAE, projetei módulos eletrônicos em Altium Designer e hoje sou Head de TI, respondendo pela stack, pela infraestrutura e pelas pessoas da área.",
+      "Curso Engenharia de Computação no CEFET-MG. Na equipe Fórmula CEFAST SAE, projetei módulos eletrônicos em Altium Designer e hoje sou Head de TI, respondendo pela stack, pela infraestrutura e pelas pessoas da área.",
     sections: {
       experience: "Experiência",
       education: "Formação",
