@@ -87,14 +87,14 @@ export const en: TranslationKeys = {
     // Per-route SEO
     seo: {
         home: {
-            title: "Bernardo Rocha | Computer Engineering, embedded systems and infrastructure",
+            title: "Bernardo Rocha | Embedded systems and infrastructure",
             description:
-                "Computer Engineering student at CEFET-MG. I design embedded electronics, telemetry and infrastructure for the Formula CEFAST team.",
+                "Computer Engineering student at CEFET-MG. Embedded electronics, telemetry and infrastructure on the Formula CEFAST team.",
         },
         resume: {
             title: "Resume | Bernardo Rocha",
             description:
-                "Education, experience, research, certifications and projects of Bernardo Vieira Rocha, Computer Engineering student at CEFET-MG.",
+                "Education, experience, research and projects of Bernardo Vieira Rocha, Computer Engineering at CEFET-MG.",
         },
         notFound: {
             title: "Page not found | Bernardo Rocha",

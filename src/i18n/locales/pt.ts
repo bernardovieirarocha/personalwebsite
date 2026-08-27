@@ -91,14 +91,14 @@ export const pt = {
   seo: {
     home: {
       title:
-        "Bernardo Rocha | Engenharia de Computação, sistemas embarcados e infraestrutura",
+        "Bernardo Rocha | Sistemas embarcados e infraestrutura",
       description:
-        "Estudante de Engenharia de Computação no CEFET-MG. Projeto eletrônica embarcada, telemetria e infraestrutura para a equipe Fórmula CEFAST.",
+        "Estudante de Engenharia de Computação no CEFET-MG. Eletrônica embarcada, telemetria e infraestrutura na Fórmula CEFAST.",
     },
     resume: {
       title: "Currículo | Bernardo Rocha",
       description:
-        "Formação, experiência, pesquisa, certificações e projetos de Bernardo Vieira Rocha, estudante de Engenharia de Computação no CEFET-MG.",
+        "Formação, experiência, pesquisa e projetos de Bernardo Vieira Rocha, Engenharia de Computação no CEFET-MG.",
     },
     notFound: {
       title: "Página não encontrada | Bernardo Rocha",
