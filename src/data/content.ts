@@ -528,6 +528,15 @@ export const projects: Project[] = [
         techStack: ["NodeBB", "Docker", "Nginx", "Linux"],
     },
     {
+        title: "BatterySafe",
+        description: {
+            pt: "Protótipo de aplicativo de saúde de bateria para veículo elétrico, feito para ilustrar a proposta que apresentamos na Competição Estudantil SAE BRASIL de Inovação Jump Start, no tema ESG e futuro da mobilidade. Três telas: estado atual da bateria, alertas dispensáveis em três níveis e histórico de degradação por dia, mês e ano. O dado é simulado e não há conexão com veículo nenhum: numa prova de pitch, o que precisa ficar claro é como a informação chega ao motorista, não a telemetria por trás. Projeto encerrado no fim da competição.",
+            en: "A battery-health app prototype for an electric vehicle, built to illustrate the proposal we presented at SAE BRASIL's Jump Start student innovation competition, on the theme of ESG and the future of mobility. Three screens: current battery state, dismissable alerts at three levels, and degradation history by day, month and year. The data is simulated and there is no connection to any vehicle: in a pitch event what has to land is how the information reaches the driver, not the telemetry behind it. The project ended with the competition.",
+        },
+        techStack: ["React Native", "Expo", "TypeScript"],
+        githubUrl: "https://github.com/bernardovieirarocha/battersafe",
+    },
+    {
         title: "RustCraft",
         description: {
             pt: "Jogo sandbox em Rust, organizado como workspace com crates separados por responsabilidade. O objetivo é aprender a linguagem construindo algo maior que um exercício.",
