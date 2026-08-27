@@ -79,13 +79,13 @@ export const workExperience: WorkExperience[] = [
         description: {
             // TODO(bernardo): se puder, cite UM sistema que você decidiu e por quê.
             // "Escolhi NodeBB no lugar de X porque Y" vale mais que a lista abaixo.
-            pt: "Coordenei a área de TI da equipe: distribuí e revisei o trabalho dos membros, fiz o onboarding de novatos e decidi stack e arquitetura. Operei a infraestrutura que a equipe usa no dia a dia (VPS, containers, domínios, fórum e plataforma de sócios) e levantei a necessidade das outras subequipes para traduzir em sistema.",
-            en: "I led the team's IT area: assigning and reviewing the members' work, onboarding newcomers, and making the stack and architecture calls. I ran the infrastructure the team depends on day to day (VPS, containers, domains, forum and membership platform) and gathered requirements from the other subteams to turn them into working systems.",
+            pt: "Liderei a área de TI da equipe, que não existia antes: montei o processo de engenharia do zero. Defini a stack e a arquitetura, estabeleci o fluxo de trabalho em branches e pull requests com revisão, e fiz o onboarding dos primeiros membros nesse processo. Operei a infraestrutura que a equipe usa no dia a dia, de VPS e containers a domínios, fórum e plataforma de sócios, e traduzi em sistema a necessidade das outras subequipes.",
+            en: "I led the team's IT area, which did not exist before: I set up its engineering process from scratch. I defined the stack and the architecture, established a branch and pull request workflow with review, and onboarded the first members into it. I ran the infrastructure the team depends on day to day, from VPS and containers to domains, the forum and the membership platform, and turned the other subteams' needs into working systems.",
         },
         location: "Presencial",
         startDate: "fev/2026",
         endDate: "set/2026",
-        technologies: ["Docker", "Nginx", "Linux", "VPS", "PostgreSQL", "Arquitetura"],
+        technologies: ["Docker", "Nginx", "Linux", "VPS", "PostgreSQL", "Git", "Arquitetura"],
         logo: "/cefast.svg",
     },
     {
@@ -97,8 +97,8 @@ export const workExperience: WorkExperience[] = [
         description: {
             // TODO(bernardo): cite um módulo concreto que você projetou.
             // "Projetei a PCB do X, que faz Y" vale mais que "projetista de módulos".
-            pt: "Projetei módulos eletrônicos do protótipo de Fórmula SAE em Altium Designer, da esquemática ao layout de PCB, e trabalhei na telemetria embarcada do carro.",
-            en: "I designed electronic modules for the Formula SAE prototype in Altium Designer, from schematic to PCB layout, and worked on the car's embedded telemetry.",
+            pt: "Projetei módulos eletrônicos do protótipo de Fórmula SAE em Altium Designer, da esquemática ao layout de PCB. Trabalhei com barramento CAN e com a eletrônica embarcada do carro, num ciclo em que cada placa precisa estar pronta dentro do calendário da competição.",
+            en: "I designed electronic modules for the Formula SAE prototype in Altium Designer, from schematic to PCB layout. I worked with the CAN bus and the car's embedded electronics, on a cycle where every board has to be ready within the competition calendar.",
         },
         location: "Presencial",
         startDate: "nov/2024",
@@ -475,27 +475,6 @@ export const projects: Project[] = [
         // TODO(bernardo): link do site no ar e do repo, se for público.
         featured: true,
     },
-    {
-        title: "Homelab em Proxmox e ZFS",
-        description: {
-            pt: "Infraestrutura doméstica em Proxmox VE com storage ZFS: containers de serviços, proxy reverso com TLS, DNS local, acesso remoto zero-trust e monitoramento. Documentado em MkDocs enquanto é construído.",
-            en: "Home infrastructure on Proxmox VE with ZFS storage: service containers, a reverse proxy with TLS, local DNS, zero-trust remote access and monitoring. Documented in MkDocs as it is built.",
-        },
-        techStack: ["Proxmox", "ZFS", "Docker", "Nginx", "Linux", "MkDocs"],
-        images: [
-            {
-                src: "/projects/homelab-proxmox.webp",
-                width: 1800,
-                height: 794,
-                caption: {
-                    pt: "Painel do Proxmox: os containers LXC e os storages do nó, com uso de disco e memória.",
-                    en: "The Proxmox dashboard: the node's LXC containers and storages, with disk and memory usage.",
-                },
-            },
-        ],
-        // TODO(bernardo): publicar o homelabdocs num repo e linkar aqui.
-        featured: true,
-    },
 
     // ── OUTROS ──────────────────────────────────────────────────────────────
     {
@@ -554,6 +533,26 @@ export const projects: Project[] = [
         techStack: ["Python", "iCalendar"],
         githubUrl: "https://github.com/bernardovieirarocha/Class2Cal",
         liveUrl: "https://bernardovieirarocha.github.io/Class2Cal/",
+    },
+    {
+        title: "Homelab em Proxmox e ZFS",
+        description: {
+            pt: "Infraestrutura doméstica em Proxmox VE com storage ZFS: containers de serviços, proxy reverso com TLS, DNS local, acesso remoto zero-trust e monitoramento. Documentado em MkDocs enquanto é construído.",
+            en: "Home infrastructure on Proxmox VE with ZFS storage: service containers, a reverse proxy with TLS, local DNS, zero-trust remote access and monitoring. Documented in MkDocs as it is built.",
+        },
+        techStack: ["Proxmox", "ZFS", "Docker", "Nginx", "Linux", "MkDocs"],
+        images: [
+            {
+                src: "/projects/homelab-proxmox.webp",
+                width: 1800,
+                height: 794,
+                caption: {
+                    pt: "Painel do Proxmox: os containers LXC e os storages do nó, com uso de disco e memória.",
+                    en: "The Proxmox dashboard: the node's LXC containers and storages, with disk and memory usage.",
+                },
+            },
+        ],
+        // TODO(bernardo): publicar o homelabdocs num repo e linkar aqui.
     },
 ];
 
