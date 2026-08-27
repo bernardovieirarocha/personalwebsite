@@ -445,6 +445,16 @@ export const projects: Project[] = [
         featured: true,
     },
     {
+        title: "Dewesoft Analyser",
+        description: {
+            pt: "Ferramenta de desktop e linha de comando que transforma aquisição bruta do Dewesoft (.dxd) da bancada de motor em CSV pronto para análise. Um ensaio gera um binário de ~140 MB com 215 canais em três bases de tempo diferentes, e tirar dali uma curva de pressão por ângulo de virabrequim significava abrir o Dewesoft X, exportar canal por canal e realinhar tudo na planilha. A ferramenta faz isso numa passada, para uma pasta inteira de ensaios: detecta a virada do ângulo para recortar um ciclo fechado, alinha canais adquiridos em taxas diferentes, suaviza com Savitzky-Golay e reamostra num grid angular uniforme, para que ensaios possam ser sobrepostos. O CSV sai com cabeçalho de proveniência, dizendo de qual arquivo, modo e configuração ele veio. A suíte de testes roda sobre sinais sintéticos, sem precisar de um .dxd nem de display, e o CI valida lint e testes em Python 3.11 e 3.12.",
+            en: "A desktop and command-line tool that turns raw Dewesoft (.dxd) engine-bench acquisitions into analysis-ready CSV. One run produces a ~140 MB binary holding 215 channels on three different time bases, and getting a pressure-versus-crank-angle curve out of it meant opening Dewesoft X, exporting channel by channel and realigning everything in a spreadsheet. The tool does it in a single pass, for a whole folder of runs: it detects crank-angle wrap-around to slice out one closed cycle, aligns channels acquired at different rates, smooths with Savitzky-Golay and resamples onto a uniform angular grid so runs can be overlaid. The CSV carries a provenance header naming the source file, mode and settings it came from. The test suite runs on synthetic signals, with no .dxd file and no display needed, and CI checks lint and tests on Python 3.11 and 3.12.",
+        },
+        techStack: ["Python", "pandas", "SciPy", "Tkinter", "pytest", "GitHub Actions"],
+        githubUrl: "https://github.com/bernardovieirarocha/Dewesoft_Analyser",
+        featured: true,
+    },
+    {
         title: "Site da Fórmula CEFAST",
         description: {
             pt: "Site institucional da equipe, construído em Next.js com shadcn/ui.",
