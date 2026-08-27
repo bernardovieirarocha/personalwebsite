@@ -43,7 +43,7 @@ export const skills = {
     // projeto que o sustentava, e o FlixMate usa PostgreSQL. Se voltar a ter um
     // projeto em Mongo no site, volta aqui.
     backend: ["Java", "Spring Boot", "PostgreSQL", "Flyway", "REST"],
-    embedded: ["ESP32", "Arduino", "Altium Designer", "PCB Design", "CAN"],
+    embedded: ["ESP32", "Altium Designer", "PCB Design", "CAN"],
     devops: ["Docker", "Linux", "Nginx", "Git", "Proxmox", "ZFS"],
     frontend: ["React", "Next.js", "Tailwind CSS", "HTML", "CSS"],
 } as const;
