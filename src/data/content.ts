@@ -445,13 +445,24 @@ export const projects: Project[] = [
         featured: true,
     },
     {
-        title: "Dewesoft Analyser",
+        title: "DXD Analyser",
         description: {
             pt: "Ferramenta de desktop e linha de comando que transforma aquisição bruta do Dewesoft (.dxd) da bancada de motor em CSV pronto para análise. Um ensaio gera um binário de ~140 MB com 215 canais em três bases de tempo diferentes: a ferramenta detecta a virada do ângulo de virabrequim para recortar um ciclo fechado, alinha canais adquiridos em taxas diferentes, suaviza com Savitzky-Golay e reamostra num grid angular uniforme, para que ensaios possam ser sobrepostos. Os testes rodam sobre sinais sintéticos, sem precisar de um .dxd nem de display.",
             en: "A desktop and command-line tool that turns raw Dewesoft (.dxd) engine-bench acquisitions into analysis-ready CSV. One run produces a ~140 MB binary holding 215 channels on three different time bases: the tool detects crank-angle wrap-around to slice out one closed cycle, aligns channels acquired at different rates, smooths with Savitzky-Golay and resamples onto a uniform angular grid so runs can be overlaid. The tests run on synthetic signals, with no .dxd file and no display needed.",
         },
         techStack: ["Python", "pandas", "SciPy", "Tkinter", "pytest", "GitHub Actions"],
         githubUrl: "https://github.com/bernardovieirarocha/Dewesoft_Analyser",
+        images: [
+            {
+                src: "/projects/dxd-analyser.webp",
+                width: 1175,
+                height: 841,
+                caption: {
+                    pt: "Seleção de canais de um ensaio: os 215 canais do arquivo, com os que vieram sem amostra marcados como bloqueados.",
+                    en: "Channel selection for one bench run: the file's 215 channels, with the ones that came back empty marked as blocked.",
+                },
+            },
+        ],
         featured: true,
     },
     {
