@@ -29,7 +29,11 @@ const Seo = ({
   title,
   description,
   path,
-  image = "/og-image.png",
+  // O nome carrega a data de proposito. LinkedIn, WhatsApp e afins cacheiam a
+  // imagem de preview POR URL, e por muito tempo: republicar o mesmo
+  // /og-image.png nao atualiza o card em lugar nenhum. Trocou a arte, troca o
+  // nome do arquivo junto (e o caminho na regra de cache do netlify.toml).
+  image = "/og-2026-08.png",
   type = "website",
   preloadImage,
 }: SeoProps) => {
