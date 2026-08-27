@@ -42,7 +42,7 @@ export const skills = {
     // MongoDB saiu daqui junto com a correção do stack do FlixMate: era o único
     // projeto que o sustentava, e o FlixMate usa PostgreSQL. Se voltar a ter um
     // projeto em Mongo no site, volta aqui.
-    backend: ["Node.js", "Django", "PostgreSQL", "REST"],
+    backend: ["Java", "Spring Boot", "PostgreSQL", "Flyway", "REST"],
     embedded: ["ESP32", "Arduino", "Altium Designer", "PCB Design", "CAN"],
     devops: ["Docker", "Linux", "Nginx", "Git", "Proxmox", "ZFS"],
     frontend: ["React", "Next.js", "Tailwind CSS", "HTML", "CSS"],
@@ -363,10 +363,10 @@ export const projects: Project[] = [
     {
         title: "Plataforma de Sócios da Fórmula CEFAST",
         description: {
-            pt: "Sistema de sócios da equipe, em produção: cadastro, planos por tier, área do associado e exportação de dados. Backend, frontend e deploy próprios, em containers atrás de Nginx numa VPS.",
-            en: "The team's membership system, in production: sign-up, tiered plans, a member area and data export. Backend, frontend and deployment all in-house, containerized behind Nginx on a VPS.",
+            pt: "Sistema de sócios da equipe, em produção: cadastro, planos por tier, área do associado e exportação de dados. Backend em Spring Boot com migrações versionadas em Flyway, frontend em Next.js, e o deploy em containers atrás de Nginx numa VPS.",
+            en: "The team's membership system, in production: sign-up, tiered plans, a member area and data export. A Spring Boot backend with versioned Flyway migrations, a Next.js frontend, and deployment in containers behind Nginx on a VPS.",
         },
-        techStack: ["Docker", "Nginx", "PostgreSQL", "Node.js", "React", "VPS"],
+        techStack: ["Java", "Spring Boot", "Next.js", "PostgreSQL", "Flyway", "Docker", "Nginx"],
         githubUrl: "https://github.com/bernardovieirarocha/SociosFormula",
         images: [
             {
