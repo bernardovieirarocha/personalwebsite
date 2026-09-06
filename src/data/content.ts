@@ -71,6 +71,22 @@ export type WorkExperience = {
 
 export const workExperience: WorkExperience[] = [
     {
+        company: "CEFET-MG",
+        title: {
+            pt: "Iniciação Científica em Verificação de Hardware",
+            en: "Undergraduate Research in Hardware Verification",
+        },
+        description: {
+            pt: "Refatoro e verifico módulos em Verilog HDL do núcleo do Nintendo Entertainment System na plataforma MiSTer FPGA, dando continuidade a dois trabalhos de conclusão anteriores. O escopo é CPU, memória, barramentos e subsistema gráfico: separar os módulos, padronizar as interfaces e escrever testbenches automatizados que confrontem a simulação com a documentação de referência do console. O que passa na simulação volta para o ambiente MiSTer e é testado em FPGA real. Orientação do professor Jeferson Figueiredo Chaves. A primeira etapa é ambientação: leitura dos trabalhos anteriores e diagrama de blocos do núcleo, antes de qualquer refatoração.",
+            en: "I refactor and verify Verilog HDL modules of the Nintendo Entertainment System core on the MiSTer FPGA platform, continuing two earlier final-year projects. The scope is the CPU, memory, buses and graphics subsystem: splitting modules apart, standardizing their interfaces, and writing automated testbenches that check simulation against the console's reference documentation. Whatever passes in simulation goes back into the MiSTer environment and is tested on real FPGA hardware. Advised by professor Jeferson Figueiredo Chaves. The first stage is ramp-up: reading the earlier work and drawing the core's block diagram, before any refactoring.",
+        },
+        location: "Presencial",
+        startDate: "set/2026",
+        endDate: null,
+        technologies: ["Verilog HDL", "FPGA", "MiSTer", "Quartus", "Cadence", "Testbench"],
+        logo: "/cefetmg.png",
+    },
+    {
         company: "Fórmula CEFAST, CEFET-MG",
         title: {
             pt: "Head de TI",

@@ -28,9 +28,13 @@ servindo o site antigo; o 301 para `bernardorocha.com` falta ser configurado na 
 - **Não tem estágio.** Não inventar um, nem "experiência freelance", nem preencher lacuna na
   timeline. Não está buscando estágio imediatamente; está construindo base para isso.
 - Perfil-alvo: **híbrido hardware + software**, com braço de **pesquisa**.
-- **Candidatura em aberto** (não publicar até ser confirmada): IC voluntária do Prof. Jeferson
-  Chaves: verificação e refatoração de módulos Verilog HDL do núcleo do NES na plataforma
-  MiSTer FPGA, com testbenches automatizados e ferramentas Cadence.
+- **Iniciação Científica desde set/2026**, orientação do Prof. Jeferson Figueiredo Chaves:
+  verificação e refatoração de módulos Verilog HDL do núcleo do NES na plataforma MiSTer FPGA,
+  com testbenches automatizados, Quartus e ferramentas Cadence. Aprovada e confirmada pelo dono
+  em 06/09/2026, e já publicada em `workExperience`. Deixou de ser candidatura em aberto.
+  É voluntária, mas o site não declara isso: decisão do dono, não escrever "voluntária" nem
+  citar bolsa. O período fica em aberto ("desde set/2026"), sem data de fim, mesmo com o
+  cronograma da proposta indo até ago/2027.
 
 Projetos reais que devem aparecer (repos e contexto existem):
 Plataforma de Sócios da Fórmula CEFAST · migração phpBB→NodeBB (Docker/VPS) · firmware de ESP32
